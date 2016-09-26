@@ -8,5 +8,13 @@ before_install:
   - sudo apt-get install -qq libsqlite3-dev libxml2 libxml2-dev libssl-dev libbz2-dev wget curl llvm
 language: python
 python:
-- "3.5"
+  - "3.5"
 
+install:
+  - pip install -r requirements.txt
+
+script:
+  - py.test
+
+notifications:
+  slack: twoscoop:rv1lxlhuExtzlUTtl6modR5J
