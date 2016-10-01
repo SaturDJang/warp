@@ -35,7 +35,7 @@ DJANGO_APPS = (
     'django.contrib.admin',
 
     # Our apps
-    'core'
+    'presentation'
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
@@ -86,7 +86,7 @@ FIXTURE_DIRS = (
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.presentation.mail.backends.smtp.EmailBackend')
 
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------

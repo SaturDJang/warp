@@ -1,0 +1,13 @@
+{% extends 'presentation/base.html' %}
+
+{% block head_title %}Presentation list{% endblock %}
+
+{% block inner %}
+<div>
+    <ul>
+        {% for presentation in presentations %}
+            <li>{{ presentation.subject }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
