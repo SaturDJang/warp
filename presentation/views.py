@@ -6,7 +6,8 @@ from .forms import PresentationCreateForm
 
 # Create your views here.
 class CreatePresentation(CreateView):
-    form_class = PresentationCreateForm
+    model = Presentation
+    fields = ['subject', 'markdown', 'is_public', 'html']
     template_name = 'presentation/presentation_create.html'
     context_object_name = 'presentation_form'
 
