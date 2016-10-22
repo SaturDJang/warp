@@ -10,3 +10,4 @@ class Presentation(TimeStampedModel):
     views = models.IntegerField(default=0)
     markdown = models.TextField()
     html = models.TextField()
+    is_public = models.BooleanField(default=True)
