@@ -1,10 +1,14 @@
-from django.forms import Form
-
-from .models import Presentation
+from django import forms
 
 
-class PresentationCreateForm(Form):
-    class Meta:
-        model = Presentation
-        fields = ['subject', 'markdown', 'is_public']
-
+class PresentationCreateForm(forms.Form):
+    subject = forms.CharField(max_length=50)
+    markdown = forms.CharField(
+        widget=forms.Textarea()
+    )
+    html = forms.CharField(label="", widget=forms.Textarea(
+        attrs={
+            "hidden": "true"
+        }
+    ))
+    is_public = forms.BooleanField(initial=True)
