@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{% block head_title %}Presentation Create - warp{% endblock head_title %}{% endblock title %}
+
+{% block content %}
+<form action="{% url 'presentation:create' %}" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+  <div id="{{ field.auto_id }}">
+    <label for="{{ field.auto_id }}">{{ field.label }}</label>
+    {{ field }}
+  </div>
+  {% endfor %}
+  <input type="submit" value="Create">
+</form>
+{% endblock %}
