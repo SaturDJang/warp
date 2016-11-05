@@ -36,7 +36,13 @@
         <ul class="menu">
           <li><input type="search" placeholder="Search"></li>
           <li><button type="button" class="button">Search</button></li>
-          <li><a href="{% url 'presentation:create' %}" class="button"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+          <li>
+            <a href="{% url 'presentation:create' %}">
+              <button class="button">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
