@@ -17,6 +17,7 @@
         <!-- Your stuff: Third-party CSS libraries go here -->
         {% compress css %}
         <!-- This file stores project-specific CSS -->
+        <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.css' %}">
         <link rel="stylesheet" href="{% static 'vendor/foundation/css/foundation.css' %}">
         <link rel="stylesheet" href="{% static 'css/project.css' %}">
         {% endcompress %}
@@ -35,6 +36,13 @@
         <ul class="menu">
           <li><input type="search" placeholder="Search"></li>
           <li><button type="button" class="button">Search</button></li>
+          <li>
+            <a href="{% url 'presentation:create' %}">
+              <button class="button">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
