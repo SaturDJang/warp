@@ -17,9 +17,5 @@
 
 {% block extra_javascript %}
   <script src="{% static 'vendor/marked/marked.js' %}"></script>
-  <script type="text/javascript">
-  $('#create_html').submit(function () {
-    $('#id_html').val(marked($('#id_markdown').val()));
-  })
-  </script>
+  <script src="{% static 'js/create.js' %}"></script>
 {% endblock %}
