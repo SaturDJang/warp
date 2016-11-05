@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import FormView
 from django.views.generic import ListView
 
+from warp.users.models import User
 from .forms import PresentationCreateForm
 from .models import Presentation
 
@@ -12,14 +13,10 @@ class CreatePresentation(FormView):
     context_object_name = 'presentation_form'
     success_url = reverse_lazy('presentation:list')
 
-    def form_invalid(self, form):
-        print('invalid')
-        return super().form_invalid(form)
-
     def form_valid(self, form):
-        print('warp')
+
         p = Presentation(subject=form.cleaned_data['subject'],
-                         author='Tester',
+                         author=self.request.user,
                          markdown=form.cleaned_data['markdown'],
                          html='abc',  # TODO
                          is_public=form.cleaned_data['is_public'],
