@@ -2,7 +2,6 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import FormView
 from django.views.generic import ListView
 
-from warp.users.models import User
 from .forms import PresentationCreateForm
 from .models import Presentation
 
