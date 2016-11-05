@@ -57,6 +57,10 @@
       {% endcompress %}
 
     {% endblock javascript %}
+
+    {% compress js %}
+      {% block extra_javascript %}{% endblock %}
+    {% endcompress %}
   </body>
 </html>
 

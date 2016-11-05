@@ -17,7 +17,7 @@ class CreatePresentation(FormView):
         p = Presentation(subject=form.cleaned_data['subject'],
                          author=self.request.user,
                          markdown=form.cleaned_data['markdown'],
-                         html='abc',  # TODO
+                         html=form.cleaned_data['html'],
                          is_public=form.cleaned_data['is_public'],
                          )
         p.save()
