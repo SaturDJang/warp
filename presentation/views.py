@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse_lazy
+from django.views.generic import DetailView
 from django.views.generic import FormView
 from django.views.generic import ListView
 
@@ -28,4 +29,8 @@ class PresentationList(ListView):
     model = Presentation
     paginate_by = 9
     context_object_name = 'presentations'
-    template_name = 'presentation/presentation_list.html'
+
+
+class PresentationDetail(DetailView):
+    model = Presentation
+    context_object_name = 'presentation'
