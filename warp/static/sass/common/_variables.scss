@@ -1,0 +1,16 @@
+$mobile-min-width: 320px;
+$mobile-max-width: 479px;
+
+$tablet-min-width: 480px;
+$tablet-mid-width: 650px;
+$tablet-max-width: 976px;
+
+$scrollbar-width: 17;
+
+$desktop-product-width-unit: 320;
+$desktop-max-width: $desktop-product-width-unit * 3;
+$cross-desktop-max-width: ( $desktop-max-width + $scrollbar-width ) * 1px;
+
+$desktop-wrapper-max-width: 640;
+
+$desktop-detail-left-width: 600px;
