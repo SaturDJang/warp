@@ -19,7 +19,7 @@
         <!-- This file stores project-specific CSS -->
         <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.css' %}">
         <link rel="stylesheet" href="{% static 'vendor/foundation/css/foundation.css' %}">
-        <link rel="stylesheet" href="{% static 'css/project.css' %}">
+        <link rel="stylesheet" type="text/scss" href="{% static 'sass/main.scss' %}">
         {% block extra_css %}{% endblock  %}
         {% endcompress %}
     {% endblock %}
@@ -62,7 +62,7 @@
 
       <!-- place project specific Javascript in this file -->
       {% compress js %}
-      <script src="{% static 'js/project.js' %}"></script>
+      <script type="text/es6" src="{% static 'js/project.js' %}"></script>
       {% endcompress %}
 
     {% endblock javascript %}

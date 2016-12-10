@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles compress %}
 {% block title %}{% block head_title %}Presentation Create - warp{% endblock head_title %}{% endblock title %}
 
 {% block content %}
@@ -13,7 +13,6 @@
             </div>
             <div class="small-6 columns">
                 <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
-                <button class="preview-btn medium button">Preview</button>
                 <input class="medium button" type="submit" value="Create">
             </div>
         </div>
@@ -126,11 +125,9 @@ Example: ![GitHub Logo](/images/logo.png)</pre>
     </form>
 {% endblock %}
 
+{% compress js %}
 {% block extra_javascript %}
     <script src="{% static 'vendor/marked/marked.js' %}"></script>
-    <script src="{% static 'js/create.js' %}"></script>
+    <script type="text/es6" src="{% static 'js/create.js' %}"></script>
 {% endblock %}
-
-{% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
-{% endblock extra_css %}
+{% endcompress %}

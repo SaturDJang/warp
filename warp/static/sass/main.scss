@@ -1,0 +1,23 @@
+// common
+@import "common/variables";
+
+// default
+@import "common/project";
+
+//default apply (mobile first)
+
+
+//tablet-all
+@media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+
+}
+
+//tablet-650~
+@media screen and (min-width: $tablet-mid-width) and (max-width: $tablet-max-width) {
+
+}
+
+//desktop
+@media screen and (min-width: $cross-desktop-max-width) {
+  @import "desktop/presentation.create";
+}
