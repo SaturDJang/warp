@@ -25,8 +25,8 @@ class PresentationListTest(TestCase):
 
         request.user = AnonymousUser()
         response = PresentationList.as_view()(request)
-        self.assertIn(response, self.presentaion.subject)
-        self.assertIn(response, self.presentaion.author.name)
+        self.assertIn(response, self.presentation.subject)
+        self.assertIn(response, self.presentation.author.name)
 
     @staticmethod
     def create_test_user():
