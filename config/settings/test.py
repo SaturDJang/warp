@@ -25,16 +25,16 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='CHANGEME!!!')
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 
-# In-memory email backend stores messages in django.presentation.mail.outbox
+# In-memory email backend stores messages in django.core.mail.outbox
 # for unit testing purposes
-EMAIL_BACKEND = 'django.presentation.mail.backends.locmem.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
 # CACHING
 # ------------------------------------------------------------------------------
 # Speed advantages of in-memory caching without having to run Memcached
 CACHES = {
     'default': {
-        'BACKEND': 'django.presentation.cache.backends.locmem.LocMemCache',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': ''
     }
 }
