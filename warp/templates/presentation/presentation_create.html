@@ -3,131 +3,131 @@
 {% block title %}{% block head_title %}Presentation Create - warp{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-    <form id="create_html" action="{% url 'presentation:create' %}" method="post">
-        <div class="row">
-            <div class="small-6 columns">
-                <div class="input-group">
-                    <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
-                    {{ form.subject }}
-                </div>
-            </div>
-            <div class="small-6 columns">
-                <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
-                <input class="medium button" type="submit" value="Create">
-            </div>
+  <form id="create_html" action="{% url 'presentation:create' %}" method="post">
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="input-group">
+          <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
+          {{ form.subject }}
         </div>
-        <div class="row">
-            <div class="editor-side small-6 columns">
-                {% csrf_token %}
-                <div>
-                    <label for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
-                    {{ form.markdown }}
-                </div>
-            </div>
-            <div class="preview-side small-6 columns">
-                <div class="preview"></div>
-                <hr>
-                <p class="usage">
-                    <h4>Syntax guide</h4>
-
-                    <div class="usage-paragraph">Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com or in your own text files.</p>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Headers</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight"># This is an &lt;h1&gt; tag
-## This is an &lt;h4&gt; tag
-###### This is an &lt;h6&gt; tag</pre>
-                        </div>
-                    </div>
-                    <div class="usage-paragraph callout">
-                        <h5>Emphasis</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-    <pre class="highlight">*This text will be italic*
-_This will also be italic_
-
-**This text will be bold**
-__This will also be bold__
-
-_You **can** combine them_</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Lists</h5>
-                        <div class="usage-paragraph callout secondary">
-                            <h6>Unordered</h6>
-
-                            <div class="language-markdown highlighter-rouge">
-        <pre class="highlight">* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b</pre>
-                            </div>
-                        </div>
-
-                        <div class="usage-paragraph callout secondary">
-                            <h6>Ordered</h6>
-
-                            <div class="language-markdown highlighter-rouge">
-                                <pre class="highlight">1. Item 1
-2. Item 2
-3. Item 3
-   * Item 3a
-   * Item 3b</pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Images</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight">Format: ![Alt Text](url)
-Example: ![GitHub Logo](/images/logo.png)</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Links</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight">http://github.com - automatic!
-[GitHub](http://github.com)</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Blockquotes</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight">As Kanye West said:
-
-&gt; We're living the future so
-&gt; the present is our past.</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Inline code</h5>
-
-                        <div class="highlighter-rouge">
-<pre class="highlight">I think you should use an
-`&lt;addr&gt;` element here instead.</pre>
-                        </div>
-                    </div>
->>>>>>> createpage
-                </div>
-            </div>
+      </div>
+      <div class="small-6 columns">
+        <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
+        <input class="medium button" type="submit" value="Create">
+      </div>
+    </div>
+    <div class="row">
+      <div class="editor-side small-6 columns">
+        {% csrf_token %}
+        <div>
+          <label for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
+          {{ form.markdown }}
         </div>
-    </form>
+      </div>
+      <div class="preview-side small-6 columns">
+        <div class="preview"></div>
+        <hr>
+        <p class="usage"></p>
+        <h4>Syntax guide</h4>
+        <div class="usage-paragraph">
+          Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com or in your own text files.
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Headers</h5>
+          <div class="language-markdown highlighter-rouge">
+            <span class="highlight">
+              # This is an &lt;h1&gt; tag <br/>
+              ## This is an &lt;h4&gt; tag <br/>
+              ###### This is an &lt;h6&gt; tag
+            </span>
+          </div>
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Emphasis</h5>
+          <div class="language-markdown highlighter-rouge">
+            <span class="highlight">
+              *This text will be italic* <br/>
+              _This will also be italic_ <br/>
+              <br/>
+              **This text will be bold** <br/>
+              __This will also be bold__ <br/>
+              <br/>
+              _You **can** combine them_
+            </span>
+          </div>
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Lists</h5>
+          <div class="usage-paragraph callout secondary">
+            <h6>Unordered</h6>
+            <div class="language-markdown highlighter-rouge">
+              <span class="highlight">
+                * Item 1 <br/>
+                * Item 2 <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;* Item 2a <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;* Item 2b
+              </span>
+            </div>
+          </div>
+          <div class="usage-paragraph callout secondary">
+            <h6>Ordered</h6>
+            <div class="language-markdown highlighter-rouge">
+              <span class="highlight">
+                1. Item 1 <br/>
+                2. Item 2 <br/>
+                3. Item 3 <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;* Item 3a <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;* Item 3b
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Images</h5>
+          <div class="language-markdown highlighter-rouge">
+            <span class="highlight">
+              Format: ![Alt Text](url) <br/>
+              Example: ![GitHub Logo](/images/logo.png)
+            </span>
+          </div>
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Links</h5>
+          <div class="language-markdown highlighter-rouge">
+            <span class="highlight">
+              http://github.com - automatic! <br/>
+              [GitHub](http://github.com)
+            </span>
+          </div>
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Blockquotes</h5>
+          <div class="language-markdown highlighter-rouge">
+            <span class="highlight">
+              As Kanye West said: <br/>
+              &gt; We're living the future so <br/>
+              &gt; the present is our past.
+            </span>
+          </div>
+        </div>
+        <div class="usage-paragraph callout">
+          <h5>Inline code</h5>
+          <div class="language-markdown highlighter-rouge">
+            <span class="highlight">
+              I think you should use an <br/>
+              `&lt;addr&gt;` element here instead.
+            </span>
+          </div>
+        </div>
+          >>>>>>> createpage
+      </div>
+    </div>
+  </form>
 {% endblock %}
 
 {% compress js %}
-{% block extra_javascript %}
+  {% block extra_javascript %}
     <script src="{% static 'vendor/marked/marked.js' %}"></script>
     <script type="text/es6" src="{% static 'js/create.js' %}"></script>
-{% endblock %}
+  {% endblock %}
 {% endcompress %}
