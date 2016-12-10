@@ -16,7 +16,7 @@ class PresentationListTest(TestCase):
                                          author=self.test_user,
                                          markdown="#Abcdefghijklmno",
                                          html="<h1>Abcdefghijklmno</h1>")
-        for _ in (0, 20):
+        for _ in range(0, 20):
             self.presentation.save()
 
     def test_get_presentation_list_page(self):
