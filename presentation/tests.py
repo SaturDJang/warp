@@ -1,16 +1,14 @@
-from django.contrib.auth.models import AnonymousUser
 from django.core.urlresolvers import reverse
+from django.test import Client
 from django.test import TestCase
-from django.test import RequestFactory
 
 from presentation.models import Presentation
-from presentation.views import PresentationList
 from warp.users.models import User
 
 
 class PresentationListTest(TestCase):
     def setUp(self):
-        self.factory = RequestFactory()
+        self.client = Client()
         self.test_user = self.create_test_user()
         self.presentation = Presentation(subject="subject",
                                          author=self.test_user,
@@ -20,13 +18,10 @@ class PresentationListTest(TestCase):
             self.presentation.save()
 
     def test_get_presentation_list_page(self):
-        presentation_list_url = reverse('presentation:list')
-        request = self.factory.get(presentation_list_url)
+        response = self.client.get(reverse('presentation:list'))
 
-        request.user = AnonymousUser()
-        response = PresentationList.as_view()(request)
-        self.assertIn(response, self.presentation.subject)
-        self.assertIn(response, self.presentation.author.name)
+        self.assertContains(response, self.presentation.subject)
+        self.assertContains(response, self.presentation.author.username)
 
     @staticmethod
     def create_test_user():
