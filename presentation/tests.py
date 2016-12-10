@@ -13,12 +13,11 @@ class PresentationListTest(TestCase):
         self.factory = RequestFactory()
         self.test_user = self.create_test_user()
         self.presentation = Presentation(subject="subject",
-                                   author=self.test_user,
-                                   markdown="#Abcdefghijklmno",
-                                   html="<h1>Abcdefghijklmno</h1>")
+                                         author=self.test_user,
+                                         markdown="#Abcdefghijklmno",
+                                         html="<h1>Abcdefghijklmno</h1>")
         for _ in (0, 20):
             self.presentation.save()
-
 
     def test_get_presentation_list_page(self):
         presentation_list_url = reverse('presentation:list')
@@ -29,8 +28,8 @@ class PresentationListTest(TestCase):
         self.assertIn(response, self.presentaion.subject)
         self.assertIn(response, self.presentaion.author.name)
 
-
-    def create_test_user(self):
+    @staticmethod
+    def create_test_user():
         name = "Name name"
         username = "username"
         first_name = "Name"
@@ -48,11 +47,3 @@ class PresentationListTest(TestCase):
         user.save()
 
         return user
-
-
-
-
-
-
-
-
