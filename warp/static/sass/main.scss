@@ -6,6 +6,7 @@
 
 //default apply (mobile first)
 
+@import "pages/presentation.create";
 
 //tablet-all
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
@@ -19,5 +20,5 @@
 
 //desktop
 @media screen and (min-width: $cross-desktop-max-width) {
-  @import "desktop/presentation.create";
+
 }
