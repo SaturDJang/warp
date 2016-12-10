@@ -5,187 +5,55 @@
 {% block content %}
    <form id="create_html" action="{% url 'presentation:create' %}" method="post">
         <div class="usage-sidebar">
-            <div>Usage</div>
-            <div># <span class="text">Primary Header</span></div>
-            <div>## <span class="text">Secondary Header</span></div>
-            <div>### <span class="text">Third Header</span></div>
-            <div>#### <span class="text">Fourth Header</span></div>
-            <div>##### <span class="text">Fifth Header</span></div>
-            <div>###### <span class="text">Sixth Header</span></div>
-            <div>**<span class="text">Bold</span>**</div>
-            <div>__<span class="text">Bold</span>__</div>
-            <div>*<span class="text">Italic</span>*</div>
-            <div>_<span class="text">Italic</span>_</div>
-            <div>* <span class="text">Unordered</span></div>
-            <div>&nbsp;&nbsp;* <span class="text">Unordered</span></div>
-            <div>- <span class="text">Unordered</span></div>
-            <div>&nbsp;&nbsp;- <span class="text">Unordered</span></div>
-            <div>1. <span class="text">Ordered</span></div>
-            <div>&nbsp;&nbsp;1. <span class="text">Ordered</span></div>
-            <div>![<span class="text">Alternative Text</span>](<span class="text">Image URL</span>)</div>
-            <div><img src="{% static 'images/usage-example.jpeg' %}" width="160px" alt="usage-example"></div>
-            <div>http://warp.com<span class="text"> - automatic!</span></div>
-            <div>[<span class="text">Warp Home</span>](http://warp.com)</div>
-            <div>```<span class="text">block code</span>```</div>
-            <div>'<span class="text">inline code</span>'</div>
+            <p>Usage</p>
+            # <span class="text">Primary Header</span><br />
+            ## <span class="text">Secondary Header</span><br />
+            ### <span class="text">Third Header</span><br />
+            #### <span class="text">Fourth Header</span><br />
+            ##### <span class="text">Fifth Header</span><br />
+            ###### <span class="text">Sixth Header</span><br />
+            **<span class="text">Bold</span>**<br />
+            __<span class="text">Bold</span>__<br />
+            *<span class="text">Italic</span>*<br />
+            _<span class="text">Italic</span>_<br />
+            * <span class="text">Unordered</span><br />
+            &nbsp;&nbsp;* <span class="text">Unordered</span><br />
+            - <span class="text">Unordered</span><br />
+            &nbsp;&nbsp;- <span class="text">Unordered</span><br />
+            1. <span class="text">Ordered</span><br />
+            &nbsp;&nbsp;1. <span class="text">Ordered</span><br />
+            ![<span class="text">Alternative Text</span>](<span class="text">Image URL</span>)<br />
+            <img src="{% static 'images/usage-example.jpeg' %}" width="160px" alt="usage-example"><br />
+            http://warp.com<span class="text"> - automatic!</span><br />
+            [<span class="text">Warp Home</span>](http://warp.com)<br />
+            ```<span class="text">block code</span>```<br />
+            '<span class="text">inline code</span>'<br />
         </div>
-        <div class="row">
-            <div class="small-6 columns">
-                <div class="input-group">
-                    <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
-                    {{ form.subject }}
-                </div>
-            </div>
-            <div class="small-6 columns">
-                <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
-                <input class="medium button" type="submit" value="Create">
-            </div>
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="input-group">
+          <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
+          {{ form.subject }}
         </div>
-        <div class="row">
-            <div class="editor-side small-6 columns">
-                {% csrf_token %}
-                <div class="editor-header">
-                    <label class="markdown-form-label usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
-                    <div class="usage-switch-elems usage-toggle-btn-label">Show usage</div>
-                    <a class="button tiny usage-toggle-btn">Show</a>
-                </div>
-                {{ form.markdown }}
-            </div>
-           <div class="preview-side small-6 columns">
-                <div class="preview"></div>
-                <hr>
-                <p class="usage">
-                    <h4>Syntax guide</h4>
-
-                    <div class="usage-paragraph">Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com or in your own text files.</p>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Headers</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight"># This is an &lt;h1&gt; tag
-## This is an &lt;h4&gt; tag
-###### This is an &lt;h6&gt; tag</pre>
-                        </div>
-                    </div>
-                    <div class="usage-paragraph callout">
-                        <h5>Emphasis</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-    <pre class="highlight">*This text will be italic*
-_This will also be italic_
-
-**This text will be bold**
-__This will also be bold__
-
-_You **can** combine them_</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Lists</h5>
-                        <div class="usage-paragraph callout secondary">
-                            <h6>Unordered</h6>
-
-                            <div class="language-markdown highlighter-rouge">
-        <pre class="highlight">* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b</pre>
-                            </div>
-                        </div>
-
-                        <div class="usage-paragraph callout secondary">
-                            <h6>Ordered</h6>
-
-                            <div class="language-markdown highlighter-rouge">
-                                <pre class="highlight">1. Item 1
-2. Item 2
-3. Item 3
-   * Item 3a
-   * Item 3b</pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Images</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight">Format: ![Alt Text](url)
-Example: ![GitHub Logo](/images/logo.png)</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Links</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight">http://github.com - automatic!
-[GitHub](http://github.com)</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Blockquotes</h5>
-
-                        <div class="language-markdown highlighter-rouge">
-                            <pre class="highlight">As Kanye West said:
-
-&gt; We're living the future so
-&gt; the present is our past.</pre>
-                        </div>
-                    </div>
-
-                    <div class="usage-paragraph callout">
-                        <h5>Inline code</h5>
-
-                        <div class="highlighter-rouge">
-<pre class="highlight">I think you should use an
-`&lt;addr&gt;` element here instead.</pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
+      </div>
+      <div class="small-6 columns">
+        <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
+        <input class="medium button" type="submit" value="Create">
+      </div>
+    </div>
+    <div class="row">
+      <div class="editor-side small-6 columns">
+        {% csrf_token %}
+        <div class="header">
+          <label class="usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
+          <a class="button tiny usage-toggle-btn">Show Usage</a>
         </div>
-        <div class="usage-paragraph callout">
-          <h5>Images</h5>
-          <div class="language-markdown highlighter-rouge">
-            <span class="highlight">
-              Format: ![Alt Text](url) <br/>
-              Example: ![GitHub Logo](/images/logo.png)
-            </span>
-          </div>
-        </div>
-        <div class="usage-paragraph callout">
-          <h5>Links</h5>
-          <div class="language-markdown highlighter-rouge">
-            <span class="highlight">
-              http://github.com - automatic! <br/>
-              [GitHub](http://github.com)
-            </span>
-          </div>
-        </div>
-        <div class="usage-paragraph callout">
-          <h5>Blockquotes</h5>
-          <div class="language-markdown highlighter-rouge">
-            <span class="highlight">
-              As Kanye West said: <br/>
-              &gt; We're living the future so <br/>
-              &gt; the present is our past.
-            </span>
-          </div>
-        </div>
-        <div class="usage-paragraph callout">
-          <h5>Inline code</h5>
-          <div class="language-markdown highlighter-rouge">
-            <span class="highlight">
-              I think you should use an <br/>
-              `&lt;addr&gt;` element here instead.
-            </span>
-          </div>
-        </div>
+        {{ form.markdown }}
+      </div>
+      <div class="preview-side small-6 columns">
+        <div class="preview"></div>
+        <hr>
+        Here is the empty space
       </div>
     </div>
   </form>
