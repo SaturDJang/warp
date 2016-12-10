@@ -41,41 +41,15 @@
                 <input class="medium button" type="submit" value="Create">
             </div>
         </div>
-        <div class="usage-paragraph callout">
-          <h5>Headers</h5>
-          <div class="language-markdown highlighter-rouge">
-            <span class="highlight">
-              # This is an &lt;h1&gt; tag <br/>
-              ## This is an &lt;h4&gt; tag <br/>
-              ###### This is an &lt;h6&gt; tag
-            </span>
-          </div>
-        </div>
-        <div class="usage-paragraph callout">
-          <h5>Emphasis</h5>
-          <div class="language-markdown highlighter-rouge">
-            <span class="highlight">
-              *This text will be italic* <br/>
-              _This will also be italic_ <br/>
-              <br/>
-              **This text will be bold** <br/>
-              __This will also be bold__ <br/>
-              <br/>
-              _You **can** combine them_
-            </span>
-          </div>
-        </div>
-        <div class="usage-paragraph callout">
-          <h5>Lists</h5>
-          <div class="usage-paragraph callout secondary">
-            <h6>Unordered</h6>
-            <div class="language-markdown highlighter-rouge">
-              <span class="highlight">
-                * Item 1 <br/>
-                * Item 2 <br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;* Item 2a <br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;* Item 2b
-              </span>
+        <div class="row">
+            <div class="editor-side small-6 columns">
+                {% csrf_token %}
+                <div class="editor-header">
+                    <label class="markdown-form-label usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
+                    <div class="usage-switch-elems">Show usage</div>
+                    <a class="button tiny usage-toggle-btn">Show</a>
+                </div>
+                {{ form.markdown }}
             </div>
            <div class="preview-side small-6 columns">
                 <div class="preview"></div>

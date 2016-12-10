@@ -45,4 +45,17 @@ $(() => {
       });
     }
   }
+
+  $('.usage-toggle-btn').click(e => {
+    const $this = $(this);
+    const current = $this.text();
+
+    if(current === 'Show') {
+      $this.text('Hide');
+    } else {
+      $this.text('Show');
+    }
+
+    $(".usage-sidebar").animate({width:'toggle'}, 50);
+  });
 });
