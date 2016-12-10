@@ -29,3 +29,15 @@
   margin: 0;
   width: 4.7em;
 }
+
+@media (max-width: 1585px) {
+  .usage-sidebar {
+      display: none;
+  }
+  .usage-toggle-btn {
+      display: none;
+  }
+  .usage-toggle-btn-label {
+      display: none;
+  }
+}

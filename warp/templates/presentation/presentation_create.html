@@ -46,7 +46,7 @@
                 {% csrf_token %}
                 <div class="editor-header">
                     <label class="markdown-form-label usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
-                    <div class="usage-switch-elems">Show usage</div>
+                    <div class="usage-switch-elems usage-toggle-btn-label">Show usage</div>
                     <a class="button tiny usage-toggle-btn">Show</a>
                 </div>
                 {{ form.markdown }}
