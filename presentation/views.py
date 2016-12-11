@@ -23,26 +23,23 @@ def presentation_create(request):
 
     if request.method == 'POST':
         if form.is_valid():
-            try:
-                presentation = Presentation.objects.create(
-                    subject=form.cleaned_data.get('subject'),
-                    author=request.user,
-                    is_public=form.cleaned_data.get('is_public')
+            presentation = Presentation.objects.create(
+                subject=form.cleaned_data.get('subject'),
+                author=request.user,
+                is_public=form.cleaned_data.get('is_public')
+            )
+
+            slide_list = request.POST.getlist('slide_list[]', [])
+
+            for slide in slide_list:
+                Slide.objects.create(
+                    presentation=presentation,
+                    slide_order=slide['slide_order'],
+                    markdown=slide['markdown'],
+                    html=slide['html'],
                 )
 
-                slide_list = request.POST.getlist('slide_list[]', [])
-
-                for slide in slide_list:
-                    Slide.objects.create(
-                        presentation=presentation,
-                        slide_order=slide['slide_order'],
-                        markdown=slide['markdown'],
-                        html=slide['html'],
-                    )
-
-                return redirect('list')
-            except Exception as e:
-                print(e)
+            return redirect('list')
 
     context = {'form': form}
 
