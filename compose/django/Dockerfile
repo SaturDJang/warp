@@ -9,7 +9,18 @@ RUN pip install -r /requirements/production.txt \
     && groupadd -r django \
     && useradd -r -g django django
 
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y ruby rubygems-integration inotify-tools nodejs npm
+RUN gem install sass -v 3.3.14
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+
+
+WORKDIR /app
+
 COPY . /app
+
+RUN npm install
+
 RUN chown -R django /app
 
 COPY ./compose/django/gunicorn.sh /gunicorn.sh
