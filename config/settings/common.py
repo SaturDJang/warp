@@ -231,7 +231,7 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ("compressor", )
 STATICFILES_FINDERS += ("compressor.finders.CompressorFinder", )
-COMPRESS_PRECOMPILERS = (
+COMPRESS_CACHEABLE_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),
     ('text/es6', './node_modules/.bin/browserify {infile} -t babelify --outfile {outfile}'),
 )
