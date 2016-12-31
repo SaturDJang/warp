@@ -231,9 +231,13 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ("compressor", )
 STATICFILES_FINDERS += ("compressor.finders.CompressorFinder", )
-COMPRESS_CACHEABLE_PRECOMPILERS = (
+COMPRESS_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),
     ('text/es6', './node_modules/.bin/browserify {infile} -t babelify --outfile {outfile}'),
+)
+COMPRESS_CACHEABLE_PRECOMPILERS = (
+    'text/scss',
+    'text/es6',
 )
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
