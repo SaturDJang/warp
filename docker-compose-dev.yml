@@ -27,10 +27,10 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+      - "3000:3000"
+      - "3001:3001"
     links:
       - postgres
-
-
 
   pycharm:
     build:
@@ -44,6 +44,3 @@ services:
       - .:/app
     links:
       - postgres
-
-
-

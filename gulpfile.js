@@ -1,6 +1,6 @@
 
 ////////////////////////////////
-		//Setup//
+    //Setup//
 ////////////////////////////////
 
 // Plugins
@@ -16,9 +16,9 @@ var gulp = require('gulp'),
       pixrem = require('gulp-pixrem'),
       uglify = require('gulp-uglify'),
       imagemin = require('gulp-imagemin'),
-      exec = require('child_process').exec,
-      runSequence = require('run-sequence'),
       browserSync = require('browser-sync').create(),
+      babel = require('gulp-babel'),
+      sourcemaps = require('gulp-sourcemaps'),
       reload = browserSync.reload;
 
 
@@ -40,28 +40,32 @@ var pathsConfig = function (appName) {
 var paths = pathsConfig();
 
 ////////////////////////////////
-		//Tasks//
+    //Tasks//
 ////////////////////////////////
 
 // Styles autoprefixing and minification
 gulp.task('styles', function() {
-  return gulp.src(paths.sass + '/project.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(plumber()) // Checks for errors
-    .pipe(autoprefixer({browsers: ['last 2 version']})) // Adds vendor prefixes
-    .pipe(pixrem())  // add fallbacks for rem units
-    .pipe(gulp.dest(paths.css))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(cssnano()) // Minifies the result
+  return gulp.src(`${paths.sass}/**/*.scss`)
+    .pipe(sourcemaps.init())
+      .pipe(sass().on('error', sass.logError))
+      .pipe(plumber()) // Checks for errors
+      .pipe(autoprefixer({browsers: ['last 2 version']})) // Adds vendor prefixes
+      .pipe(pixrem())  // add fallbacks for rem units
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(cssnano()) // Minifies the result
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.css));
 });
 
 // Javascript minification
 gulp.task('scripts', function() {
-  return gulp.src(paths.js + '/project.js')
+  return gulp.src([`${paths.js}/**/*.js`, `!**/*.min.js`])
     .pipe(plumber()) // Checks for errors
-    .pipe(uglify()) // Minifies the js
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.init())
+      .pipe(babel())
+      .pipe(uglify()) // Minifies the js
+      .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.js));
 });
 
@@ -72,37 +76,26 @@ gulp.task('imgCompression', function(){
     .pipe(gulp.dest(paths.images))
 });
 
-// Run django server
-gulp.task('runServer', function() {
-  exec('python manage.py runserver', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-  });
-});
-
 // Browser sync server for live reload
 gulp.task('browserSync', function() {
     browserSync.init(
       [paths.css + "/*.css", paths.js + "*.js", paths.templates + '*.html'], {
-        proxy:  "localhost:8000"
+        proxy:  "localhost:8000",
+        open: false
     });
 });
 
 // Default task
-gulp.task('default', function() {
-    runSequence(['styles', 'scripts', 'imgCompression'], 'runServer', 'browserSync');
-});
+gulp.task('default', ['styles', 'scripts', 'imgCompression']);
 
 ////////////////////////////////
-		//Watch//
+    //Watch//
 ////////////////////////////////
 
 // Watch
-gulp.task('watch', ['default'], function() {
-
+gulp.task('watch', ['default', 'browserSync'], function() {
   gulp.watch(paths.sass + '/*.scss', ['styles']);
   gulp.watch(paths.js + '/*.js', ['scripts']).on("change", reload);
   gulp.watch(paths.images + '/*', ['imgCompression']);
   gulp.watch(paths.templates + '/**/*.html').on("change", reload);
-
 });

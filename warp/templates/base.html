@@ -1,4 +1,5 @@
-{% load staticfiles i18n compress%}<!DOCTYPE html>
+{% load staticfiles i18n %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,14 +15,12 @@
     <![endif]-->
 
     {% block css %}
-        <!-- Your stuff: Third-party CSS libraries go here -->
-        {% compress css %}
-        <!-- This file stores project-specific CSS -->
-        <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.css' %}">
-        <link rel="stylesheet" href="{% static 'vendor/foundation/css/foundation.css' %}">
-        <link rel="stylesheet" type="text/scss" href="{% static 'sass/main.scss' %}">
-        {% block extra_css %}{% endblock  %}
-        {% endcompress %}
+      <!-- Your stuff: Third-party CSS libraries go here -->
+      <!-- This file stores project-specific CSS -->
+      <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/foundation/css/foundation.css' %}">
+      <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+      {% block extra_css %}{% endblock  %}
     {% endblock %}
 
   </head>
@@ -61,15 +60,11 @@
       <script type="text/javascript" src="{% static 'vendor/foundation/js/app.js' %}"></script>
 
       <!-- place project specific Javascript in this file -->
-      {% compress js %}
-      <script type="text/es6" src="{% static 'js/project.js' %}"></script>
-      {% endcompress %}
+      <script type="text/javascript" src="{% static 'js/project.min.js' %}"></script>
 
     {% endblock javascript %}
 
-    {% compress js %}
-      {% block extra_javascript %}{% endblock %}
-    {% endcompress %}
+    {% block extra_javascript %}{% endblock %}
   </body>
 </html>
 
