@@ -23,6 +23,7 @@ WORKDIR /app
 
 COPY . /app
 
+RUN npm install gulp-cli
 RUN npm install
 
 ENTRYPOINT ["/entrypoint.sh"]
