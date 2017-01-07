@@ -5,6 +5,7 @@ ENV PYTHONUNBUFFERED 1
 # Requirements have to be pulled and installed here, otherwise caching won't work
 COPY ./requirements /requirements
 RUN pip install -r /requirements/local.txt
+RUN pip install -r /requirements/test.txt
 
 COPY ./compose/django/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r//' /entrypoint.sh
@@ -13,9 +14,6 @@ RUN chmod +x /entrypoint.sh
 COPY ./compose/django/start-dev.sh /start-dev.sh
 RUN sed -i 's/\r//' /start-dev.sh
 RUN chmod +x /start-dev.sh
-
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-RUN apt-get install -y inotify-tools
 
 WORKDIR /app
 
