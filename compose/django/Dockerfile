@@ -13,8 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get install -y ruby rubygems-integration inotify-tools
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
-RUN gem install sass -v 3.3.14
-
 
 WORKDIR /app
 
