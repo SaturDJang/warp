@@ -9,7 +9,17 @@ RUN pip install -r /requirements/production.txt \
     && groupadd -r django \
     && useradd -r -g django django
 
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y ruby rubygems-integration inotify-tools
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+
+WORKDIR /app
+
 COPY . /app
+
+RUN npm install
+
 RUN chown -R django /app
 
 COPY ./compose/django/gunicorn.sh /gunicorn.sh
