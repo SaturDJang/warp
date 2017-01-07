@@ -10,8 +10,21 @@ A short description of the project.
 
 :License: MIT
 
+Installing (MacOS Sierra 10.12.2 tested)
+--------
+1. Install ``docker``: https://docs.docker.com/engine/installation/
+2. Install ``docker-machine``: https://docs.docker.com/machine/install-machine/
+3. Run below at your terminal (Create docker machine)
 
-Settings
+    ``docker-machine create --driver {your driver} warp``
+
+4. Run below at your terminal (Build ``warp``)
+
+    ``docker-compose -f docker-compose-dev.yml up --build``
+5. Wait for minutes, Open your browser and Go to http://127.0.0.1:8000/
+6. Finished
+
+Cookiecutter Settings
 --------
 
 Moved to settings_.
