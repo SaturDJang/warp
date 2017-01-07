@@ -74,3 +74,4 @@ staticfiles/
 History.md
 .vscode/
 warp/static/dist/
+tags

@@ -1,0 +1,43 @@
+.usage-paragraph {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.usage-sidebar {
+  padding: 1em;
+  position: fixed;
+  left: 0;
+  background: #222;
+  color: white;
+  width: 200px;
+  height: 100%;
+}
+
+.usage-sidebar .text {
+  color: #828388;
+}
+
+.usage-switch-elems {
+  display: inline-block;
+}
+
+.editor-header {
+    margin-bottom: 0.5rem;
+}
+
+.usage-toggle-btn {
+  margin: 0;
+  width: 4.7em;
+}
+
+@media (max-width: 1585px) {
+  .usage-sidebar {
+      display: none;
+  }
+  .usage-toggle-btn {
+      display: none;
+  }
+  .usage-toggle-btn-label {
+      display: none;
+  }
+}
