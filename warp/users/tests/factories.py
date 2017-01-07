@@ -1,11 +1,25 @@
 import factory
+from factory import SubFactory
+
+from presentation.models import Presentation
+from warp.users.models import User
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    username = factory.Sequence(lambda n: 'user-{0}'.format(n))
-    email = factory.Sequence(lambda n: 'user-{0}@example.com'.format(n))
-    password = factory.PostGenerationMethodCall('set_password', 'password')
+    username = 'jellyms'
+    email = 'chm073@sh8.email'
+    password = 'P@$$w0rD'
 
     class Meta:
-        model = 'users.User'
+        model = User
         django_get_or_create = ('username', )
+
+
+class PresentationFactory(factory.django.DjangoModelFactory):
+
+    class Meta:
+        model = Presentation
+
+    subject = 'This is about Jelly'
+    author = SubFactory(UserFactory)
+    views = 532345
