@@ -95,7 +95,7 @@ gulp.task('default', ['styles', 'scripts', 'imgCompression']);
 
 // Watch
 gulp.task('watch', ['default', 'browserSync'], () => {
-  gulp.watch(`${paths.sass}/*.scss`, ['styles']);
+  gulp.watch(`${paths.sass}/*.scss`, ['styles']).on("change", reload);
   gulp.watch(`${paths.js}/*.js`, ['scripts']).on("change", reload);
   gulp.watch(`${paths.images}/*`, ['imgCompression']);
   gulp.watch(`${paths.templates}/**/*.html`).on("change", reload);
