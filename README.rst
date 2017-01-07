@@ -10,8 +10,13 @@ A short description of the project.
 
 :License: MIT
 
+Installing
+--------
+1. Install docker: https://docs.docker.com/engine/installation/
+2. Install docker-machine: https://docs.docker.com/machine/install-machine/
+3. `docker-machine create --driver {your driver} warp`
 
-Settings
+Cookiecutter Settings
 --------
 
 Moved to settings_.
