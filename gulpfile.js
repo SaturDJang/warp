@@ -29,11 +29,11 @@ var pathsConfig = function (appName) {
   return {
     app: this.app,
     templates: this.app + '/templates',
-    css: this.app + '/static/css',
+    css: this.app + '/dist/css',
     sass: this.app + '/static/sass',
     fonts: this.app + '/static/fonts',
     images: this.app + '/static/images',
-    js: this.app + '/static/js',
+    js: this.app + '/dist/js',
   }
 };
 
