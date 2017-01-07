@@ -31,16 +31,3 @@ services:
       - "3001:3001"
     links:
       - postgres
-
-  pycharm:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile-dev
-    depends_on:
-      - postgres
-    environment:
-      - POSTGRES_USER=warp
-    volumes:
-      - .:/app
-    links:
-      - postgres
