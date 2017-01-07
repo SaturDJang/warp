@@ -10,7 +10,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^create$',
-        view=views.CreatePresentation.as_view(),
+        view=views.presentation_create,
         name='create'
     ),
     url(

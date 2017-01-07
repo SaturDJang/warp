@@ -8,9 +8,4 @@ class PresentationCreateForm(forms.Form):
     markdown = forms.CharField(
         widget=forms.Textarea()
     )
-    html = forms.CharField(label="", required=False, widget=forms.Textarea(
-        attrs={
-            "hidden": "true"
-        }
-    ))
     is_public = forms.BooleanField(initial=True)
