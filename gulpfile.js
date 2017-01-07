@@ -45,7 +45,7 @@ var paths = pathsConfig();
 
 // Styles autoprefixing and minification
 gulp.task('styles', function() {
-  return gulp.src(`${paths.sass}/**/*.scss`)
+  return gulp.src(`${paths.sass}/main.scss`)
     .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
       .pipe(plumber()) // Checks for errors
