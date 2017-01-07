@@ -21,9 +21,5 @@
   },
   "engines": {
     "node": ">=6.0.0"
-  },
-  "scripts": {
-    "gulp": "gulp",
-    "start": "gulp watch & python manage.py runserver_plus 0.0.0.0:8000"
   }
 }
