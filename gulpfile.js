@@ -1,4 +1,4 @@
-
+'use strict';
 ////////////////////////////////
     //Setup//
 ////////////////////////////////
@@ -27,6 +27,7 @@ let pathsConfig = appName => {
   const app = `./${appName || pjson.name}`;
 
   return {
+    dist: `${app}/static/dist/`,
     templates: `${app}/templates`,
     css: `${app}/static/dist/css`,
     sass: `${app}/static/sass`,
@@ -95,8 +96,14 @@ gulp.task('default', ['styles', 'scripts', 'imgCompression']);
 
 // Watch
 gulp.task('watch', ['default', 'browserSync'], () => {
-  gulp.watch(`${paths.sass}/*.scss`, ['styles']).on("change", reload);
-  gulp.watch(`${paths.js}/*.js`, ['scripts']).on("change", reload);
+  gulp.watch(`${paths.sass}/**/*.scss`, ['styles']).on("change", reload);
+  gulp.watch(`${paths.js}/**/*.js`, ['scripts']).on("change", reload);
   gulp.watch(`${paths.images}/*`, ['imgCompression']);
   gulp.watch(`${paths.templates}/**/*.html`).on("change", reload);
+});
+
+// Clear cache Dist Folder
+gulp.task('clean', (cb) => {
+  // Delete static/dist folder
+  del([paths.dist], cb);
 });

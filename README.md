@@ -1,107 +1,64 @@
-warp
-====
+# warp
+<a href="https://github.com/pydanny/cookiecutter-django/">![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg)</a>
 
-A short description of the project.
+Warp is a web based markdown presentation service.
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
+## Settings
 
+Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
-:License: MIT
+## Basic Commands
 
-Installing
-----------
-Tested for MacOS Sierra 10.12.2
-1. Install ``docker``: https://docs.docker.com/engine/installation/
-2. Run below at your terminal (Create docker machine)
+### Setting Up Your Users
 
-    ``docker-machine create --driver {your driver} warp``
-3. `npm install -g gulp-cli`
-4. `npm install`
-5. Run below at your terminal (Create container and build ``warp``)
+- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+- To create an **superuser account**, use this command
 
-    ``docker-compose -f docker-compose-dev.yml up --build``
-6. `./watch`, Wait for a minute, Open your browser and Go to http://127.0.0.1:8000/
-
-Cookiecutter Settings
---------
-
-Moved to settings_.
-
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
-
-Basic Commands
---------------
-
-Setting Up Your Users
-^^^^^^^^^^^^^^^^^^^^^
-
-* To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
-* To create an **superuser account**, use this command::
-
-    $ python manage.py createsuperuser
+  ```shell
+  $ python manage.py createsuperuser
+  ```
 
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
-Test coverage
-^^^^^^^^^^^^^
+### Test coverage
 
-To run the tests, check your test coverage, and generate an HTML coverage report::
+To run the tests, check your test coverage, and generate an HTML coverage report.
 
-    $ coverage run manage.py test
-    $ coverage html
-    $ open htmlcov/index.html
-
-Running tests with py.test
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  $ py.test
-
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
+```shell
+$ coverage run manage.py test
+$ coverage html
+$ open htmlcov/index.html
+```
 
 
+#### Running tests with py.test
 
+```shell
+$ py.test
+```
 
+### Live reloading and Sass CSS compilation
 
-Sentry
-^^^^^^
+Moved to [Live reloading and SASS compilation](http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html).
+
+### Sentry
 
 Sentry is an error logging aggregator service. You can sign up for a free account at  https://getsentry.com/signup/?code=cookiecutter  or download and host it yourself.
 The system is setup with reasonable defaults, including 404 logging and integration with the WSGI application.
 
 You must set the DSN url in production.
 
-
-Deployment
-----------
+## Deployment
 
 The following details how to deploy this application.
 
+### Docker
 
+See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
 
-Docker
-^^^^^^
+#### Elastic Beanstalk
 
-See detailed `cookiecutter-django Docker documentation`_.
+See detailed [cookiecutter-django Elastic Beanstalk documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-elastic-beanstalk.html).
 
-.. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html
-
-
-
-Elastic Beanstalk
-~~~~~~~~~~~~~~~~~~
-
-See detailed `cookiecutter-django Elastic Beanstalk documentation`_.
-
-.. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-elastic-beanstalk.html
-
-
+## License
+See [LICENSE](https://github.com/SaturDJang/warp/blob/master/LICENSE).
