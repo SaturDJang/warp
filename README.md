@@ -17,11 +17,12 @@ Tested for MacOS Sierra 10.12.2
 2. Run below at your terminal (Create docker machine)
 
     ``docker-machine create --driver {your driver} warp``
-
-3. Run below at your terminal (Create container and build ``warp``)
+3. `npm install -g gulp-cli`
+4. `npm install`
+5. Run below at your terminal (Create container and build ``warp``)
 
     ``docker-compose -f docker-compose-dev.yml up --build``
-4. Wait for minutes, Open your browser and Go to http://127.0.0.1:8000/
+6. `./watch`, Wait for a minute, Open your browser and Go to http://127.0.0.1:8000/
 
 Cookiecutter Settings
 --------
