@@ -46,7 +46,6 @@ $(() => {
 
 $(() => {
   class UsageButton {
-
     constructor() {
       this.$element = $('.usage-toggle-btn');
       this.command = 'on';
@@ -61,20 +60,20 @@ $(() => {
     }
 
     showUsage() {
-        this.dialog = vex.dialog.alert({
-          unsafeMessage: this.usageContent,
-          afterClose: () => {
-            this.hideUsage();
-          }
-        });
-        this.$element.text('Hide Usage');
-        this.command = 'off';
+      this.dialog = vex.dialog.alert({
+        unsafeMessage: this.usageContent,
+        afterClose: () => {
+          this.hideUsage();
+        }
+      });
+      this.$element.text('Hide Usage');
+      this.command = 'off';
     }
 
     hideUsage() {
-        vex.close(this.dialog);
-        this.$element.text('Show Usage');
-        this.command = 'on';
+      vex.close(this.dialog);
+      this.$element.text('Show Usage');
+      this.command = 'on';
     }
 
     toggle() {
