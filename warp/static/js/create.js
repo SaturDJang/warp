@@ -64,7 +64,7 @@ $(() => {
         unsafeMessage: this.usageContent,
         afterClose: () => {
           this.hideUsage();
-        }
+        },
       });
       this.$element.text('Hide Usage');
       this.command = 'off';
