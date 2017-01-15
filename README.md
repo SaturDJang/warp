@@ -12,17 +12,7 @@ Warp is a web based markdown presentation service.
 
 ## Configure develop environment 
 
-### OSX
-
-#### 0. If you don't have brew, install brew (only OSX)
-
-open terminal and type.
-
-```shell
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-#### 1. install docker
+#### 1. Install docker
 
 Get docker for your OS. https://www.docker.com/products/overview
 
@@ -52,20 +42,6 @@ $ npm install -g gulp
 ```
 
 #### 3. Clone our project, and build docker.
-
-If you don't have git. then type this on terminal.
-
-##### OSX
-
-```shell
-$ brew install git
-```
-
-##### Ubuntu
-
-```shell
-$ sudo apt-get install git
-```
 
 After installation clone our project, install node dependencies, and build docker.
 
@@ -100,14 +76,14 @@ django_1 | Development server is running at http://0.0.0.8000/
 
 If you saw that, then open browser and visit http://localhost:8000/ 
 
-#### 5. just use watch next time.
+#### 5. Just use `watch` next time.
 
 If you followed this guide successful. then just use `watch` next time.
 ```shell
 $ ./watch
 ```
 
-> `watch` is execute both of `docker-compose -f docker-compose-dev.yml` and `gulp --watch` in a time.
+> `watch` will execute both of `docker-compose -f docker-compose-dev.yml` and `gulp --watch` in a time.
 
 
 ## Settings
