@@ -1,5 +1,4 @@
 # warp
-<a href="https://github.com/pydanny/cookiecutter-django/">![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg)</a>
 
 Warp is a web based markdown presentation service.
 
