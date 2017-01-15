@@ -12,7 +12,7 @@ Warp is a web based markdown presentation service.
 
 ## Configuring development environment
 
-#### 1. Install docker
+### 1. Install docker
 
 Get docker for your OS. https://www.docker.com/products/overview
 
@@ -25,15 +25,15 @@ docker-compose version: 1.9.0, build 2585387
 
 If you can see results above, then both of docker and docker-compose is installed completely.
 
-#### 2. Install Node.js (npm) and gulp
+### 2. Install Node.js (npm) and gulp
 
 Get Node.js for your OS. https://nodejs.org/en/download/
 
-##### macOS
+#### macOS
 
 Just install by package.
 
-##### Ubuntu
+#### Ubuntu
 
 Maybe, this reference is helpful. https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 
@@ -41,7 +41,7 @@ Maybe, this reference is helpful. https://nodejs.org/en/download/package-manager
 $ npm install -g gulp
 ```
 
-#### 3. Clone our project, and build docker containers.
+### 3. Clone our project, and build docker containers.
 
 After installation clone our project, install node dependencies, and build docker.
 
@@ -62,7 +62,7 @@ Building postgres
 Succesfully build f94c7f40714a
 ```
 
-#### 4. Run docker-compose up and check on your browser
+### 4. Run docker-compose up and check on your browser
 
 ```shell
 $ docker-compose -f docker-compose-dev.yml up
@@ -74,7 +74,7 @@ django_1 | Development server is running at http://0.0.0.8000/
 
 If you saw that, then open browser and visit http://localhost:8000/
 
-#### 5. Use the watch script from next time.
+### 5. Use the watch script from next time.
 
 If you followed this guide successful, then just use `watch` script from next time.
 ```shell
