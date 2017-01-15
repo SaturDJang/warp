@@ -10,13 +10,13 @@ Warp is a web based markdown presentation service.
 - docker >= 1.12
 - docker-compose >= 1.9
 
-## Configure develop environment 
+## Configuring development environment
 
-### OSX
+### macOS
 
-#### 0. If you don't have brew, install brew (only OSX)
+#### 0. If you don't have brew, install brew (only macOS)
 
-open terminal and type.
+Open terminal and type below command.
 
 ```shell
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -26,20 +26,20 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 
 Get docker for your OS. https://www.docker.com/products/overview
 
-After installation, open terminal and type.
+After installation, open terminal and type to check docker was installed successfully or not.
 
 ```shell
 $ docker-compose --version
 docker-compose version: 1.9.0, build 2585387
 ```
 
-If you saw that. then both of docker and docker-compose is installed completely. 
+If you can see results above, then both of docker and docker-compose is installed completely.
 
-#### 2. Install nodejs (npm) and gulp
+#### 2. Install Node.js (npm) and gulp
 
-Get nodejs for your OS. https://nodejs.org/en/download/
+Get Node.js for your OS. https://nodejs.org/en/download/
 
-##### OSX
+##### macOS
 
 Just install by package.
 
@@ -51,11 +51,11 @@ Maybe, this reference is helpful. https://nodejs.org/en/download/package-manager
 $ npm install -g gulp
 ```
 
-#### 3. Clone our project, and build docker.
+#### 3. Clone our project, and build docker containers.
 
-If you don't have git. then type this on terminal.
+If you don't have git, then type this on terminal to install git.
 
-##### OSX
+##### macOS
 
 ```shell
 $ brew install git
@@ -67,7 +67,7 @@ $ brew install git
 $ sudo apt-get install git
 ```
 
-After installation clone our project, install node dependencies, and build docker.
+After install git, clone our project, install node dependencies, and build docker containers.
 
 ```shell
 $ git clone https://github.com/SaturDJang/warp
@@ -86,9 +86,7 @@ Building postgres
 Succesfully build f94c7f40714a
 ```
 
-
-
-#### 4. docker-compose up and check on your browser
+#### 4. Run docker-compose up and check on your browser
 
 ```shell
 $ docker-compose -f docker-compose-dev.yml up
@@ -98,16 +96,16 @@ django_1 | Development server is running at http://0.0.0.8000/
 ...
 ```
 
-If you saw that, then open browser and visit http://localhost:8000/ 
+If you saw that, then open browser and visit http://localhost:8000/
 
-#### 5. just use watch next time.
+#### 5. Use the watch script from next time.
 
-If you followed this guide successful. then just use `watch` next time.
+If you followed this guide successful, then just use `watch` script from next time.
 ```shell
 $ ./watch
 ```
 
-> `watch` is execute both of `docker-compose -f docker-compose-dev.yml` and `gulp --watch` in a time.
+> `watch` executes both of `docker-compose -f docker-compose-dev.yml` and `gulp watch` in a time.
 
 
 ## Settings
