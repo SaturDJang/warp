@@ -92,6 +92,13 @@ django_1 | Development server is running at http://0.0.0.8000/
 
 If you saw that, then open browser and visit http://localhost:8000/ 
 
+#### 5. just use watch next time.
+If you followed this guide successful. then just use `watch` next time.
+```shell
+$ ./watch
+```
+
+> `watch` is execute both of `docker-compose -f docker-compose-dev.yml` and `gulp --watch` in a time.
 
 
 ## Settings
