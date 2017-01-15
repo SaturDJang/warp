@@ -3,9 +3,97 @@
 
 Warp is a web based markdown presentation service.
 
+## Configure develop environment 
+
+### OSX
+
+#### 0. If you don't have brew, install brew (only OSX)
+
+open terminal and type.
+
+```shel
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+#### 1. install docker
+
+Get docker for your OS. https://www.docker.com/products/overview
+
+After installation, open terminal and type.
+
+```shell
+$ docker-compose --version
+docker-compose version: 1.9.0, build 2585387
+```
+
+If you saw that. then both of docker and docker-compose is installed completely. 
+
+#### 2. Install nodejs (npm)
+
+Get nodejs for your OS. https://nodejs.org/en/download/
+
+##### OSX
+
+Just install by package.
+
+##### Ubuntu
+
+Maybe, this reference is helpful. https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+
+#### 3. Clone our project, and build docker.
+
+If you don't have git. then type this on terminal.
+
+##### OSX
+
+``````
+$ brew install git
+``````
+
+##### Ubuntu
+
+```shell
+$ sudo apt-get install git
+```
+
+After installation clone our project, install node dependencies, and build docker.
+
+```shell
+$ git clone https://github.com/SaturDJang/warp
+Cloning into 'warp'...
+...
+...
+Checking connectivity... done.
+$ cd warp
+$ npm install
+(wait...)
+...
+$ docker-compose -f docker-compose-dev.yml build --no-cache
+Building postgres
+(wait...)
+Succesfully build f94c7f40714a
+```
+
+
+
+#### 4. docker-compose up and check on your browser
+
+```shell
+$ docker-compose -f docker-compose-dev.yml up
+...
+django_1 | Django version 1.9.9, using settings 'config.settings.local'
+django_1 | Development server is running at http://0.0.0.8000/
+...
+```
+
+If you saw that, then open browser and visit http://localhost:8000/ 
+
+
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
+
 
 ## Basic Commands
 
