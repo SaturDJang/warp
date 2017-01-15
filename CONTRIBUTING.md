@@ -1,24 +1,27 @@
-# How to contribute
+# How to contribute to Warp
 
-## Formats
-
-* The commit message must be started with uppercase letter. (ex> Fix type errors ...)
-* Make sure the commit messages are in the proper format.
-
-```
-    (#issue number) TITLE
-
-    A SHORT SUMMARY
-
-    1. DETAIL DESCRIPTION
-    2. 
-    3.
-``` 
-* Simple changes of course could have oneline commit.
+## Commit message formats
+- Commit title must be started with **uppercase letter**. (e.g. `Fix type errors ...`)
+- Length of title cannot be over **50 letters**. (Editor like vim checks lengths.)
+- Commit description must follow below format.
+    ```
+        (#issue number) TITLE
+    
+        A SHORT SUMMARY
+    
+        1. DETAIL DESCRIPTION
+        2. 
+        3.
+    ``` 
+- The commit which has a simple change can have only title.
 
 ## Contributing rules
+- We are only using **GitHub pull request** for receiving your contribution.
+- The contributing can be merged when has one approved review at least.
 
-* All contribution should be made to the PR.
-* The contributing can be merged when has one approved review at least.
-* The contributing about specific issue must be on issue branch not master. branch name must be '[issue-number]_[title-text]' form.
-* The contributing about hot-fix that is not Github issue based (ex. changing docs, fix misprint ..). branch name must be 'hotfix/[title-text]' form.
+## Branching rules
+- You must not create commit to `master` branch.
+- Do your branch direct specific issue?
+    - Branch name must follow this format `{issue_number}-{title}`
+- Do your branch created for hoxfix situation? (Fix doc. or misspells)
+    - Branch name: `{hotfix}/{title}`
