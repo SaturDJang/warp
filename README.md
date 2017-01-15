@@ -10,7 +10,7 @@ Warp is a web based markdown presentation service.
 
 open terminal and type.
 
-```shel
+```shell
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
@@ -27,7 +27,7 @@ docker-compose version: 1.9.0, build 2585387
 
 If you saw that. then both of docker and docker-compose is installed completely. 
 
-#### 2. Install nodejs (npm)
+#### 2. Install nodejs (npm) and gulp
 
 Get nodejs for your OS. https://nodejs.org/en/download/
 
@@ -39,15 +39,19 @@ Just install by package.
 
 Maybe, this reference is helpful. https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 
+```shell
+$ npm install -g gulp
+```
+
 #### 3. Clone our project, and build docker.
 
 If you don't have git. then type this on terminal.
 
 ##### OSX
 
-``````
+```shell
 $ brew install git
-``````
+```
 
 ##### Ubuntu
 
@@ -67,6 +71,7 @@ $ cd warp
 $ npm install
 (wait...)
 ...
+$ gulp
 $ docker-compose -f docker-compose-dev.yml build --no-cache
 Building postgres
 (wait...)
