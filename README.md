@@ -2,6 +2,14 @@
 
 Warp is a web based markdown presentation service.
 
+## Requirements (Dependencies' versions)
+
+- python >= 3.5
+- django == 1.9.9
+- node 6.x
+- docker >= 1.12
+- docker-compose >= 1.9
+
 ## Configure develop environment 
 
 ### OSX
@@ -93,6 +101,7 @@ django_1 | Development server is running at http://0.0.0.8000/
 If you saw that, then open browser and visit http://localhost:8000/ 
 
 #### 5. just use watch next time.
+
 If you followed this guide successful. then just use `watch` next time.
 ```shell
 $ ./watch
