@@ -1,61 +1,90 @@
+/* global $, marked, vex */
 $(() => {
-  'use strict';
-  const $markdown_div = $('#id_markdown');
+  const $markdownDiv = $('#id_markdown');
   const $preview = $('.preview');
-  const $html_div = $('#id_html');
-  const $create_form = $('#create_html');
-  let before_value = '';
-  let markdown_event;
-  let markdown_content = '';
-  let markdown_slides = [];
-
-  $create_form.submit(() => {
-    $html_div.val(marked($markdown_div.val()));
-  });
-
-  // onFocus 이벤트 발생 시 setInterval을 통해 _onWatch를 실행
-  $markdown_div.focus(e => {
-    markdown_event = setInterval($.proxy(() => {
-      _onWatch();
-    }), 200);
-  });
-
-  $markdown_div.blur(e => {
-    if ($markdown_div) {
-      clearInterval(markdown_event);
-    }
-  });
+  const $htmlDiv = $('#id_html');
+  const $createForm = $('#create_html');
+  let beforeValue = '';
+  let markdownEvent;
+  let markdownContent = '';
+  let markdownSlides = [];
 
   function _onWatch() {
-    'use strict';
-
     // 이전 값과 현재 값이 다르면 필요한 액션 수행
-    let currentValue = $markdown_div.val();
-    if (before_value !== currentValue) {
-
+    const currentValue = $markdownDiv.val();
+    if (beforeValue !== currentValue) {
       // 현재 값 저장
-      before_value = currentValue;
+      beforeValue = currentValue;
 
-      markdown_content = $markdown_div.val();
-      markdown_slides = markdown_content.split(/={5,}/);
+      markdownContent = $markdownDiv.val();
+      markdownSlides = markdownContent.split(/={5,}/);
 
       $preview.html('');
-      markdown_slides.forEach((v, i) => {
+      markdownSlides.forEach((v) => {
         $preview.append(`<div class="callout secondary">${marked(v)}</div>`);
       });
     }
   }
 
-  $('.usage-toggle-btn').click(e => {
-    const $this = $(this);
-    const current = $this.text();
+  $createForm.submit(() => {
+    $htmlDiv.val(marked($markdownDiv.val()));
+  });
 
-    if(current === 'Show Usage') {
-      $this.text('Hide Usage');
-    } else {
-      $this.text('Show Usage');
+  // onFocus 이벤트 발생 시 setInterval을 통해 _onWatch를 실행
+  $markdownDiv.focus(() => {
+    markdownEvent = setInterval($.proxy(() => {
+      _onWatch();
+    }), 200);
+  });
+
+  $markdownDiv.blur(() => {
+    if ($markdownDiv) {
+      clearInterval(markdownEvent);
+    }
+  });
+});
+
+$(() => {
+  class UsageButton {
+    constructor() {
+      this.$element = $('.usage-toggle-btn');
+      this.command = 'on';
+      this.usageContent = $('#usage-content-template').html();
+      this.dialog = undefined;
     }
 
-    $(".usage-sidebar").animate({width:'toggle'}, 50);
-  });
+    init() {
+      this.$element.click(() => {
+        this.toggle();
+      });
+    }
+
+    showUsage() {
+      this.dialog = vex.dialog.alert({
+        unsafeMessage: this.usageContent,
+        afterClose: () => {
+          this.hideUsage();
+        },
+      });
+      this.$element.text('Hide Usage');
+      this.command = 'off';
+    }
+
+    hideUsage() {
+      vex.close(this.dialog);
+      this.$element.text('Show Usage');
+      this.command = 'on';
+    }
+
+    toggle() {
+      if (this.command === 'on') {
+        this.showUsage();
+      } else {
+        this.hideUsage();
+      }
+    }
+  }
+
+  const usageButton = new UsageButton();
+  usageButton.init();
 });

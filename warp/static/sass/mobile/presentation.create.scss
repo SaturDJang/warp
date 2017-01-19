@@ -1,28 +1,4 @@
 form#create_html {
-  div.usage-paragraph {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    div.language-markdown {
-      span.highlight {
-        font-family: monospace, monospace;
-        font-size: 1em;
-      }
-    }
-  }
-  .usage-sidebar {
-    padding: 1em;
-    position: fixed;
-    left: 0;
-    background: #222;
-    color: white;
-    width: 200px;
-    height: 100%;
-    font-family: monospace, monospace;
-    font-size: 0.85em;
-    .text {
-      color: #828388;
-    }
-  }
   .usage-switch-elems {
     display: inline-block;
   }
@@ -35,15 +11,26 @@ form#create_html {
       width: 7.9em;
     }
   }
-  @media (max-width: 1585px) {
-    .usage-sidebar {
-      display: none;
+}
+
+.vex.vex-theme-bottom-left-corner {
+  .vex-content {
+    width: 51rem;
+
+    .callout-small-font {
+     font-size: 1rem;
     }
-    .usage-toggle-btn {
-      display: none;
+    .callout {
+      display: inline-block;
+      height: 21.875rem;
     }
-    .usage-toggle-btn-label {
-      display: none;
+
+    #usage-content {
+      font-family: monospace, monospace;
+      font-size: 0.85em;
+      .text {
+        color: #828388;
+      }
     }
   }
 }
