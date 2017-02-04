@@ -1,0 +1,36 @@
+div#header {
+  background-color: #242624;
+  height: $desktop-header-height;
+  max-width: none;
+
+  div.large-centered {
+    height: 100%;
+    div.title {
+      float: left;
+      margin-bottom: 0;
+      height: $desktop-header-height;
+      h3 {
+        line-height: 64px;
+        color: white;
+      }
+    }
+
+    div.search-wrapper {
+      height: $desktop-header-height;
+      display: flex;
+      input {
+        border-radius: 4px;
+        align-self: center;
+        margin: 0;
+      }
+    }
+
+    div.feature {
+      float: right;
+      button {
+        line-height: $desktop-header-height;
+        color: white;
+      }
+    }
+  }
+}
