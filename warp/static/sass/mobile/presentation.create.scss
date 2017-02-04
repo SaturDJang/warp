@@ -1,34 +1,49 @@
 form#create_html {
-  .usage-switch-elems {
+  height: 100%;
+
+  label.usage-switch-elems {
     display: inline-block;
   }
-  .editor-side {
-    .header {
+  div.editor-side {
+    div.header {
       margin-bottom: 0.5rem;
     }
-    .usage-toggle-btn {
+    a.usage-toggle-btn {
       margin: 0;
       width: 7.9em;
     }
   }
+
+  div#small-contents {
+    height: 100%;
+
+    div.callout-full {
+      height: 100%;
+      display: flex;
+      div {
+        align-self: center;
+        margin: auto;
+      }
+    }
+  }
 }
 
-.vex.vex-theme-bottom-left-corner {
-  .vex-content {
+div.vex.vex-theme-bottom-left-corner {
+  div.vex-content {
     width: 51rem;
 
-    .callout-small-font {
+    div.callout-small-font {
      font-size: 1rem;
     }
-    .callout {
+    div.callout {
       display: inline-block;
       height: 21.875rem;
     }
 
-    #usage-content {
+    div#usage-content {
       font-family: monospace, monospace;
       font-size: 0.85em;
-      .text {
+      span.text {
         color: #828388;
       }
     }
