@@ -75,3 +75,4 @@ History.md
 .vscode/
 warp/static/dist/
 tags
+.tags
