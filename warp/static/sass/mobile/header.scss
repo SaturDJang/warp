@@ -3,6 +3,7 @@ div#header {
   height: $desktop-header-height;
   max-width: none;
   margin-bottom: 32px;
+  border-bottom: 1px solid $key-green-color;
 
   div.large-centered {
     height: 100%;
@@ -22,30 +23,30 @@ div#header {
         border-top: none;
         border-right: none;
         border-left: none;
-        border-bottom: 1px solid $key-green-color;
+        border-bottom: 1px solid white;
         background: none;
         outline: none;
-        color: $key-green-color;
+        color: white;
       }
 
       input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-          color: $key-green-color;
+          color: white;
         }
       input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-          color: $key-green-color;
+          color: white;
           opacity:  1;
         }
       input::-moz-placeholder { /* Mozilla Firefox 19+ */
-          color: $key-green-color;
+          color: white;
           opacity:  1;
         }
       input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-          color: $key-green-color;
+          color: white;
         }
 
       i {
         margin-right: 3px;
-        color: $key-green-color;
+        color: white;
       }
     }
 
@@ -68,7 +69,8 @@ div#header {
         color: white;
       }
       span.user-name {
-        color: $key-green-color;
+        color: $key-orange-color;
+        cursor: pointer;
       }
       form {
         margin: 6px;
