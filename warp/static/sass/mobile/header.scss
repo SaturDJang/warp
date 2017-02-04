@@ -28,10 +28,19 @@ div#header {
 
     div.feature {
       float: right;
+      height: 64px;
       a {
         margin: 6px;
         line-height: $desktop-header-height;
         color: white;
+      }
+      form {
+        margin: 6px;
+        display: inline;
+        button {
+          line-height: $desktop-header-height;
+          color: white;
+        }
       }
     }
   }
