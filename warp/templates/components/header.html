@@ -1,10 +1,15 @@
 <div id="header" class="row">
   <div class="small-9 large-centered columns">
     <div class="title">
-      <h3>Warp</h3>
+      <a href="/">Warp</a>
     </div>
     <div class="feature">
-      <button>sign in</button>
+      {% if user.is_authenticated %}
+        <a href="{% url 'presentation:create' %}">create</a>
+        <a href="{% url 'account_logout' %}">sign out</a>
+      {% else %}
+        <a href="{% url 'account_login' %}">sign in</a>
+      {% endif %}
     </div>
     <div class="search-wrapper small-3 small-centered">
       <input type="text" />

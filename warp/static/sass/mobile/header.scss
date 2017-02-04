@@ -9,7 +9,8 @@ div#header {
       float: left;
       margin-bottom: 0;
       height: $desktop-header-height;
-      h3 {
+      a {
+        font-size: 24px;
         line-height: 64px;
         color: white;
       }
@@ -27,7 +28,8 @@ div#header {
 
     div.feature {
       float: right;
-      button {
+      a {
+        margin: 6px;
         line-height: $desktop-header-height;
         color: white;
       }
