@@ -1,4 +1,6 @@
 form#create_html {
+  height: 100%;
+
   .usage-switch-elems {
     display: inline-block;
   }
@@ -12,7 +14,6 @@ form#create_html {
     }
   }
 
-  height: 100%;
   #small-contents {
     height: 100%;
   }
