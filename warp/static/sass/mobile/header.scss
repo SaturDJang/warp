@@ -1,5 +1,5 @@
 div#header {
-  background-color: #242624;
+  background-color: #232F3C;
   height: $desktop-header-height;
   max-width: none;
   margin-bottom: 32px;
@@ -10,30 +10,65 @@ div#header {
       float: left;
       margin-bottom: 0;
       height: $desktop-header-height;
+
       a {
         font-size: 24px;
         line-height: 64px;
-        color: white;
+        color: $key-green-color;
+        margin-right: 32px;
       }
-    }
 
-    div.search-wrapper {
-      height: $desktop-header-height;
-      display: flex;
       input {
-        border-radius: 4px;
-        align-self: center;
-        margin: 0;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid $key-green-color;
+        background: none;
+        outline: none;
+        color: $key-green-color;
+      }
+
+      input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+          color: $key-green-color;
+        }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          color: $key-green-color;
+          opacity:  1;
+        }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: $key-green-color;
+          opacity:  1;
+        }
+      input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: $key-green-color;
+        }
+
+      i {
+        margin-right: 3px;
+        color: $key-green-color;
       }
     }
 
     div.feature {
       float: right;
       height: 64px;
-      a {
+      div.vertical-divider {
+        display: initial;
+        border-bottom: none;
+        border-top: none;
+        border-right: solid 1px white;
+        clear: none;
+        height: 3px;
+        width: 0;
+        margin-right: 10px;
+      }
+      a, span {
         margin: 6px;
         line-height: $desktop-header-height;
         color: white;
+      }
+      span.user-name {
+        color: $key-green-color;
       }
       form {
         margin: 6px;
