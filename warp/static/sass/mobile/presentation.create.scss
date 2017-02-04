@@ -14,15 +14,16 @@ form#create_html {
     }
   }
 
-  #small-contents {
+  div#small-contents {
     height: 100%;
-  }
-  .callout-full {
-    height: 100%;
-    display: flex;
-    div {
-      align-self: center;
-      margin: auto;
+
+    div.callout-full {
+      height: 100%;
+      display: flex;
+      div {
+        align-self: center;
+        margin: auto;
+      }
     }
   }
 }
