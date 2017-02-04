@@ -11,6 +11,19 @@ form#create_html {
       width: 7.9em;
     }
   }
+
+  height: 100%;
+  #small-contents {
+    height: 100%;
+  }
+  .callout-full {
+    height: 100%;
+    display: flex;
+    div {
+      align-self: center;
+      margin: auto;
+    }
+  }
 }
 
 .vex.vex-theme-bottom-left-corner {

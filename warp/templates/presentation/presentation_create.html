@@ -39,31 +39,43 @@
         </div>
       </div>
     </script>
-    <div class="row">
-      <div class="small-6 medium-6 large-6 columns">
-        <div class="input-group">
-          <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
-          {{ form.subject }}
+    <div id="small-contents" class="show-for-small-only">
+      <div class="callout callout-full text-center">
+        <div>
+          <h1>Sorry, we don't support the create page on mobile devices.</h1>
+          <h2>
+            <a href="{% url 'presentation:list' %}"><strong>Go to main</strong></a>
+          </h2>
         </div>
-      </div>
-      <div class="small-6 medium-6 large-6 columns">
-        <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
-        <input class="medium button" type="submit" value="Create">
       </div>
     </div>
-    <div class="row">
-      <div class="editor-side small-6 medium-6 large-6 columns">
-        {% csrf_token %}
-        <div class="header">
-          <label class="usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
-          <a class="button tiny usage-toggle-btn">Show Usage</a>
+    <div id="large-medium-contents" class="show-for-medium show-for-large">
+      <div class="row">
+        <div class="small-6 medium-6 large-6 columns">
+          <div class="input-group">
+            <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
+            {{ form.subject }}
+          </div>
         </div>
-        {{ form.markdown }}
+        <div class="small-6 medium-6 large-6 columns">
+          <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
+          <input class="medium button" type="submit" value="Create">
+        </div>
       </div>
-      <div class="preview-side small-6 medium-6 large-6 columns">
-        <div class="preview"></div>
-        <hr>
-        Here is the empty space
+      <div class="row">
+        <div class="editor-side small-6 medium-6 large-6 columns">
+          {% csrf_token %}
+          <div class="header">
+            <label class="usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
+            <a class="button tiny usage-toggle-btn">Show Usage</a>
+          </div>
+          {{ form.markdown }}
+        </div>
+        <div class="preview-side small-6 medium-6 large-6 columns">
+          <div class="preview"></div>
+          <hr>
+          Here is the empty space
+        </div>
       </div>
     </div>
   </form>
