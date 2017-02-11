@@ -1,46 +1,53 @@
 /* global $, marked, vex */
 $(() => {
   const $markdownDiv = $('#id_markdown');
-  const $preview = $('.preview');
-  const $htmlDiv = $('#id_html');
-  const $createForm = $('#create_html');
-  let beforeValue = '';
-  let markdownEvent;
-  let markdownContent = '';
-  let markdownSlides = [];
 
-  function _onWatch() {
-    // 이전 값과 현재 값이 다르면 필요한 액션 수행
-    const currentValue = $markdownDiv.val();
-    if (beforeValue !== currentValue) {
-      // 현재 값 저장
-      beforeValue = currentValue;
+  class Watcher {
+    constructor() {
+      this.$preview = $('.preview');
+      this.beforeValue = '';
+      this.markdownEvent = undefined;
+      this.markdownContent = '';
+      this.markdownSlides = [];
+    }
 
-      markdownContent = $markdownDiv.val();
-      markdownSlides = markdownContent.split(/={5,}/);
-
-      $preview.html('');
-      markdownSlides.forEach((v) => {
-        $preview.append(`<div class="callout secondary">${marked(v)}</div>`);
+    watch() {
+      // onFocus 이벤트 발생 시 setInterval을 통해 _onWatch를 실행
+      $markdownDiv.focus(() => {
+        this.markdownEvent = setInterval($.proxy(() => {
+          this.handleWatch();
+        }), 200);
       });
+
+      $markdownDiv.blur(() => {
+        if ($markdownDiv) {
+          clearInterval(this.markdownEvent);
+        }
+      });
+    }
+
+    handleWatch() {
+      // 이전 값과 현재 값이 다르면 필요한 액션 수행
+      const currentValue = $markdownDiv.val();
+      if (this.beforeValue !== currentValue) {
+        // 현재 값 저장
+        this.beforeValue = currentValue;
+
+        this.markdownContent = $markdownDiv.val();
+        this.markdownSlides = this.markdownContent.split(/={5,}/);
+
+        this.$preview.html('');
+        this.markdownSlides.forEach((v) => {
+          this.$preview.append(`<div class="callout secondary">${marked(v)}</div>`);
+        });
+      }
     }
   }
 
-  $createForm.submit(() => {
-    $htmlDiv.val(marked($markdownDiv.val()));
-  });
-
-  // onFocus 이벤트 발생 시 setInterval을 통해 _onWatch를 실행
-  $markdownDiv.focus(() => {
-    markdownEvent = setInterval($.proxy(() => {
-      _onWatch();
-    }), 200);
-  });
-
-  $markdownDiv.blur(() => {
-    if ($markdownDiv) {
-      clearInterval(markdownEvent);
-    }
+  const watcher = new Watcher();
+  watcher.watch();
+  $('#create_html').submit(() => {
+    $('#id_html').val(marked($markdownDiv.val()));
   });
 });
 
