@@ -6,6 +6,7 @@ class PresentationCreateForm(forms.Form):
         'class': 'input-group-field',
     }))
     markdown = forms.CharField(
-        widget=forms.Textarea()
+        widget=forms.Textarea(),
+        required=False
     )
-    is_public = forms.BooleanField(initial=True)
+    is_public = forms.BooleanField(initial=True, required=False)
