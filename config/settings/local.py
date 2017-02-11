@@ -35,6 +35,18 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
 
 
+# Database
+# ------------------------------------------------------------------------------
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'warp',
+        'USER': 'warp',
+        'HOST': 'postgres',
+        'PORT': 5432,
+    }
+}
+
 # CACHING
 # ------------------------------------------------------------------------------
 CACHES = {
