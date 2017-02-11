@@ -12,9 +12,11 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install flake8
 
 script:
   - py.test
+  - flake8 .
 
 notifications:
   slack: twoscoop:rv1lxlhuExtzlUTtl6modR5J
