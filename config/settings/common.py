@@ -42,6 +42,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'pure_pagination', # pagination
 )
 
 # Apps specific for this project go here.
@@ -233,3 +234,11 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+# Django pagination
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 10,
+    'MARGIN_PAGES_DISPLAYED': 1,
+
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}
