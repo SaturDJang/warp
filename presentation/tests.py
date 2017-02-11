@@ -15,3 +15,11 @@ class PresentationListTest(TestCase):
         self.assertResponseContains(PresentationFactory.views, html=False)
         author = PresentationFactory.author.get_factory()
         self.assertResponseContains(author.username, html=False)
+
+    def test_pagination(self):
+        second_page_url = reverse('presentation:list', kwargs={'page': 2})
+        self.get_check_200(second_page_url)
+        self.assertResponseContains(
+            '''<ul class="pagination text-center" role="navigation" aria-label="Pagination">''')
+        self.assertResponseContains('''<li><a href="#" aria-label="Page 1">1</a></li>''')
+
