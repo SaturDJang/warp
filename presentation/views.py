@@ -2,14 +2,17 @@ from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.shortcuts import redirect, render
 
+from pure_pagination import PaginationMixin
+
 from .forms import PresentationCreateForm
 from .models import Presentation, Slide
 
 
-class PresentationList(ListView):
+class PresentationList(PaginationMixin, ListView):
     model = Presentation
     paginate_by = 9
     context_object_name = 'presentations'
+    ordering = ['-pk']
 
 
 class PresentationDetail(DetailView):
