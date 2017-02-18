@@ -38,10 +38,8 @@ def presentation_create(request):
                     markdown=slide['markdown'],
                     html=slide['html'],
                 )
-
-            return redirect('list')
+            return redirect('presentation:list')
 
     context = {'form': form}
 
     return render(request, 'presentation/presentation_create.html', context)
-
