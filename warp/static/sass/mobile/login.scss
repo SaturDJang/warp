@@ -1,0 +1,46 @@
+div.login-form {
+  margin-top: 5%;
+  h3 {
+    color: white;
+  }
+  div.login-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    border: 1px solid $key-green-color;
+
+    .login-title {
+      font-size: 20px;
+      color: $key-green-color;
+    }
+    div.social-list {
+      margin-bottom: 20px;
+      a {
+        margin-right: 4.5%;
+      }
+    }
+  }
+
+  form {
+    a {
+      float: right;
+      width: 48%;
+      margin-bottom: 0;
+      background-color: $key-orange-color;
+      &:hover {
+        background-color: #ff5000;
+      }
+    }
+
+    button {
+      float: left;
+      width: 48%;
+      margin-bottom: 0;
+      background-color: $key-green-color;
+      &:hover {
+        background-color: #00a57c;
+      }
+    }
+  }
+}
