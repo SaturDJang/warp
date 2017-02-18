@@ -17,7 +17,11 @@
         <div class="social-list">
           {% include "account/provider_list.html" with process="login" %}
         </div>
-        <p class="login-title">{% trans 'Email login' %}</p>
+
+        <div class="login-title-wrapper">
+          <span class="login-title">{% trans 'Email login' %}</span>
+          <a class="forgot-pass secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </div>
 
         {% include "socialaccount/snippets/login_extra.html" %}
 
@@ -30,7 +34,6 @@
         {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-{#        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>#}
         <a class="button secondaryAction" href="{{ signup_url }}">{% trans "Sign Up" %}</a>
         <button class="button secondaryAction" type="submit">{% trans "Sign In" %}</button>
       </form>
