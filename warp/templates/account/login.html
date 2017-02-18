@@ -18,15 +18,15 @@
           {% include "account/provider_list.html" with process="login" %}
         </div>
 
-        <div class="login-title-wrapper">
-          <span class="login-title">{% trans 'Email login' %}</span>
-          <a class="forgot-pass secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-        </div>
-
         {% include "socialaccount/snippets/login_extra.html" %}
 
       {% else %}
       {% endif %}
+
+      <div class="login-title-wrapper">
+        <span class="login-title">{% trans 'Email login' %}</span>
+        <a class="forgot-pass secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+      </div>
 
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
