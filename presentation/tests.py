@@ -20,6 +20,6 @@ class PresentationListTest(TestCase):
         second_page_url = reverse('presentation:list') + "?page=2"
         self.get_check_200(second_page_url)
         self.assertResponseContains(
-            '''<ul class="pagination text-center" role="navigation" aria-label="Pagination">''')
-        self.assertResponseContains('''<li><a href="#" aria-label="Page 1">1</a></li>''')
+            '''<ul class="pagination text-center" role="navigation" aria-label="Pagination">''', html=False)
+        self.assertResponseContains('''<li><a href="?page=1" aria-label="Page 1">1</a></li>''')
 
