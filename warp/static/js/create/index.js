@@ -1,7 +1,8 @@
-/* global $, marked, vex, Watcher, UsageButton, document, location */
-const $markdownDiv = $('#id_markdown');
+/* global window, $, marked, vex, Watcher, UsageButton, document, location, $markdownDiv */
 
 $(() => {
+  window.$markdownDiv = $('#id_markdown');
+
   const md2html = () => {
     const markdownContent = $markdownDiv.val();
     const markdownSlides = markdownContent.split(/={5,}/);
@@ -17,10 +18,6 @@ $(() => {
   watcher.watch(md2html);
 
   $('#create_html').submit((e) => {
-    const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
-    $.ajaxPrefilter((options, originalOptions, jqXHR) => {
-      jqXHR.setRequestHeader('X-CSRFToken', csrfToken);
-    });
     const mv = $markdownDiv.val();
     const subject = $('#id_subject').val();
     const isPublic = document.querySelector('#id_is_public').checked;

@@ -1,3 +1,4 @@
+/* global document, $ */
 /* Project specific Javascript goes here. */
 
 /*
@@ -19,3 +20,12 @@ Issues with the above approach:
 4. Undocumented: No mention in the documentation, or it's too hard for me to find
 */
 $('.form-group').removeClass('row');
+
+const registerCSRFTokenAjaxFilter = () => {
+  const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+  $.ajaxPrefilter((options, originalOptions, jqXHR) => {
+    jqXHR.setRequestHeader('X-CSRFToken', csrfToken);
+  });
+};
+
+registerCSRFTokenAjaxFilter();
