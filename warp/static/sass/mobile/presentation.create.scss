@@ -1,17 +1,13 @@
+body {
+  overflow-y: hidden;
+}
+
 form#create_html {
-  height: 100%;
+  $top-bar-height: 4.938em;
+  height: calc(100% - #{$top-bar-height});
 
   label.usage-switch-elems {
     display: inline-block;
-  }
-  div.editor-side {
-    div.header {
-      margin-bottom: 0.5rem;
-    }
-    a.usage-toggle-btn {
-      margin: 0;
-      width: 7.9em;
-    }
   }
 
   div#small-contents {
@@ -20,9 +16,60 @@ form#create_html {
     div.callout-full {
       height: 100%;
       display: flex;
+
       div {
         align-self: center;
         margin: auto;
+      }
+    }
+  }
+
+  div#large-medium-contents {
+    height: 100%;
+    padding-bottom: 1rem;
+
+    $contents-header-height: 3.5rem;
+    $contents-header-margin: 0.500rem;
+
+    div.contents-header {
+      height: $contents-header-height;
+    }
+    div.contents-body {
+      height: calc(100% - #{$contents-header-height - $contents-header-margin});
+
+      div.editor-side {
+        height: 100%;
+        $header-height: 1.813rem;
+        $header-margin-bottom: 0.5rem;
+
+        div.header {
+          height: $header-height;
+          margin-bottom: $header-margin-bottom;
+        }
+        a.usage-toggle-btn {
+          margin: 0;
+          width: 7.9rem;
+        }
+        textarea#id_markdown {
+          height: calc(100% - #{$header-height + $header-margin-bottom});
+          max-height: calc(100% - #{$header-height + $header-margin-bottom});
+          resize: none;
+        }
+      }
+    }
+    div.preview-side {
+      height: 100%;
+
+      div.preview {
+        width: 35.625rem;
+        height: 100%;
+        overflow-y: scroll;
+        background-color: #8a8a8a;
+
+        div.slide {
+          height: 20.375rem;
+          overflow-y: hidden;
+        }
       }
     }
   }

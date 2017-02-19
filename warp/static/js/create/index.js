@@ -9,7 +9,7 @@ $(() => {
 
     $preview.html('');
     markdownSlides.forEach((v) => {
-      $preview.append(`<div class="callout secondary">${marked(v)}</div>`);
+      $preview.append(`<div class="callout secondary slide">${marked(v)}</div>`);
     });
   };
 
