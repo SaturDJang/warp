@@ -2,52 +2,51 @@
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-<div style="margin-top: 1em">
 
+{# presentation #}
+<div class="presentation">
   <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
     {% for presentation in presentations %}
-    <a href="{% url 'presentation:detail' pk=presentation.pk %}">
-      <div class="medium-4 columns">
-        <div class="callout" data-equalizer-watch>
-          <div class="warp-list-subject">
-            <h1>{{ presentation.subject }}</h1>
-          </div>
-          <div class="warp-list-author">
-            {{ presentation.author }}
-          </div>
-          <div class="warp-list-views">
-            {{ presentation.views }}
+      <a href="{% url 'presentation:detail' pk=presentation.pk %}">
+        <div class="medium-4 columns">
+          <div class="callout" data-equalizer-watch>
+            <div class="warp-list-subject">
+              <h1>{{ presentation.subject }}</h1>
+            </div>
+            <div class="warp-list-inform">
+              <p>{{ presentation.author }}</p>
+              <p>views: {{ presentation.views }}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
     {% endfor %}
   </div>
 
   <ul class="pagination text-center" role="navigation" aria-label="Pagination">
-      {% if page_obj.has_previous %}
-        <li>
-            <a href="?{{ page_obj.previous_page_number.querystring }}" class="pagination-previous">Previous</a>
-        </li>
-      {% else %}
-        <li class="pagination-previous disabled">Previous</li>
-      {% endif %}
-      {% for page in page_obj.pages %}
-        {% if page %}
-          {% ifequal page page_obj.number %}
-            <li class="current"><span class="show-for-sr">You're on page</span> {{ page }}</li>
-          {% else %}
-            <li><a href="?{{ page.querystring }}" aria-label="Page {{ page }}">{{ page }}</a></li>
-          {% endifequal %}
-         {% else %}
-           ...
-         {% endif %}
-      {% endfor %}
-      {% if page_obj.has_next %}
-          <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-      {% else %}
-          <li class="pagination-next disabled">Next</li>
-      {% endif %}
+    {% if page_obj.has_previous %}
+      <li>
+          <a href="?{{ page_obj.previous_page_number.querystring }}" class="pagination-previous">Previous</a>
+      </li>
+    {% else %}
+      <li class="pagination-previous disabled">Previous</li>
+    {% endif %}
+    {% for page in page_obj.pages %}
+      {% if page %}
+        {% ifequal page page_obj.number %}
+          <li class="current"><span class="show-for-sr">You're on page</span> {{ page }}</li>
+        {% else %}
+          <li><a href="?{{ page.querystring }}" aria-label="Page {{ page }}">{{ page }}</a></li>
+        {% endifequal %}
+       {% else %}
+         ...
+       {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+    {% else %}
+        <li class="pagination-next disabled">Next</li>
+    {% endif %}
   </ul>
 </div>
 {% endblock %}

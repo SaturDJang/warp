@@ -9,6 +9,7 @@
 @import "mobile/presentation.create";
 @import "mobile/header";
 @import "mobile/login";
+@import "mobile/presentation.list";
 
 //tablet-all
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
