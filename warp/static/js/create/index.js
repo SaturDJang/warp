@@ -53,5 +53,5 @@ $(() => {
   editor.setTheme('ace/theme/chrome');
   editor.getSession().setMode('ace/mode/markdown');
   editor.renderer.setShowGutter(false);
-  editor.on('change', md2html());
+  editor.on('change', md2html);
 });
