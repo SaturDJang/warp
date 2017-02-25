@@ -1,10 +1,10 @@
-/* global window, $, marked, vex, Watcher, UsageButton, document, location, $markdownDiv */
+/* global window, $, marked, vex, ace, Watcher, UsageButton, document, location, $markdownDiv */
 
 $(() => {
   window.$markdownDiv = $('#id_markdown');
-
+  const editor = ace.edit('id_markdown');
   const md2html = () => {
-    const markdownContent = $markdownDiv.val();
+    const markdownContent = editor.getValue();
     const markdownSlides = markdownContent.split(/={5,}/);
     const $preview = $('.preview');
 
@@ -14,8 +14,8 @@ $(() => {
     });
   };
 
-  const watcher = new Watcher();
-  watcher.watch(md2html);
+  // const watcher = new Watcher();
+  // watcher.watch(md2html);
 
   $('#create_html').submit((e) => {
     const mv = $markdownDiv.val();
@@ -49,4 +49,9 @@ $(() => {
 
   const usageButton = new UsageButton();
   usageButton.init();
+
+  editor.setTheme('ace/theme/chrome');
+  editor.getSession().setMode('ace/mode/markdown');
+  editor.renderer.setShowGutter(false);
+  editor.on('change', md2html());
 });

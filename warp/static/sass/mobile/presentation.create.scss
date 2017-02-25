@@ -50,10 +50,10 @@ form#create_html {
           margin: 0;
           width: 7.9rem;
         }
-        textarea#id_markdown {
+        div#id_markdown {
           height: calc(100% - #{$header-height + $header-margin-bottom});
           max-height: calc(100% - #{$header-height + $header-margin-bottom});
-          resize: none;
+          border: 1px solid #cacaca;
         }
       }
     }
