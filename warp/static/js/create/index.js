@@ -1,21 +1,19 @@
-/* global window, $, marked, vex, ace, Watcher, UsageButton, document, location, $markdownDiv */
+/* global window, $, marked, vex, ace, UsageButton, document, location, $markdownDiv */
 
 $(() => {
-  window.$markdownDiv = $('#id_markdown');
   const editor = ace.edit('id_markdown');
+  const aceSession = editor.getSession();
+
   const md2html = () => {
     const markdownContent = editor.getValue();
     const markdownSlides = markdownContent.split(/={5,}/);
     const $preview = $('.preview');
 
     $preview.html('');
-    markdownSlides.forEach((v) => {
-      $preview.append(`<div class="callout secondary slide">${marked(v)}</div>`);
+    markdownSlides.forEach((v, i) => {
+      $preview.append(`<div class="callout secondary slide data-slide-${i}">${marked(v)}</div>`);
     });
   };
-
-  // const watcher = new Watcher();
-  // watcher.watch(md2html);
 
   $('#create_html').submit((e) => {
     const mv = $markdownDiv.val();
@@ -51,7 +49,61 @@ $(() => {
   usageButton.init();
 
   editor.setTheme('ace/theme/chrome');
-  editor.getSession().setMode('ace/mode/markdown');
+  aceSession.setMode('ace/mode/markdown');
   editor.renderer.setShowGutter(false);
   editor.on('change', md2html);
+  editor.on('changeSelection', () => {
+    /*
+    Below is the slide calculation rule.
+    The separation bar is considered as a start marker of a new slide(inclusive).
+    For example,
+
+    fasdfdfasf --> 1slide
+    ========== --> 2slide
+    asdffasfsd --> 2slide
+    ========== --> 3slide
+    adfasdfadf --> 3slide
+    */
+    const currentRow = editor.getCursorPosition().row;
+    let slideIndex = 0;
+    const lines = aceSession.getLines(0, aceSession.getLength()).map((line, row) => {
+      if (line.match(/={5,}/)) {
+        slideIndex += 1;
+      }
+      return {
+        text: line,
+        slide: slideIndex,
+        row,
+      };
+    });
+
+    const currentSlideIndex = lines[currentRow].slide;
+    const currentSlide = document.querySelector(`.data-slide-${currentSlideIndex}`);
+    const container = currentSlide.parentElement;
+
+    if (!isFullyVisibleSlide(currentSlide, currentSlideIndex)) {
+      container.scrollTop = scrollTopCenterVisible(currentSlide, currentSlideIndex);
+    }
+  });
 });
+
+function isFullyVisibleSlide(currentSlide, slideIndex) {
+  const slideNum = slideIndex + 1;
+  const $currentSlide = $(currentSlide);
+  const slideOuterHeight = $currentSlide.outerHeight(true);
+  const separatorHeight = slideOuterHeight - $currentSlide.outerHeight(false);
+  const currentSlideTop = slideOuterHeight * (slideNum - 1);
+  const currentSlideBottom = (slideOuterHeight * slideNum) - separatorHeight;
+  const container = currentSlide.parentElement;
+  const visibleTop = container.scrollTop;
+  const visibleBottom = visibleTop + $(container).height();
+  return currentSlideBottom <= visibleBottom && currentSlideTop >= visibleTop;
+}
+
+function scrollTopCenterVisible(currentSlide, slideIndex) {
+  const slideNum = slideIndex + 1;
+  const $currentSlide = $(currentSlide);
+  const slideOuterHeight = $currentSlide.outerHeight(true);
+  const container = currentSlide.parentElement;
+  return (slideOuterHeight * (slideNum - 1)) - (($(container).height() - slideOuterHeight) / 2);
+}
