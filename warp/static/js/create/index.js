@@ -1,4 +1,4 @@
-/* global window, $, marked, vex, ace, UsageButton, preview, document, location, $markdownDiv */
+/* global window, $, marked, vex, ace, UsageButton, preview, document, location */
 
 $(() => {
   const editor = ace.edit('id_markdown');
