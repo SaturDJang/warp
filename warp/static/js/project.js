@@ -22,6 +22,10 @@ Issues with the above approach:
 $('.form-group').removeClass('row');
 
 const registerCSRFTokenAjaxFilter = () => {
+  const csrfTokenElement = document.getElementsByName('csrfmiddlewaretoken')[0];
+  if (!csrfTokenElement) {
+    return;
+  }
   const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
   $.ajaxPrefilter((options, originalOptions, jqXHR) => {
     jqXHR.setRequestHeader('X-CSRFToken', csrfToken);
