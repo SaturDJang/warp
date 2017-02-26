@@ -16,10 +16,9 @@ $(() => {
   };
 
   $('#create_html').submit((e) => {
-    const mv = $markdownDiv.val();
     const subject = $('#id_subject').val();
     const isPublic = document.querySelector('#id_is_public').checked;
-    const slideList = mv.split(/={5,}/g).map((v, i) => ({
+    const slideList = editor.getValue().split(/={5,}/g).map((v, i) => ({
       slide_order: i,
       markdown: v.trim(),
       html: marked(v.trim()),
