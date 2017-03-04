@@ -18,7 +18,7 @@
       <!-- Your stuff: Third-party CSS libraries go here -->
       <!-- This file stores project-specific CSS -->
       {% block extra_css %}{% endblock  %}
-      <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.min.css' %}">
       <link rel="stylesheet" href="{% static 'vendor/foundation/css/foundation.css' %}">
       <link rel="stylesheet" href="{% static 'dist/css/main.min.css' %}">
     {% endblock %}
@@ -26,29 +26,12 @@
   </head>
 
   <body>
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">Warp</li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><input type="search" placeholder="Search"></li>
-          <li><button type="button" class="button">Search</button></li>
-          <li>
-            <a href="{% url 'presentation:create' %}">
-              <button class="button">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-              </button>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    {% include "components/header.html" %}
 
-    {% block content %}
-    {% endblock %}
+    <div class="small-9 large-centered columns">
+      {% block content %}
+      {% endblock %}
+    </div>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div id="header" class="row">
+  <div class="small-9 large-centered columns">
+    <div class="title">
+      <a href="/">Warp</a>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input placeholder="search.."/>
+    </div>
+    <div class="feature">
+      {% if user.is_authenticated %}
+        <span>Hi,<span class="user-name">{{ user.username }}</span></span>
+        <div class="vertical-divider"></div>
+        <a href="{% url 'presentation:create' %}">Create</a>
+        <form method="post" action="{% url 'account_logout' %}">
+          {% csrf_token %}
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+          {% endif %}
+          <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
+        </form>
+      {% else %}
+        <a href="{% url 'account_login' %}">Sign In?</a>
+      {% endif %}
+    </div>
+  </div>
+</div>

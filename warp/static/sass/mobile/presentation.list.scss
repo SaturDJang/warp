@@ -1,0 +1,48 @@
+div.presentation {
+  margin-bottom: 1em;
+  div.row {
+    div.medium-4 {
+      div.callout {
+        border-radius: 5px;
+        padding-bottom: 33.3333%;
+        div.warp-list-subject {
+          position: inherit;
+          top: 30%;
+          h1 {
+            text-align: center;
+            color: black;
+            font-size: 30px;
+          }
+        }
+        div.warp-list-inform {
+          position: inherit;
+          top: 70%;
+          text-align: center;
+          p {
+            color: black;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  ul.pagination {
+    li.pagination-previous, li.pagination-next {
+      a {
+        color: $key-green-color;
+      }
+    }
+    .current {
+      border-radius: 25px;
+      background-color: $key-orange-color;
+    }
+
+    a {
+      &:hover {
+        color: white;
+        background-color: transparent;
+      }
+    }
+  }
+}

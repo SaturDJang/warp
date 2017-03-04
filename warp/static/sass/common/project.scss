@@ -70,3 +70,15 @@ $red: #b94a48;
 [hidden][style="display: block;"] {
   display: block !important;
 }
+
+body {
+  background-color: #232F3C;
+
+  h1, h2, h3, h4, h5, a, span, button, div, label {
+    color: white;
+  }
+
+  .blank {
+    margin-bottom: 1rem;
+  }
+}
