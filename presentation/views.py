@@ -18,7 +18,6 @@ class PresentationList(PaginationMixin, ListView):
 class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'
-    template_name = 'presentation/presentation_list.html'
 
 
 def presentation_create(request):
