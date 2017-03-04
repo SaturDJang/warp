@@ -48,7 +48,7 @@ $(() => {
   usageButton.init();
 
   editor.setTheme('ace/theme/chrome');
-  aceSession.setMode('ace/mode/markdown');
+  aceSession.setMode('ace/mode/markdown_warp');
   editor.renderer.setShowGutter(false);
   editor.on('change', md2html);
   editor.on('changeSelection', () => {
