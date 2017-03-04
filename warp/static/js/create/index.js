@@ -1,30 +1,24 @@
-/* global $, marked, vex, Watcher, UsageButton, document, location */
-const $markdownDiv = $('#id_markdown');
+/* global window, $, marked, vex, ace, UsageButton, preview, document, location */
 
 $(() => {
+  const editor = ace.edit('id_markdown');
+  const aceSession = editor.getSession();
+
   const md2html = () => {
-    const markdownContent = $markdownDiv.val();
+    const markdownContent = editor.getValue();
     const markdownSlides = markdownContent.split(/={5,}/);
     const $preview = $('.preview');
 
     $preview.html('');
-    markdownSlides.forEach((v) => {
-      $preview.append(`<div class="callout secondary">${marked(v)}</div>`);
+    markdownSlides.forEach((v, i) => {
+      $preview.append(`<div class="callout secondary slide data-slide-${i}">${marked(v)}</div>`);
     });
   };
 
-  const watcher = new Watcher();
-  watcher.watch(md2html);
-
   $('#create_html').submit((e) => {
-    const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
-    $.ajaxPrefilter((options, originalOptions, jqXHR) => {
-      jqXHR.setRequestHeader('X-CSRFToken', csrfToken);
-    });
-    const mv = $markdownDiv.val();
     const subject = $('#id_subject').val();
     const isPublic = document.querySelector('#id_is_public').checked;
-    const slideList = mv.split(/={5,}/g).map((v, i) => ({
+    const slideList = editor.getValue().split(/={5,}/g).map((v, i) => ({
       slide_order: i,
       markdown: v.trim(),
       html: marked(v.trim()),
@@ -52,4 +46,12 @@ $(() => {
 
   const usageButton = new UsageButton();
   usageButton.init();
+
+  editor.setTheme('ace/theme/chrome');
+  aceSession.setMode('ace/mode/markdown');
+  editor.renderer.setShowGutter(false);
+  editor.on('change', md2html);
+  editor.on('changeSelection', () => {
+    preview.syncWithEditorCaret(editor);
+  });
 });
