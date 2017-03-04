@@ -19,6 +19,9 @@ install:
   - pip install -r requirements/test.txt
   - pip install flake8
 
+before_script:
+  - psql -c 'create database warp;' -U postgres
+
 script:
   - py.test
   - flake8 .
