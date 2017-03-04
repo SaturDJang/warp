@@ -22,4 +22,3 @@ class PresentationListTest(TestCase):
         self.assertResponseContains(
             '''<ul class="pagination text-center" role="navigation" aria-label="Pagination">''', html=False)
         self.assertResponseContains('''<li><a href="?page=1" aria-label="Page 1">1</a></li>''')
-
