@@ -1,4 +1,13 @@
+dist: xenial
+
 sudo: true
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.5"
+
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq build-essential gettext python-dev zlib1g-dev libpq-dev xvfb
@@ -14,6 +23,10 @@ install:
   - pip install -r requirements/local.txt
   - pip install -r requirements/test.txt
   - pip install flake8
+
+before_script:
+  - export DATABASE_URL='postgres://postgres@localhost/warp'
+  - psql -c 'create database warp;' -U postgres
 
 script:
   - py.test
