@@ -20,7 +20,7 @@ install:
   - pip install flake8
 
 before_script:
-  - echo $USER
+  - export DATABASE_URL=postgresql://postgres:secret@localhost/warp
   - psql -c 'create database warp;' -U postgres
 
 script:
