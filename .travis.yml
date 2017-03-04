@@ -26,11 +26,10 @@ install:
 
 before_script:
   - export DATABASE_URL='postgres://postgres@localhost/warp'
-  - echo $DATABASE_URL
   - psql -c 'create database warp;' -U postgres
 
 script:
-  - py.test
+  - py.test --settings config.settings.test
   - flake8 .
 
 notifications:
