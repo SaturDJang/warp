@@ -26,4 +26,23 @@ div.presentation {
       }
     }
   }
+
+  ul.pagination {
+    li.pagination-previous, li.pagination-next {
+      a {
+        color: $key-green-color;
+      }
+    }
+    .current {
+      border-radius: 25px;
+      background-color: $key-orange-color;
+    }
+
+    a {
+      &:hover {
+        color: white;
+        background-color: transparent;
+      }
+    }
+  }
 }
