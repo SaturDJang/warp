@@ -1,4 +1,6 @@
-# warp
+# Warp
+
+[![Build Status](https://travis-ci.org/SaturDJang/warp.svg?branch=master)](https://travis-ci.org/SaturDJang/warp)
 
 Warp is a web based markdown presentation service.
 
