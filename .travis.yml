@@ -29,7 +29,7 @@ before_script:
   - psql -c 'create database warp;' -U postgres
 
 script:
-  - py.test --settings config.settings.test
+  - py.test
   - flake8 .
 
 notifications:
