@@ -1,10 +1,17 @@
 body {
   overflow-y: hidden;
+
+  div.large-centered {
+    height: 100%;
+  }
+
+  div.ace-chrome div.ace_line span.ace_text {
+    color: #000;
+  }
 }
 
 form#create_html {
-  $top-bar-height: 4.938em;
-  height: calc(100% - #{$top-bar-height});
+  height: calc(100% - #{$desktop-header-height} - #{$desktop-header-margin-bottom});
 
   label.usage-switch-elems {
     display: inline-block;
@@ -25,17 +32,17 @@ form#create_html {
   }
 
   div#large-medium-contents {
-    height: 100%;
-    padding-bottom: 1rem;
+    $margin-bottom: 1rem;
+    height: calc(100% - #{$margin-bottom});
+    margin-bottom: $margin-bottom;
 
     $contents-header-height: 3.5rem;
-    $contents-header-margin: 0.500rem;
 
     div.contents-header {
       height: $contents-header-height;
     }
     div.contents-body {
-      height: calc(100% - #{$contents-header-height - $contents-header-margin});
+      height: calc(100% - #{$contents-header-height});
 
       div.editor-side {
         height: 100%;
@@ -61,7 +68,6 @@ form#create_html {
       height: 100%;
 
       div.preview {
-        width: 35.625rem;
         height: 100%;
         overflow-y: scroll;
         background-color: #8a8a8a;
