@@ -43,3 +43,8 @@ redis>=2.10.0
 
 # Pagination
 django-pure-pagination==0.3.0
+
+
+# Search
+elasticsearch==5.1.0
+django-haystack==2.6.0

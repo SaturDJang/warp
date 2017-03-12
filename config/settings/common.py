@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'pure_pagination',  # pagination
+    'haystack',  # search
 )
 
 # Apps specific for this project go here.
@@ -241,4 +242,14 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 1,
 
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}
+
+
+# Elasticsearch
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': env('ELASTICSEARCH_URL', default='http://127.0.0.1:9200/'),
+        'INDEX_NAME': 'warp',
+    },
 }

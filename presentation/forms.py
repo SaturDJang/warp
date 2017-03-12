@@ -1,4 +1,17 @@
 from django import forms
+from haystack.forms import SearchForm
+
+
+class PresentationSearchForm(SearchForm):
+
+    def search(self):
+        # First, store the SearchQuerySet received from other processing.
+        sqs = super(SearchForm, self).search()
+
+        if not self.is_valid():
+            return self.no_query_found()
+
+        return sqs
 
 
 class PresentationCreateForm(forms.Form):

@@ -1,18 +1,34 @@
 from django.views.generic import DetailView
-from django.views.generic import ListView
 from django.shortcuts import redirect, render
+from haystack.generic_views import SearchView
+
 
 from pure_pagination import PaginationMixin
 
-from .forms import PresentationCreateForm
+from .forms import PresentationCreateForm, PresentationSearchForm
 from .models import Presentation, Slide
 
 
-class PresentationList(PaginationMixin, ListView):
+class PresentationList(PaginationMixin, SearchView):
     model = Presentation
     paginate_by = 9
     context_object_name = 'presentations'
     ordering = ['-pk']
+    form_class = PresentationSearchForm
+
+    template_name = 'presentation/presentation_list.html'
+
+    def get_queryset(self):
+        queryset = super(PresentationList, self).get_queryset()
+        # further filter queryset based on some set of criteria
+        return queryset.all()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(PresentationList, self).get_context_data(*args, **kwargs)
+        # do something
+        return context
+
+
 
 
 class PresentationDetail(DetailView):

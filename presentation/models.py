@@ -12,7 +12,9 @@ class Presentation(TimeStampedModel):
 
 
 class Slide(TimeStampedModel):
-    presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)
+    presentation = models.ForeignKey(
+        Presentation, related_name="slides", on_delete=models.CASCADE)
+
     slide_order = models.PositiveSmallIntegerField()
     markdown = models.TextField()
     html = models.TextField()

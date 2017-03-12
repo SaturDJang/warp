@@ -8,6 +8,8 @@ cmd="$@"
 # does all this for us.
 export REDIS_URL=redis://redis:6379
 
+export ELASTICSEARCH_URL=elasticsearch1
+
 # the official postgres image uses 'postgres' as default user if not set explictly.
 if [ -z "$POSTGRES_USER" ]; then
     export POSTGRES_USER=postgres
@@ -35,3 +37,5 @@ done
 
 >&2 echo "Postgres is up - continuing..."
 exec $cmd
+
+
