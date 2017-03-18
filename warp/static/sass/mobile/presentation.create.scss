@@ -47,6 +47,11 @@ form#create_html {
         }
         div.ace-chrome {
           div.ace_line {
+             span.ace_list {
+               span.ace_cjk {
+                 color: rgb(185, 6, 144);
+               }
+             }
             span.ace_text {
               color: #000;
             }
@@ -56,20 +61,29 @@ form#create_html {
           height: calc(100% - #{$header-height + $header-margin-bottom});
           max-height: calc(100% - #{$header-height + $header-margin-bottom});
           border: 1px solid #cacaca;
+
+          h1, h2, h3, h4, h5, a, button, div, label {
+            color: black;
+          }
         }
       }
-    }
-    div.preview-side {
-      height: 100%;
 
-      div.preview {
+      div.preview-side {
         height: 100%;
-        overflow-y: scroll;
-        background-color: #8a8a8a;
 
-        div.slide {
-          height: 20.375rem;
-          overflow-y: hidden;
+        h1, h2, h3, h4, h5, a, span, button, div, label {
+          color: black;
+        }
+
+        div.preview {
+          height: 100%;
+          overflow-y: scroll;
+          background-color: #8a8a8a;
+
+          div.slide {
+            height: 20.375rem;
+            overflow-y: hidden;
+          }
         }
       }
     }
