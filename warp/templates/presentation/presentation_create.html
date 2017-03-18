@@ -3,6 +3,30 @@
 {% block title %}{% block head_title %}Presentation Create - warp{% endblock head_title %}{% endblock title %}
 
 {% block content %}
+  <style type="text/css">
+    body {
+      overflow-y: hidden;
+    }
+
+    /* vex popover */
+    div.vex.vex-theme-bottom-left-corner div.vex-content {
+      width: 51rem;
+    }
+    div.vex.vex-theme-bottom-left-corner div.vex-content div.callout-small-font {
+      font-size: 1rem;
+    }
+    div.vex.vex-theme-bottom-left-corner div.vex-content div.callout {
+      display: inline-block;
+      height: 21.875rem;
+    }
+    div.vex.vex-theme-bottom-left-corner div.vex-content div#usage-content {
+      font-family: monospace, monospace;
+      font-size: 0.85em;
+    }
+    div.vex.vex-theme-bottom-left-corner div.vex-content div#usage-content span.text {
+      color: #828388;
+    }
+  </style>
   <form id="create_html" action="{% url 'presentation:create' %}" method="post">
     <script id="usage-content-template" type="text/template">
       <p>Usage</p>

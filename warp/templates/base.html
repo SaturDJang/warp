@@ -28,7 +28,7 @@
   <body>
     {% include "components/header.html" %}
 
-    <div class="small-9 large-centered columns">
+    <div id="base-content" class="small-9 large-centered columns">
       {% block content %}
       {% endblock %}
     </div>
@@ -50,4 +50,3 @@
     {% block extra_javascript %}{% endblock %}
   </body>
 </html>
-
