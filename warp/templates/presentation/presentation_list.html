@@ -6,9 +6,9 @@
 {# presentation #}
 <div class="best-week">
   <div class="best-wrapper small-6 medium-6 large-4 large-offset-2">
-{#    <div class="best-presentation small-8">#}
-{#    </div>#}
-{#    <h3>This presentation is best of week.</h3>#}
+    {#    <div class="best-presentation small-8">#}
+    {#    </div>#}
+    {#    <h3>This presentation is best of week.</h3>#}
   </div>
 </div>
 <div class="presentation">
@@ -21,6 +21,16 @@
               <h1>{{ presentation.subject }}</h1>
             </div>
           </div>
+          <div class="presentation-footer">
+            <div class="warp-list-author">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              {{ presentation.author }}
+            </div>
+            <div class="warp-list-views">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+              {{ presentation.views }}
+            </div>
+          </div>
         </div>
       </a>
     {% endfor %}
@@ -29,23 +39,23 @@
   <ul class="pagination text-center" role="navigation" aria-label="Pagination">
     {% if page_obj.has_previous %}
       <li class="pagination-previous">
-          <a href="?{{ page_obj.previous_page_number.querystring }}">Previous</a>
+        <a href="?{{ page_obj.previous_page_number.querystring }}">Previous</a>
       </li>
     {% else %}
     {% endif %}
     {% for page in page_obj.pages %}
-      {% if page %}
-        {% ifequal page page_obj.number %}
-          <li class="current">{{ page }}</li>
-        {% else %}
-          <li><a href="?{{ page.querystring }}" aria-label="Page {{ page }}">{{ page }}</a></li>
-        {% endifequal %}
-       {% else %}
-         ...
-       {% endif %}
+    {% if page %}
+    {% ifequal page page_obj.number %}
+    <li class="current">{{ page }}</li>
+    {% else %}
+    <li><a href="?{{ page.querystring }}" aria-label="Page {{ page }}">{{ page }}</a></li>
+    {% endifequal %}
+    {% else %}
+    ...
+    {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}
-        <li class="pagination-next"><a href="?{{ page_obj.next_page_number.querystring }}" aria-label="Next page">Next</a></li>
+      <li class="pagination-next"><a href="?{{ page_obj.next_page_number.querystring }}" aria-label="Next page">Next</a></li>
     {% else %}
     {% endif %}
   </ul>

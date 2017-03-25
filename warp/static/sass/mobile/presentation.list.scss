@@ -20,12 +20,14 @@ div.large-centered {
     div.row {
       div.medium-6 {
         div.presentation-main {
-          margin: 0 0 1rem 0;
-          border: 1px solid rgba(10, 10, 10, 0.25);
+          margin: 0;
+          border-top: 1px solid rgba(10, 10, 10, 0.25);
+          border-left: 1px solid rgba(10, 10, 10, 0.25);
+          border-right: 1px solid rgba(10, 10, 10, 0.25);
           position: relative;
           color: #0a0a0a;
           background-color: white;
-          border-radius: 5px;
+          border-radius: 5px 5px 0 0;
           padding-bottom: 75%;
           div.warp-list-subject {
             position: absolute;
@@ -37,6 +39,18 @@ div.large-centered {
               font-size: 25px;
               margin-bottom: 0;
             }
+          }
+        }
+        div.presentation-footer {
+          margin: 0 0 1rem 0;
+          background-color: #1e4675;
+          height: 34px;
+          text-align: right;
+          border-radius: 0 0 5px 5px;
+          div {
+            line-height: 34px;
+            margin-right: 8px;
+            display: inline-block;
           }
         }
       }
