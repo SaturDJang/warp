@@ -1,7 +1,8 @@
 div.best-week {
   width: 100%;
   height: 40%;
-  background-color: black;
+  background-color: #030F1D;
+  box-shadow: #010206 0 3px 14px -2px;
 }
 div.large-centered {
   div.best-week {
@@ -53,6 +54,7 @@ div.large-centered {
       }
 
       a {
+        color: #354586;
         &:hover {
           color: white;
           background-color: transparent;
