@@ -1,8 +1,7 @@
 div#header {
-  background-color: #232F3C;
+  background-color: #121a24;
   height: $desktop-header-height;
   max-width: none;
-  margin-bottom: 32px;
   border-bottom: 1px solid $key-green-color;
 
   div.large-centered {
@@ -19,14 +18,12 @@ div#header {
         margin-right: 32px;
       }
 
-      input {
-        border-top: none;
-        border-right: none;
-        border-left: none;
-        border-bottom: 1px solid white;
-        background: none;
-        outline: none;
-        color: white;
+      i.fa-search {
+        display: none;
+      }
+
+      input.search {
+        display: none;
       }
 
       input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -68,6 +65,11 @@ div#header {
         line-height: $desktop-header-height;
         color: white;
       }
+
+      a.create-button {
+        display: none;
+      }
+
       span.user-name {
         color: $key-orange-color;
         cursor: pointer;

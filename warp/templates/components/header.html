@@ -1,17 +1,17 @@
 {% load i18n %}
 
 <div id="header" class="row">
-  <div class="small-9 large-centered columns">
+  <div class="small-11 small-centered large-9 large-centered columns">
     <div class="title">
       <a href="/">Warp</a>
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input placeholder="search.."/>
+      <input class="search" placeholder="search.."/>
     </div>
     <div class="feature">
       {% if user.is_authenticated %}
-        <span>Hi,<span class="user-name">{{ user.username }}</span></span>
+        <span class="name-warpper">Hi,<span class="user-name">{{ user.username }}</span></span>
         <div class="vertical-divider"></div>
-        <a href="{% url 'presentation:create' %}">Create</a>
+        <a class="create-button" href="{% url 'presentation:create' %}">Create</a>
         <form method="post" action="{% url 'account_logout' %}">
           {% csrf_token %}
           {% if redirect_field_value %}
