@@ -17,12 +17,9 @@ div.large-centered {
     div.row {
       div.medium-6 {
         div.presentation-main {
-          margin: 0 0 1rem 0;
-          border: 1px solid rgba(10, 10, 10, 0.25);
           position: relative;
           color: #0a0a0a;
           background-color: white;
-          border-radius: 5px;
           padding-bottom: 75%;
           div.warp-list-subject {
             position: absolute;
@@ -35,6 +32,8 @@ div.large-centered {
               margin-bottom: 0;
             }
           }
+        }
+        div.presentation-footer {
         }
       }
     }
