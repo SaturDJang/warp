@@ -1,0 +1,63 @@
+div.best-week {
+  width: 100%;
+  height: 40%;
+  background-color: black;
+}
+div.large-centered {
+  div.best-week {
+    margin: 0 0 2rem 0;
+    div.best-wrapper {
+      div.best-presentation {
+        width: 100%;
+        padding-bottom: 75%;
+        background-color: white;
+      }
+    }
+  }
+  div.presentation {
+    margin-bottom: 1em;
+    div.row {
+      div.medium-6 {
+        div.presentation-main {
+          margin: 0 0 1rem 0;
+          border: 1px solid rgba(10, 10, 10, 0.25);
+          position: relative;
+          color: #0a0a0a;
+          background-color: white;
+          border-radius: 5px;
+          padding-bottom: 75%;
+          div.warp-list-subject {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            h1 {
+              text-align: center;
+              color: black;
+              font-size: 25px;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+    ul.pagination {
+      li.pagination-previous, li.pagination-next {
+        a {
+          color: $key-green-color;
+        }
+      }
+      .current {
+        border-radius: 25px;
+        background-color: $key-orange-color;
+      }
+
+      a {
+        &:hover {
+          color: white;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

@@ -4,18 +4,21 @@
 {% block content %}
 
 {# presentation #}
+<div class="best-week">
+  <div class="best-wrapper small-6 medium-6 large-4 large-offset-2">
+    <div class="best-presentation small-8">
+    </div>
+    <h3>This presentation is best of week.</h3>
+  </div>
+</div>
 <div class="presentation">
   <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
     {% for presentation in presentations %}
       <a href="{% url 'presentation:detail' pk=presentation.pk %}">
-        <div class="medium-4 columns">
-          <div class="callout" data-equalizer-watch>
+        <div class="medium-6 large-4 columns">
+          <div class="presentation-main">
             <div class="warp-list-subject">
               <h1>{{ presentation.subject }}</h1>
-            </div>
-            <div class="warp-list-inform">
-              <p>{{ presentation.author }}</p>
-              <p>views: {{ presentation.views }}</p>
             </div>
           </div>
         </div>
@@ -42,7 +45,7 @@
        {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}
-        <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+        <li class="pagination-next"><a href="?{{ page_obj.next_page_number.querystring }}" aria-label="Next page">Next</a></li>
     {% else %}
     {% endif %}
   </ul>
