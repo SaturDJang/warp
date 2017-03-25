@@ -1,0 +1,97 @@
+div#header {
+  background-color: #121a24;
+  height: $desktop-header-height;
+  max-width: none;
+  border-bottom: 1px solid $key-green-color;
+
+  div.large-centered {
+    height: 100%;
+    div.title {
+      float: left;
+      margin-bottom: 0;
+      height: $desktop-header-height;
+
+      a {
+        font-size: 24px;
+        line-height: 64px;
+        color: $key-green-color;
+        margin-right: 32px;
+      }
+
+      i.fa-search {
+        display: inline-block;
+      }
+
+      input.search {
+        display: inline-block;
+      }
+
+      input.search {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid white;
+        background: none;
+        outline: none;
+        color: white;
+      }
+
+      input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+          color: white;
+        }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          color: white;
+          opacity:  1;
+        }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: white;
+          opacity:  1;
+        }
+      input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: white;
+        }
+
+      i {
+        margin-right: 3px;
+        color: white;
+      }
+    }
+
+    div.feature {
+      float: right;
+      height: 64px;
+      div.vertical-divider {
+        display: initial;
+        border-bottom: none;
+        border-top: none;
+        border-right: solid 1px white;
+        clear: none;
+        height: 3px;
+        width: 0;
+        margin-right: 10px;
+      }
+      a, span {
+        margin: 6px;
+        line-height: $desktop-header-height;
+        color: white;
+      }
+
+      a.create-button {
+        display: inline-block;
+      }
+
+      span.user-name {
+        color: $key-orange-color;
+        cursor: pointer;
+      }
+      form {
+        margin: 6px;
+        display: inline;
+        button {
+          line-height: $desktop-header-height;
+          color: white;
+        }
+      }
+    }
+  }
+}
