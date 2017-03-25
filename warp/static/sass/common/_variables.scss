@@ -3,11 +3,11 @@ $mobile-max-width: 479px;
 
 $tablet-min-width: 480px;
 $tablet-mid-width: 650px;
-$tablet-max-width: 976px;
+$tablet-max-width: 1024px;
 
 $scrollbar-width: 17;
 
-$desktop-product-width-unit: 320;
+$desktop-product-width-unit: 460;
 $desktop-max-width: $desktop-product-width-unit * 3;
 $cross-desktop-max-width: ( $desktop-max-width + $scrollbar-width ) * 1px;
 
