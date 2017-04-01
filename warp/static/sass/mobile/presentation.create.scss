@@ -11,8 +11,17 @@ form#create_html {
     div.callout-full {
       height: 100%;
       display: flex;
+      background-color: $key-background-color;
 
       div {
+        h1 {
+          color: white;
+        }
+        h2 {
+          a {
+            color: $key-orange-color;
+          }
+        }
         align-self: center;
         margin: auto;
       }
