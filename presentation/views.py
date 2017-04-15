@@ -1,11 +1,13 @@
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
-from django.shortcuts import redirect, render
 
 from pure_pagination import PaginationMixin
 
+from warp.users.models import User
 from .forms import PresentationCreateForm
-from .models import Presentation, Slide
+from .models import Presentation
 
 
 class PresentationList(PaginationMixin, ListView):
@@ -20,28 +22,15 @@ class PresentationDetail(DetailView):
     context_object_name = 'presentation'
 
 
-def presentation_create(request):
-    form = PresentationCreateForm(request.POST)
+class PresentationCreate(CreateView):
+    model = Presentation
+    form_class = PresentationCreateForm
+    success_url = reverse_lazy('presentation:list')
+    template_name_suffix = '_create'
 
-    if request.method == 'POST':
-        if form.is_valid():
-            presentation = Presentation.objects.create(
-                subject=form.cleaned_data.get('subject'),
-                author=request.user,
-                is_public=form.cleaned_data.get('is_public')
-            )
+    def form_valid(self, form):
+        form.user = self.request.user
+        form.cleaned_data['author'] = User.objects.get(username=form.user.username)
+        return super(PresentationCreate, self).form_valid(form)
 
-            slide_list = request.POST.getlist('slide_list[]', [])
 
-            for slide in slide_list:
-                Slide.objects.create(
-                    presentation=presentation,
-                    slide_order=slide['slide_order'],
-                    markdown=slide['markdown'],
-                    html=slide['html'],
-                )
-            return redirect('presentation:list')
-
-    context = {'form': form}
-
-    return render(request, 'presentation/presentation_create.html', context)
