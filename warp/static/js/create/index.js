@@ -20,7 +20,7 @@ $(() => {
   const usageButton = new UsageButton();
   usageButton.init();
 
-  editor.setTheme('ace/theme/chrome');
+  editor.setTheme('ace/theme/tomorrow_night_bright');
   aceSession.setMode('ace/mode/markdown_warp');
   editor.renderer.setShowGutter(false);
   editor.on('change', md2html);

@@ -1,4 +1,17 @@
+body {
+  div.large-centered {
+    height: 100%;
+  }
+
+  div.ace-chrome div.ace_line span.ace_text {
+    color: #000;
+  }
+}
+
 form#create_html {
+  h1 {
+    color: black;
+  }
   height: calc(100% - #{$desktop-header-height} - #{$desktop-header-margin-bottom});
 
   label.usage-switch-elems {
