@@ -57,7 +57,7 @@ form#create_html {
             }
           }
         }
-        div#id_markdown {
+        div#markdown_editor {
           height: calc(100% - #{$header-height + $header-margin-bottom});
           max-height: calc(100% - #{$header-height + $header-margin-bottom});
           border: 1px solid #cacaca;
