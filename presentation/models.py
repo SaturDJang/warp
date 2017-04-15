@@ -10,9 +10,14 @@ class Presentation(TimeStampedModel):
     views = models.IntegerField(default=0)
     is_public = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.subject
+
 
 class Slide(TimeStampedModel):
     presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)
     slide_order = models.PositiveSmallIntegerField()
     markdown = models.TextField()
-    html = models.TextField()
+
+    def __str__(self):
+        return self.markdown
