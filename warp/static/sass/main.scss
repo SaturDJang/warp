@@ -15,10 +15,12 @@
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
   @import "tablet/header";
   @import "tablet/presentation.list";
+  @import "tablet/presentation.create";
 }
 
 //desktop
 @media screen and (min-width: $cross-desktop-max-width) {
   @import "desktop/header";
   @import "desktop/presentation.list";
+  @import "desktop/presentation.create";
 }
