@@ -177,16 +177,8 @@ form#create_html {
           height: 100%;
           overflow-y: scroll;
           background-color: #8a8a8a;
-
-          div.slide {
-            position: relative;
-            padding-bottom: calc((100% * 3 / 4) - (10px));
-            overflow-y: hidden;
-          }
         }
       }
     }
   }
 }
-
-
