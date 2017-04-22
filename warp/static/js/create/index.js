@@ -1,12 +1,27 @@
 /* global window, $, marked, vex, ace, UsageButton, preview, document, location */
+const RATIO = {
+  h1: 0.20,
+  h2: 0.17,
+  h3: 0.14,
+  h4: 0.11,
+  h5: 0.08,
+  p: 0.05
+};
 
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
 
   const resizeSlides = () => {
+    const hArray = ["h1", "h2", "h3", "h4", "h5", "p"];
     const previewWidth = $('.preview').width();
+    const previewWidthRatioApply = previewWidth * 0.75;
     $('.slide').height(previewWidth * 0.75);
+
+    hArray.forEach(size => {
+      $(`.slide ${size}`).css('font-size', `${previewWidthRatioApply * RATIO[size]}px`);
+    });
+
     preview.syncWithEditorCaret(editor);
   };
 
