@@ -22,5 +22,5 @@
 @media screen and (min-width: $cross-desktop-max-width) {
   @import "desktop/header";
   @import "desktop/presentation.list";
-  @import "desktop/presentation.create";
+  @import "tablet/presentation.create";
 }
