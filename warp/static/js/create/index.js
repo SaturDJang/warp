@@ -8,18 +8,26 @@ const RATIO = {
   p: 0.05
 };
 
+const SLIDE_RATIO = 0.75;
+const PADDING_RATIO = 0.05;
+const MARGIN_RATIO = 0.05;
+
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
 
   const resizeSlides = () => {
+    const $slide = $('.slide');
     const hArray = ["h1", "h2", "h3", "h4", "h5", "p"];
-    const previewWidth = $('.preview').width();
-    const previewWidthRatioApply = previewWidth * 0.75;
-    $('.slide').height(previewWidth * 0.75);
+    const $previewWidth = $('.preview').width();
+    const previewWidthRatioApply = $previewWidth * SLIDE_RATIO;
+    $slide.outerHeight(previewWidthRatioApply);
+    $slide.css('padding', `${$previewWidth * PADDING_RATIO}px`);
 
     hArray.forEach(size => {
-      $(`.slide ${size}`).css('font-size', `${previewWidthRatioApply * RATIO[size]}px`);
+      const $font = $(`.slide ${size}`);
+      $font.css('font-size', `${previewWidthRatioApply * RATIO[size]}px`);
+      $font.css('margin-bottom', `${previewWidthRatioApply * MARGIN_RATIO}px`);
     });
 
     preview.syncWithEditorCaret(editor);
