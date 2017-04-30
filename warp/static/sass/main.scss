@@ -6,10 +6,11 @@
 
 //default apply (mobile first)
 
-@import "mobile/presentation.create";
 @import "mobile/header";
 @import "mobile/login";
+@import "mobile/presentation.create";
 @import "mobile/presentation.list";
+@import "mobile/presentation.detail";
 
 //tablet-all
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
