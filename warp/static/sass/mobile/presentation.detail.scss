@@ -1,0 +1,33 @@
+div#detail {
+  div.slide-pane {
+    border: 1px solid $key-green-color;
+    border-radius: 5px;
+    div.slides {
+      visibility: hidden;
+      div {
+        height: 30vw;
+      }
+    }
+    div.controller {
+      border-radius: 0 0 4px 4px;
+      background-color: $key-green-color;
+      height: 40px;
+      position: relative;
+      div.arrows {
+        font-size: 2em;
+        text-align: center;
+        a {
+          margin-left: 10vw;
+          margin-right: 10vw;
+        }
+      }
+      div.extra-commands {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 0 10px 0;
+        font-size: 1.5em;
+      }
+    }
+  }
+}
