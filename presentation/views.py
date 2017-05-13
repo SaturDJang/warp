@@ -3,6 +3,7 @@ from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from pure_pagination import PaginationMixin
 
 from warp.users.models import User
