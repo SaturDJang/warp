@@ -22,7 +22,7 @@ class PresentationDetail(DetailView):
     context_object_name = 'presentation'
 
 
-class PresentationCreate(CreateView):
+class PresentationCreate(LoginRequiredMixin, CreateView):
     model = Presentation
     form_class = PresentationCreateForm
     success_url = reverse_lazy('presentation:list')
