@@ -17,16 +17,6 @@ class PresentationList(PaginationMixin, ListView):
     ordering = ['-pk']
 
 
-class MyPresentationList(PaginationMixin, ListView):
-    model = Presentation
-    paginate_by = 9
-    context_object_name = 'presentations'
-    ordering = ['-pk']
-
-    def get_queryset(self):
-        return Presentation.objects.filter(author=self.request.user)
-
-
 class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'

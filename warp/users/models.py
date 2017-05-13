@@ -18,5 +18,13 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+    def get_profile_image_url(self):
+        social_image = None
+        if self.socialaccount_set.all():
+            social_image = self.socialaccount_set.all()[0].get_avatar_url()
+        if social_image:
+            return social_image
+        return '/static/images/default_profile.svg'
+
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})

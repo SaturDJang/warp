@@ -5,17 +5,16 @@
 
 {% block content %}
 <div class="container">
-
   <div class="row">
     <div class="col-sm-12">
-
       <h2>{{ object.username }}</h2>
       {% if object.name %}
         <p>{{ object.name }}</p>
       {% endif %}
+      <img src="{{ object.get_profile_image_url }}" alt="">
+
     </div>
   </div>
-
 {% if object == request.user %}
 <!-- Action buttons -->
 <div class="row">
@@ -28,9 +27,32 @@
 
 </div>
 <!-- End Action buttons -->
-{% endif %}
-
-
 </div>
+<!-- Presentation List  -->
+<div class="presentation">
+{% if owned_presentations %}
+  <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
+  {% for presentation in owned_presentations %}
+    <a href="{% url 'presentation:detail' pk=presentation.pk %}">
+      <div class="medium-4 columns">
+        <div class="callout" data-equalizer-watch>
+          <div class="warp-list-subject">
+            <h1>{{ presentation.subject }}</h1>
+          </div>
+          <div class="warp-list-inform">
+            <p>{{ presentation.author }}</p>
+            <p>views: {{ presentation.views }}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+  {% else %}
+    There is no presentation.
+  {% endif %}
+  </div>
+</div>
+<!-- End Presentation List -->
+{% endif %}
 {% endblock content %}
 

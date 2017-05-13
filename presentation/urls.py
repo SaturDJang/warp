@@ -17,10 +17,5 @@ urlpatterns = [
         regex=r'^detail/(?P<pk>\d+)$',
         view=views.PresentationDetail.as_view(),
         name='detail'
-    ),
-    url(
-        regex=r'^me',
-        view=views.MyPresentationList.as_view(),
-        name='me'
     )
 ]
