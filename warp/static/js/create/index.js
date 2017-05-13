@@ -16,6 +16,14 @@ $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
 
+  const imageResiger = (that, naturalWidth, previewWidth) => {
+        if (naturalWidth > previewWidth) {
+          $(that).css('width', `${previewWidth}px`);
+      } else {
+          $(that).css('width', `${previewWidth * 0.3}px`);
+      }
+  };
+
   const resizeSlides = () => {
     const $slide = $('.slide');
     const hArray = ["h1", "h2", "h3", "h4", "h5", "p"];
@@ -23,7 +31,13 @@ $(() => {
     const previewWidthRatioApply = $previewWidth * SLIDE_RATIO;
     $slide.outerHeight(previewWidthRatioApply);
     $slide.css('padding', `${$previewWidth * PADDING_RATIO}px`);
-
+    const $img = $('.slide p img');
+    $img.each(function (index, element) {
+      $(element).get(0).onload = function() {
+        imageResiger(this, this.naturalWidth, $previewWidth)
+      };
+      imageResiger(element, this.naturalWidth , $previewWidth)
+    });
     hArray.forEach(size => {
       const $font = $(`.slide ${size}`);
       $font.css('font-size', `${previewWidthRatioApply * RATIO[size]}px`);
@@ -65,9 +79,6 @@ $(() => {
   const usageButton = new UsageButton();
   usageButton.init();
 
-  resizeSlides();
-  $(window).resize(resizeSlides);
-
   editor.setTheme('ace/theme/tomorrow_night_bright');
   aceSession.setMode('ace/mode/markdown_warp');
   editor.renderer.setShowGutter(false);
@@ -75,4 +86,7 @@ $(() => {
   editor.on('changeSelection', () => {
     preview.syncWithEditorCaret(editor);
   });
+
+  resizeSlides();
+  $(window).resize(resizeSlides);
 });
