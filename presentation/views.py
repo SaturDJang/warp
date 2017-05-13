@@ -17,6 +17,16 @@ class PresentationList(PaginationMixin, ListView):
     ordering = ['-pk']
 
 
+class MyPresentationList(PaginationMixin, ListView):
+    model = Presentation
+    paginate_by = 9
+    context_object_name = 'presentations'
+    ordering = ['-pk']
+
+    def get_queryset(self):
+        return Presentation.objects.filter(author=self.request.user)
+
+
 class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'
@@ -32,5 +42,4 @@ class PresentationCreate(CreateView):
         form.user = self.request.user
         form.cleaned_data['author'] = User.objects.get(username=form.user.username)
         return super(PresentationCreate, self).form_valid(form)
-
 
