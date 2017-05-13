@@ -146,8 +146,12 @@ form#create_html {
       div.preview-side {
         height: 80%;
 
-        h1, h2, h3, h4, h5, a, span, button, div, label {
+        div, span.token.interpolation{
           color: black;
+        }
+
+        a {
+          color: #4678ff;
         }
 
         div.preview {
@@ -160,6 +164,7 @@ form#create_html {
             justify-content: center;
             flex-direction: column;
             overflow-y: hidden;
+            background-color: #ffffff;
             box-shadow: 0 3px 15px #3a3a3a;
           }
         }

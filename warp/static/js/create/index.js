@@ -5,10 +5,13 @@ const RATIO = {
   h3: 0.14,
   h4: 0.11,
   h5: 0.08,
-  p: 0.05,
-  li: 0.05,
-  ul: 0.05,
-  ol: 0.05
+  p: 0.04,
+  pre: 0.04,
+  code: 0.04,
+  span: 0.04,
+  li: 0.04,
+  ul: 0.04,
+  ol: 0.04
 };
 
 const SLIDE_RATIO = 0.75;
@@ -20,19 +23,19 @@ $(() => {
   const aceSession = editor.getSession();
 
   const imageResiger = (that, naturalWidth, previewWidth) => {
-        if (naturalWidth > previewWidth) {
-          $(that).css('width', `${previewWidth}px`);
-      } else {
-          $(that).css('width', `${previewWidth * 0.3}px`);
-      }
+    if (naturalWidth > previewWidth) {
+      $(that).css('width', `${previewWidth}px`);
+    } else {
+      $(that).css('width', `${previewWidth * 0.3}px`);
+    }
   };
 
   const resizeSlides = () => {
     const $slide = $('.slide');
-    const hArray = ["h1", "h2", "h3", "h4", "h5", "p", "li", "ul", "ol"];
-    const $previewWidth = $('.preview').width();
+    const hArray = ["h1", "h2", "h3", "h4", "h5", "p", "pre", "code", "span", "li", "ul", "ol"];
+    const $previewWidth = $('.preview').outerWidth();
     const previewWidthRatioApply = $previewWidth * SLIDE_RATIO;
-    $slide.outerHeight(previewWidthRatioApply);
+    $slide.outerHeight(previewWidthRatioApply-($previewWidth * PADDING_RATIO));
     $slide.css('padding', `${$previewWidth * PADDING_RATIO}px`);
     const $img = $('.slide p img');
     $img.each(function (index, element) {
@@ -45,8 +48,13 @@ $(() => {
       const $font = $(`.slide ${size}`);
       $font.css('font-size', `${previewWidthRatioApply * RATIO[size]}px`);
       $font.css('margin-bottom', `${previewWidthRatioApply * MARGIN_RATIO}px`);
+      $('.slide pre').css('padding', `${previewWidthRatioApply * 0.02}px`);
     });
 
+    $slide.css('margin', `${previewWidthRatioApply * 0.03}px`);
+
+
+    Prism.highlightAll();
     preview.syncWithEditorCaret(editor);
   };
 
@@ -105,6 +113,10 @@ $(() => {
   editor.on('change', md2html);
   editor.on('changeSelection', () => {
     preview.syncWithEditorCaret(editor);
+  });
+
+  marked.setOptions({
+    langPrefix: "language-"
   });
 
   resizeSlides();
