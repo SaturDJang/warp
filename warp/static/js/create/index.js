@@ -5,12 +5,15 @@ const RATIO = {
   h3: 0.14,
   h4: 0.11,
   h5: 0.08,
-  p: 0.05
+  p: 0.05,
+  li: 0.05,
+  ul: 0.05,
+  ol: 0.05
 };
 
 const SLIDE_RATIO = 0.75;
 const PADDING_RATIO = 0.05;
-const MARGIN_RATIO = 0.05;
+const MARGIN_RATIO = 0.01;
 
 $(() => {
   const editor = ace.edit('markdown_editor');
@@ -26,7 +29,7 @@ $(() => {
 
   const resizeSlides = () => {
     const $slide = $('.slide');
-    const hArray = ["h1", "h2", "h3", "h4", "h5", "p"];
+    const hArray = ["h1", "h2", "h3", "h4", "h5", "p", "li", "ul", "ol"];
     const $previewWidth = $('.preview').width();
     const previewWidthRatioApply = $previewWidth * SLIDE_RATIO;
     $slide.outerHeight(previewWidthRatioApply);
