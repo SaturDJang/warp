@@ -33,5 +33,3 @@ class PresentationCreate(LoginRequiredMixin, CreateView):
         form.user = self.request.user
         form.cleaned_data['author'] = User.objects.get(username=form.user.username)
         return super(PresentationCreate, self).form_valid(form)
-
-
