@@ -93,10 +93,6 @@ form#create_html {
       div.preview-side {
         height: 100%;
 
-        h1, h2, h3, h4, h5, a, span, button, div, label {
-          color: black;
-        }
-
         div.preview {
           height: 100%;
           overflow-y: scroll;
@@ -105,6 +101,17 @@ form#create_html {
           div.slide {
             height: 20.375rem;
             overflow-y: hidden;
+            code {
+              border: none;
+              pre {
+                span.token {
+                  font-size: inherit;
+                  &.operator {
+                    background: none;
+                  }
+                }
+              }
+            }
           }
         }
       }
