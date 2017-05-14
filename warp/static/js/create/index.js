@@ -55,8 +55,6 @@ $(() => {
       $('.slide pre').css('padding', `${previewWidthRatioApply * 0.02}px`);
     });
 
-
-    Prism.highlightAll();
     preview.syncWithEditorCaret(editor);
   };
 
@@ -74,6 +72,7 @@ $(() => {
     markdownSlides.forEach((v, i) => {
       appendSlide(v, i);
     });
+    Prism.highlightAll(); // highlights code blocks
     resizeSlides();
   };
 
