@@ -104,7 +104,8 @@
       <div class="row contents-body">
         <div class="editor-side small-6 medium-6 large-6 columns">
           {% csrf_token %}
-          <div id="id_markdown"></div>
+          {{ form.markdown }}
+          <div id="markdown_editor"></div>
         </div>
         <div class="preview-side small-6 medium-6 large-6 columns">
           <div class="preview">

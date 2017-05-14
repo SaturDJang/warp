@@ -16,7 +16,7 @@ const PADDING_RATIO = 0.05;
 const MARGIN_RATIO = 0.01;
 
 $(() => {
-  const editor = ace.edit('id_markdown');
+  const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
 
   const imageResiger = (that, naturalWidth, previewWidth) => {
@@ -65,36 +65,9 @@ $(() => {
       appendSlide(v, i);
     });
     resizeSlides();
+
+    document.getElementById('id_markdown').value = editor.getValue();
   };
-
-  $('#create_html').submit((e) => {
-    const subject = $('#id_subject').val();
-    const isPublic = document.querySelector('#id_is_public').checked;
-    const slideList = editor.getValue().split(/={5,}/g).map((v, i) => ({
-      slide_order: i,
-      markdown: v.trim(),
-      html: marked(v.trim()),
-    }));
-
-    const presentation = {
-      subject,
-      is_public: isPublic,
-      slide_list: slideList,
-    };
-
-    $.ajax({
-      url: 'create',
-      method: 'POST',
-      data: presentation,
-    }).done(() => {
-      location.href = '/';
-    }).error((xhr, st, err) => {
-      console.log(xhr);
-      console.error(err);
-    });
-
-    e.preventDefault();
-  });
 
   const usageButton = new UsageButton();
   usageButton.init();
