@@ -55,6 +55,9 @@ $(() => {
       $('.slide pre').css('padding', `${previewWidthRatioApply * 0.02}px`);
     });
 
+    // When the screen is resized, the scroll position of preview is also changed,
+    // so that user might be disappointed.
+    // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   };
 
