@@ -48,9 +48,9 @@ $(() => {
       resizeImg(element, this.naturalWidth, $previewWidth);
     });
 
-    Object.keys(ZOOMING_RATIO.elems).forEach((size) => {
-      const $font = $(`.slide ${size}`);
-      $font.css('font-size', `${previewWidthRatioApply * ZOOMING_RATIO.elems[size]}px`);
+    Object.keys(ZOOMING_RATIO.elems).forEach((elem) => {
+      const $font = $(`.slide ${elem}`);
+      $font.css('font-size', `${previewWidthRatioApply * ZOOMING_RATIO.elems[elem]}px`);
       $font.css('margin-bottom', `${previewWidthRatioApply * ZOOMING_RATIO.margin}px`);
       $('.slide pre').css('padding', `${previewWidthRatioApply * 0.02}px`);
     });
