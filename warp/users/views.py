@@ -19,9 +19,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         username = self.kwargs['username']
         if username == self.request.user.username:
-            context['presentations'] = Presentation.objects.authored_by(username)[:9]
+            context['presentations'] = Presentation.objects.authored_by(username).order_by('-pk')[:9]
         else:
-            context['presentations'] = Presentation.objects.authored_by(username).public()[:9]
+            context['presentations'] = Presentation.objects.authored_by(username).public().order_by('-pk')[:9]
         # TODO implement like presentation
         # context['like_presentation_list'] =
 
