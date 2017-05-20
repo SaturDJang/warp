@@ -1,24 +1,71 @@
 div#detail {
   div.slide-pane {
-    border: 1px solid $key-green-color;
+    background-color: white;
     border-radius: 5px;
-    div.slides {
-      visibility: hidden;
-      div {
-        height: 30vw;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    div.pane-header {
+      height: 28px;
+      border-radius: 5px 5px 0 0;
+      background-color: #1e4675;
+    }
+    div.slick-list {
+      height: 100%;
+      div.slick-track {
+        height: 100%;
       }
     }
+    div.slides {
+      border: 1px solid rgba(10, 10, 10, 0.247);
+      border-bottom: none;
+      div, span.token.interpolation, h1, h2, h3, h4, h5 {
+        color: black;
+      }
+
+      a {
+        color: #4678ff;
+      }
+
+      div.slide {
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        overflow-y: hidden;
+        outline: none;
+        code {
+          border: none;
+          padding: 0;
+          pre {
+            span.token {
+              font-size: inherit;
+              &.operator {
+                background: none;
+              }
+            }
+          }
+        }
+        div {
+          height: 100%;
+        }
+
+        &.slick-current {
+          visibility: visible;
+        }
+      }
+    }
+
     div.controller {
       border-radius: 0 0 4px 4px;
-      background-color: $key-green-color;
+      background-color: #1e4675;
       height: 40px;
       position: relative;
       div.arrows {
         font-size: 2em;
         text-align: center;
         a {
-          margin-left: 10vw;
-          margin-right: 10vw;
+          margin-left: 7vw;
+          margin-right: 7vw;
         }
       }
       div.extra-commands {
@@ -28,6 +75,41 @@ div#detail {
         margin: 0 10px 0;
         font-size: 1.5em;
       }
+    }
+  }
+
+  div.buttons {
+    a.view {
+
+    }
+    a.share {
+
+    }
+    div.buttons-right {
+      text-align: right;
+    }
+  }
+  div.presentation-info {
+    color: gray;
+    font-size: 1.5rem;
+    div.presentation-title {
+      color: white;
+      font-size: 2rem;
+      div.warp-list-views {
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-left: 15px;
+      }
+    }
+    div.presentation-author {
+      display: inline-block;
+      a {
+        color: $key-green-color;
+      }
+    }
+    div.presentation-published-date {
+      display: inline-block;
+      font-weight: bold;
     }
   }
 }
