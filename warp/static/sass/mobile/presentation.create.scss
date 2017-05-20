@@ -1,4 +1,17 @@
+body {
+  div.large-centered {
+    height: 100%;
+  }
+
+  div.ace-chrome div.ace_line span.ace_text {
+    color: #000;
+  }
+}
+
 form#create_html {
+  h1 {
+    color: black;
+  }
   height: calc(100% - #{$desktop-header-height} - #{$desktop-header-margin-bottom});
 
   label.usage-switch-elems {
@@ -11,8 +24,17 @@ form#create_html {
     div.callout-full {
       height: 100%;
       display: flex;
+      background-color: $key-background-color;
 
       div {
+        h1 {
+          color: white;
+        }
+        h2 {
+          a {
+            color: $key-orange-color;
+          }
+        }
         align-self: center;
         margin: auto;
       }
@@ -59,7 +81,6 @@ form#create_html {
         }
         div#markdown_editor {
           height: calc(100% - #{$header-height + $header-margin-bottom});
-          max-height: calc(100% - #{$header-height + $header-margin-bottom});
           border: 1px solid #cacaca;
 
           h1, h2, h3, h4, h5, a, button, div, label {
@@ -71,10 +92,6 @@ form#create_html {
       div.preview-side {
         height: 100%;
 
-        h1, h2, h3, h4, h5, a, span, button, div, label {
-          color: black;
-        }
-
         div.preview {
           height: 100%;
           overflow-y: scroll;
@@ -83,6 +100,17 @@ form#create_html {
           div.slide {
             height: 20.375rem;
             overflow-y: hidden;
+            code {
+              border: none;
+              pre {
+                span.token {
+                  font-size: inherit;
+                  &.operator {
+                    background: none;
+                  }
+                }
+              }
+            }
           }
         }
       }

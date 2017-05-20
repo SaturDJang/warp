@@ -1,9 +1,4 @@
 div#header {
-  background-color: #040B14;
-  height: $desktop-header-height;
-  max-width: none;
-  border-bottom: 1px solid $key-green-color;
-
   div.large-centered {
     height: 100%;
     div.title {
@@ -19,11 +14,21 @@ div#header {
       }
 
       i.fa-search {
-        display: none;
+        display: inline-block;
       }
 
       input.search {
-        display: none;
+        display: inline-block;
+      }
+
+      input.search {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid white;
+        background: none;
+        outline: none;
+        color: white;
       }
 
       input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -67,7 +72,7 @@ div#header {
       }
 
       a.create-button {
-        display: none;
+        display: inline-block;
       }
 
       span.user-name {
