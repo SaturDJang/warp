@@ -2,10 +2,16 @@ div#detail {
   div.slide-pane {
     border: 1px solid $key-green-color;
     border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     div.slides {
       visibility: hidden;
       div {
-        height: 30vw;
+        margin: 10px;
+        height: 40vw;
+        :focus {
+          outline: none;
+        }
       }
     }
     div.controller {
@@ -29,5 +35,9 @@ div#detail {
         font-size: 1.5em;
       }
     }
+  }
+
+  div.buttons-right {
+    text-align: right;
   }
 }
