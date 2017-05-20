@@ -18,7 +18,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         username = self.kwargs['username']
-        if username is self.request.user.username:
+        if username == self.request.user.username:
             context['presentations'] = Presentation.objects.authored_by(username)[:9]
         else:
             context['presentations'] = Presentation.objects.authored_by(username).public()[:9]
