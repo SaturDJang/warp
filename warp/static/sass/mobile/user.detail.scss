@@ -1,0 +1,12 @@
+div#user-profile {
+  min-height: 100%;
+  div.profile {
+    margin-top: 15px;
+    .row {
+      .user-profile-img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+}
