@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
@@ -16,10 +18,8 @@
     {% for presentation in presentations %}
       <a href="{% url 'presentation:detail' pk=presentation.pk %}">
         <div class="medium-6 large-4 columns">
-          <div class="presentation-main">
-            <div class="warp-list-subject">
-              <h1>{{ presentation.subject }}</h1>
-            </div>
+          <div class="preview">
+            <div class="slide">{{ presentation.slide_set.first.markdown }}</div>
           </div>
           <div class="presentation-footer">
             <div class="warp-list-author">
@@ -60,4 +60,11 @@
     {% endif %}
   </ul>
 </div>
+{% endblock %}
+
+{% block extra_javascript %}
+  <script src="{% static 'vendor/marked/marked.js' %}"></script>
+  <script type="text/javascript" src="{% static 'dist/js/resize-slides.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'dist/js/mdElemsToHtmlElems.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'dist/js/list/index.min.js' %}"></script>
 {% endblock %}
