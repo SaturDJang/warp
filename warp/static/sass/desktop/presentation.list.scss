@@ -14,29 +14,6 @@ div.large-centered {
   }
   div.presentation {
     margin-bottom: 1em;
-    div.row {
-      div.medium-6 {
-        div.presentation-main {
-          position: relative;
-          color: #0a0a0a;
-          background-color: white;
-          padding-bottom: 75%;
-          div.warp-list-subject {
-            position: absolute;
-            top: 40%;
-            width: 100%;
-            h1 {
-              text-align: center;
-              color: black;
-              font-size: 25px;
-              margin-bottom: 0;
-            }
-          }
-        }
-        div.presentation-footer {
-        }
-      }
-    }
 
     ul.pagination {
       li.pagination-previous, li.pagination-next {

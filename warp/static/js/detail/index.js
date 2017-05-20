@@ -1,14 +1,10 @@
-/* global $, marked, window, resizeSlides */
+/* global $, marked, window, resizeSlides, mdElemsToHtmlElems */
 
 $(() => {
-  const $slides = $('.slides');
+  const slidesSelector = '.slides';
+  const $slides = $(slidesSelector);
 
-  // Convert markdown contents to html
-  $slides.find('div').each((i, elem) => {
-    const md = elem.textContent;
-    const html = marked(md, { sanitize: true });
-    elem.innerHTML = html; // eslint-disable-line
-  });
+  mdElemsToHtmlElems(slidesSelector);
 
   $slides.slick({
     arrows: false,
