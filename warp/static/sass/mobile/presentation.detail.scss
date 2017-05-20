@@ -1,10 +1,14 @@
 div#detail {
   div.slide-pane {
-    border: 1px solid $key-green-color;
-    border-radius: 5px;
     background-color: white;
-    margin-top: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
     margin-bottom: 20px;
+    div.pane-header {
+      height: 28px;
+      border-radius: 5px 5px 0 0;
+      background-color: #1e4675;
+    }
     div.slick-list {
       height: 100%;
       div.slick-track {
@@ -12,6 +16,8 @@ div#detail {
       }
     }
     div.slides {
+      border: 1px solid rgba(10, 10, 10, 0.247);
+      border-bottom: none;
       div, span.token.interpolation, h1, h2, h3, h4, h5 {
         color: black;
       }
@@ -51,15 +57,15 @@ div#detail {
 
     div.controller {
       border-radius: 0 0 4px 4px;
-      background-color: $key-green-color;
+      background-color: #1e4675;
       height: 40px;
       position: relative;
       div.arrows {
         font-size: 2em;
         text-align: center;
         a {
-          margin-left: 10vw;
-          margin-right: 10vw;
+          margin-left: 7vw;
+          margin-right: 7vw;
         }
       }
       div.extra-commands {
@@ -81,6 +87,29 @@ div#detail {
     }
     div.buttons-right {
       text-align: right;
+    }
+  }
+  div.presentation-info {
+    color: gray;
+    font-size: 1.5rem;
+    div.presentation-title {
+      color: white;
+      font-size: 2rem;
+      div.warp-list-views {
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-left: 15px;
+      }
+    }
+    div.presentation-author {
+      display: inline-block;
+      a {
+        color: $key-green-color;
+      }
+    }
+    div.presentation-published-date {
+      display: inline-block;
+      font-weight: bold;
     }
   }
 }
