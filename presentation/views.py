@@ -17,10 +17,18 @@ class PresentationList(PaginationMixin, ListView):
     context_object_name = 'presentations'
     ordering = ['-pk']
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related('author')
+
 
 class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.select_related('author')
 
 
 class PresentationCreate(LoginRequiredMixin, CreateView):

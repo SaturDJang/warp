@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse
+from django.db.models import Prefetch
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
 from presentation.models import Presentation
@@ -22,6 +23,8 @@ class UserDetailView(LoginRequiredMixin, DetailView):
             context['presentations'] = Presentation.objects.authored_by(username)[:9]
         else:
             context['presentations'] = Presentation.objects.authored_by(username).public()[:9]
+
+        context['presentations'] = context['presentations'].select_related('author')
         # TODO implement like presentation
         # context['like_presentation_list'] =
 
