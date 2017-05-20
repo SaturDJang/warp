@@ -87,12 +87,13 @@
           </div>
         </div>
       </div>
-      <div class="row contents-option">
+      <div class="row contents-header">
         <div class="small-6 medium-6 large-6 columns">
           <div class="input-group">
             <label for="{{ form.tags.auto_id }}" class="input-group-label">{{ form.tags.label }}</label>
             {{ form.tags }}
           </div>
+          {{ form.tags.errors }}
         </div>
       </div>
       <div class="row contents-option">

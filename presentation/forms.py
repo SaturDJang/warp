@@ -15,6 +15,16 @@ class PresentationCreateForm(forms.ModelForm):
     is_public = forms.BooleanField(initial=True, required=False)
     tags = forms.CharField()
 
+    def clean_tags(self):
+        tags_text = self.cleaned_data['tags']
+        tag_names = self.split_tags(tags_text)
+        for tag_name in tag_names:
+            tag_name.strip()
+            if len(tag_name) < 0 or len(tag_name) > 16:
+                raise ValidationError("Tag is too long.")
+
+        return tags_text
+
     def save(self, commit=True):
         presentation = Presentation.objects.create(
             subject=self.cleaned_data.get('subject'),
