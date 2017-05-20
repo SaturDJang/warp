@@ -1,0 +1,25 @@
+footer#footer {
+  margin-top: 30px;
+  background-color: #040B14;
+  font-size: 16px;
+  a {
+      color: $key-green-color;
+  }
+  div.copyright {
+    height: 70px;
+    padding: 10px 1em 0 1em;
+    line-height: 4;
+    color: gray;
+    display: inline-block
+  }
+  div.links {
+    height: 70px;
+    padding: 10px 1em 0 1em;
+    line-height: 4;
+    display: inline;
+    float: right;
+    a {
+      margin-left: 20px;
+    }
+  }
+}
