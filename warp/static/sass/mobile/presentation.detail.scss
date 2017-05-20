@@ -1,4 +1,5 @@
 div#detail {
+  min-height: 100%;
   div.slide-pane {
     background-color: white;
     border-radius: 5px;
@@ -91,12 +92,12 @@ div#detail {
   }
   div.presentation-info {
     color: gray;
-    font-size: 1.5rem;
+    font-size: 1.1em;
     div.presentation-title {
       color: white;
-      font-size: 2rem;
+      font-size: 2em;
       div.warp-list-views {
-        font-size: 1.3rem;
+        font-size: 0.7em;
         display: inline-block;
         margin-left: 15px;
       }
@@ -110,6 +111,7 @@ div#detail {
     div.presentation-published-date {
       display: inline-block;
       font-weight: bold;
+      font-size: 1em;
     }
   }
 }
