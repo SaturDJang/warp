@@ -1,5 +1,11 @@
 
-.warp-my-page-profile-img {
-  max-width: 140px;
-  max-height: 140px;
+.profile {
+  margin-top: 15px;
+  .row {
+    .user-profile-img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
 }

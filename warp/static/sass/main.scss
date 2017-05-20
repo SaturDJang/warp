@@ -11,12 +11,14 @@
 @import "mobile/presentation.create";
 @import "mobile/presentation.list";
 @import "mobile/presentation.detail";
+@import "mobile/user.detail";
 
 //tablet-all
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
   @import "tablet/header";
   @import "tablet/presentation.list";
   @import "tablet/presentation.create";
+  @import "tablet/user.detail";
 }
 
 //desktop
@@ -24,4 +26,5 @@
   @import "desktop/header";
   @import "desktop/presentation.list";
   @import "tablet/presentation.create";
+  @import "tablet/user.detail";
 }

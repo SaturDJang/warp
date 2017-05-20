@@ -4,55 +4,94 @@
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
-      <img src="{{ object.get_profile_image_url }}" alt="">
+  <div class="profile">
+    <div class="container">
+      <div class="row">
+        <div class=" small-4 medium-3 columns text-right">
+          <img class="user-profile-img" src="{{ object.get_profile_image_url }}" alt=""/>
+        </div>
+        <div class="small-8 medium-9 columns text-left">
+          <h1 class="">{{ object.username }}</h1>
+          {% if object.name %}
+            <p>{{ object.name }}</p>
+          {% endif %}
+          {% if object.get_full_name %}
+            <p>
+              {{ object.get_full_name }}
+            </p>
+          {% endif %}
+          {% if object.email %}
+            <p>{{ object.email }}</p>
+          {% endif %}
 
-    </div>
-  </div>
-{% if object == request.user %}
-<!-- Action buttons -->
-<div class="row">
-
-  <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-
-</div>
-<!-- End Action buttons -->
-</div>
-<!-- Presentation List  -->
-<div class="presentation">
-{% if owned_presentations %}
-  <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
-  {% for presentation in owned_presentations %}
-    <a href="{% url 'presentation:detail' pk=presentation.pk %}">
-      <div class="medium-4 columns">
-        <div class="callout" data-equalizer-watch>
-          <div class="warp-list-subject">
-            <h1>{{ presentation.subject }}</h1>
-          </div>
-          <div class="warp-list-inform">
-            <p>{{ presentation.author }}</p>
-            <p>views: {{ presentation.views }}</p>
-          </div>
+          {% if object == request.user %}
+            <!-- Action buttons -->
+            <p>
+              <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">Update My Info</a>
+              <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
+              <!-- Your Stuff: Custom user template urls -->
+            </p>
+            <!-- End Action buttons -->
+          {% endif %}
         </div>
       </div>
-    </a>
-  {% endfor %}
-  {% else %}
-    There is no presentation.
-  {% endif %}
+    </div>
   </div>
+  <hr>
+<!-- Presentation List  -->
+<div class="presentation">
+  <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
+    {% for presentation in presentations %}
+      <a href="{% url 'presentation:detail' pk=presentation.pk %}">
+        <div class="medium-6 large-4 columns">
+          <div class="presentation-main">
+            <div class="warp-list-subject">
+              <h1>{{ presentation.subject }}</h1>
+            </div>
+          </div>
+          <div class="presentation-footer">
+            <div class="warp-list-author">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              {{ presentation.author }}
+            </div>
+            <div class="warp-list-views">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+              {{ presentation.views }}
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+    {% if page_obj.has_previous %}
+      <li class="pagination-previous">
+        <a href="?{{ page_obj.previous_page_number.querystring }}">Previous</a>
+      </li>
+    {% else %}
+    {% endif %}
+    {% for page in page_obj.pages %}
+      {% if page %}
+        {% ifequal page page_obj.number %}
+          <li class="current">{{ page }}</li>
+        {% else %}
+          <li><a href="?{{ page.querystring }}" aria-label="Page {{ page }}">{{ page }}</a></li>
+        {% endifequal %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li class="pagination-next"><a href="?{{ page_obj.next_page_number.querystring }}" aria-label="Next page">Next</a>
+      </li>
+    {% else %}
+    {% endif %}
+  </ul>
 </div>
+
 <!-- End Presentation List -->
-{% endif %}
 {% endblock content %}
+{% block extra_css %}
+{% endblock %}
 

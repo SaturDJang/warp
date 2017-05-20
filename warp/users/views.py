@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
-
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from presentation.models import Presentation
 from .models import User
@@ -17,12 +16,12 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     slug_url_kwarg = 'username'
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super(UserDetailView, self).get_context_data(**kwargs)
-
-        # Add in a QuerySet of all the books
-        context['owned_presentations'] = Presentation.objects.filter(author=self.request.user)
-
+        username = self.kwargs['username']
+        if username is self.request.user.username:
+            context['presentations'] = Presentation.objects.authored_by(username)[:9]
+        else:
+            context['presentations'] = Presentation.objects.authored_by(username).public()[:9]
         # TODO implement like presentation
         # context['like_presentation_list'] =
 
