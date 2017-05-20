@@ -18,6 +18,7 @@ div.large-centered {
   div.presentation {
     div.row {
       div.medium-6 {
+        float: left;
         div.preview {
           margin: 0;
           border-top: 1px solid rgba(10, 10, 10, 0.25);
@@ -59,7 +60,7 @@ div.large-centered {
           }
         }
         div.presentation-footer {
-          margin: 0 0 1rem 0;
+          margin: 0 0 0.3rem 0;
           background-color: #1e4675;
           height: 34px;
           text-align: right;
@@ -68,6 +69,25 @@ div.large-centered {
             line-height: 34px;
             margin-right: 8px;
             display: inline-block;
+          }
+        }
+        div.presentation-info {
+          margin: 0 0 60px 0;
+          div.presentation-title {
+            display: inline-block;
+            font-size: 1.5rem;
+          }
+          div.presentation-author {
+            display: inline-block;
+            float: right;
+            font-size: 1rem;
+            a {
+              color: gray;
+              line-height: 2.7;
+            }
+            a.author {
+              color: $key-green-color;
+            }
           }
         }
       }
