@@ -7,6 +7,7 @@
 //default apply (mobile first)
 
 @import "mobile/header";
+@import "mobile/footer";
 @import "mobile/login";
 @import "mobile/presentation.create";
 @import "mobile/presentation.list";
@@ -19,6 +20,7 @@
   @import "tablet/presentation.list";
   @import "tablet/presentation.create";
   @import "tablet/user.detail";
+  @import "tablet/footer";
 }
 
 //desktop
@@ -27,4 +29,5 @@
   @import "desktop/presentation.list";
   @import "tablet/presentation.create";
   @import "tablet/user.detail";
+  @import "tablet/footer";
 }
