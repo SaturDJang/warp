@@ -5,8 +5,9 @@
 
 {% block content %}
   <div class="row" id="detail">
-    <div class="small-8 medium-8 large-8 small-centered medium-centered large-centered columns">
+    <div class="small-12 medium-8 large-8 small-centered medium-centered large-centered columns">
       <div class="slide-pane">
+        <div class="pane-header"></div>
         <div class="slides">
           {% for slide in presentation.slide_set.all %}
           <div class="slide">{{ slide.markdown }}</div>
@@ -22,14 +23,20 @@
           </div>
         </div>
       </div>
-      <div class="row buttons">
-        <div class="columns small-8 medium-8 large-8">
-          <a class="button medium view">View</a>
-          <a class="button medium like">Like</a>
+      <div class="presentation-info">
+        <div class="presentation-title">
+          {{ presentation.subject }}
+          <div class="warp-list-views">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+            {{ presentation.views }}
+          </div>
         </div>
-
-        <div class="buttons-right columns small-1 medium-1 large-1">
-          <a class="button medium share">Share</a>
+        By <div class="presentation-author">
+          <a>{{ presentation.author }}</a>
+        </div>
+        <br>
+        Published <div class="presentation-published-date">
+          {{ presentation.created }}
         </div>
       </div>
     </div>
