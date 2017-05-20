@@ -14,15 +14,14 @@
 
 //tablet-all
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
-
-}
-
-//tablet-650~
-@media screen and (min-width: $tablet-mid-width) and (max-width: $tablet-max-width) {
-
+  @import "tablet/header";
+  @import "tablet/presentation.list";
+  @import "tablet/presentation.create";
 }
 
 //desktop
 @media screen and (min-width: $cross-desktop-max-width) {
-
+  @import "desktop/header";
+  @import "desktop/presentation.list";
+  @import "tablet/presentation.create";
 }

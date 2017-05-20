@@ -12,20 +12,25 @@
     div.vex.vex-theme-bottom-left-corner div.vex-content {
       width: 51rem;
     }
+
     div.vex.vex-theme-bottom-left-corner div.vex-content div.callout-small-font {
       font-size: 1rem;
     }
+
     div.vex.vex-theme-bottom-left-corner div.vex-content div.callout {
       display: inline-block;
       height: 21.875rem;
     }
+
     div.vex.vex-theme-bottom-left-corner div.vex-content div#usage-content {
       font-family: monospace, monospace;
       font-size: 0.85em;
     }
+
     div.vex.vex-theme-bottom-left-corner div.vex-content div#usage-content span.text {
       color: #828388;
     }
+
   </style>
   <form id="create_html" action="{% url 'presentation:create' %}" method="post">
     <script id="usage-content-template" type="text/template">
@@ -66,14 +71,14 @@
     <div id="small-contents" class="show-for-small-only">
       <div class="callout callout-full text-center">
         <div>
-          <h1>Sorry, we don't support the create page on mobile devices.</h1>
+          <h1>Sorry, we don't support this page on mobile devices.</h1>
           <h2>
             <a href="{% url 'presentation:list' %}"><strong>Go to main</strong></a>
           </h2>
         </div>
       </div>
     </div>
-    <div id="large-medium-contents" class="hide-for-small-only">
+    <div id="large-medium-contents" class="hide-for-small-only medium-10 medium-centered large-10 large-centered">
       <div class="row contents-header">
         <div class="small-6 medium-6 large-6 columns">
           <div class="input-group">
@@ -81,18 +86,24 @@
             {{ form.subject }}
           </div>
         </div>
-        <div class="small-6 medium-6 large-6 columns">
-          <input type="checkbox" id={{ form.is_public.auto_id }}><label for="{{ form.subject.auto_id }}" class="">Public</label>
-          <input class="medium button" type="submit" value="Create">
+      </div>
+      <div class="row contents-option">
+        <div class="small-6 medium-6 large-6 columns option">
+          <div class="switch-wrapper">
+            <input type="radio" name="toggle" id="left-switch" checked /><label for="left-switch">Public</label>
+            <input type="radio" name="toggle" id="right-switch" /><label for="right-switch">Private</label>
+          </div>
+        </div>
+        <div class="small-6 medium-6 large-6 columns option2">
+          <div class="option-wrapper">
+            <a class="button small usage-toggle-btn">Show Usage</a>
+            <input class="medium button" type="submit" value="Create">
+          </div>
         </div>
       </div>
       <div class="row contents-body">
         <div class="editor-side small-6 medium-6 large-6 columns">
           {% csrf_token %}
-          <div class="header">
-            <label class="usage-switch-elems" for="{{ form.markdown.auto_id }}">{{ form.markdown.label }}</label>
-            <a class="button small usage-toggle-btn">Show Usage</a>
-          </div>
           {{ form.markdown }}
           <div id="markdown_editor"></div>
         </div>

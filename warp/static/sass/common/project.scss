@@ -72,10 +72,15 @@ $red: #b94a48;
 }
 
 body {
-  background-color: #232F3C;
+  background-color: $key-background-color;
 
   h1, h2, h3, h4, h5, a, span, button, div, label {
     color: white;
+  }
+
+  code {
+    color: #DD4A68;
+    background-color: #f5f2f0;
   }
 
   .blank {

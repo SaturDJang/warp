@@ -8,7 +8,7 @@ from .models import Presentation, Slide
 class PresentationCreateForm(forms.ModelForm):
 
     subject = forms.CharField(
-        max_length=50, widget=forms.TextInput(attrs={'class': 'input-group-field',}))
+        max_length=50, widget=forms.TextInput(attrs={'class': 'input-group-field', }))
 
     markdown = forms.CharField(widget=forms.HiddenInput(), required=True)
     is_public = forms.BooleanField(initial=True, required=False)
@@ -40,4 +40,3 @@ class PresentationCreateForm(forms.ModelForm):
     class Meta:
         model = Presentation
         fields = ['subject', 'markdown', 'is_public']
-
