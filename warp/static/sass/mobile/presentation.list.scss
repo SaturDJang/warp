@@ -38,9 +38,13 @@ div.large-centered {
           }
 
           div.slide {
-            height: 20.375rem;
-            overflow-y: hidden;
+            height: 17.5rem;
             visibility: hidden;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            overflow-y: hidden;
+            outline: none;
             code {
               border: none;
               pre {
