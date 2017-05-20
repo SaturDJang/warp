@@ -33,6 +33,10 @@ class Presentation(TimeStampedModel):
 
     objects = PresentationManager()
 
+    def view(self):
+        self.views += 1
+        self.save()
+
     def __str__(self):
         return self.subject
 

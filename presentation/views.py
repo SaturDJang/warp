@@ -22,6 +22,11 @@ class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'
 
+    def get_context_data(self, **kwargs):
+        context = super(PresentationDetail, self).get_context_data()
+        self.object.view()
+        return context
+
 
 class PresentationCreate(LoginRequiredMixin, CreateView):
     model = Presentation
