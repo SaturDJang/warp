@@ -1,65 +1,8 @@
-/* global window, $, marked, vex, ace, UsageButton, preview, document, location, Prism */
+/* global window, $, marked, vex, ace, UsageButton, preview, document, location, Prism, resizeSlides */
 
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-
-  const resizeImg = (that, naturalWidth, previewWidth) => {
-    if (naturalWidth > previewWidth) {
-      $(that).css('width', `${previewWidth}px`);
-    } else {
-      $(that).css('width', `${previewWidth * 0.3}px`);
-    }
-  };
-
-  const resizeSlides = () => {
-    const ZOOMING_RATIO = {
-      elems: {
-        h1: 0.18,
-        h2: 0.15,
-        h3: 0.12,
-        h4: 0.09,
-        h5: 0.06,
-        p: 0.04,
-        pre: 0.04,
-        code: 0.04,
-        span: 0.04,
-        li: 0.04,
-        ul: 0.04,
-        ol: 0.04,
-      },
-      slide: 0.75,
-      padding: 0.05,
-      margin: 0.01,
-    };
-
-    const $slide = $('.slide');
-    const $previewWidth = $('.preview').outerWidth();
-    const previewWidthRatioApply = $previewWidth * ZOOMING_RATIO.slide;
-    $slide.outerHeight(previewWidthRatioApply - ($previewWidth * ZOOMING_RATIO.padding));
-    $slide.css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
-    $slide.css('margin', `${previewWidthRatioApply * 0.03}px`);
-
-    const $img = $('.slide p img');
-    $img.each(function (index, element) {
-      $(element).get(0).onload = function () {
-        resizeImg(this, this.naturalWidth, $previewWidth);
-      };
-      resizeImg(element, this.naturalWidth, $previewWidth);
-    });
-
-    Object.keys(ZOOMING_RATIO.elems).forEach((elem) => {
-      const $font = $(`.slide ${elem}`);
-      $font.css('font-size', `${previewWidthRatioApply * ZOOMING_RATIO.elems[elem]}px`);
-      $font.css('margin-bottom', `${previewWidthRatioApply * ZOOMING_RATIO.margin}px`);
-      $('.slide pre').css('padding', `${previewWidthRatioApply * 0.02}px`);
-    });
-
-    // When the screen is resized, the scroll position of preview is also changed,
-    // so that user might be disappointed.
-    // Because of the above case, we should sync preview with editor cursor on every resizing.
-    preview.syncWithEditorCaret(editor);
-  };
 
   const appendSlide = (content, index) => {
     const $preview = $('.preview');
@@ -96,6 +39,13 @@ $(() => {
     langPrefix: 'language-',
   });
 
-  resizeSlides();
-  $(window).resize(resizeSlides);
+  resizeSlides(false);
+  $(window).resize(() => {
+    resizeSlides(false);
+
+    // When the screen is resized, the scroll position of preview is also changed,
+    // so that user might be disappointed.
+    // Because of the above case, we should sync preview with editor cursor on every resizing.
+    preview.syncWithEditorCaret(editor);
+  });
 });

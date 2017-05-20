@@ -2,18 +2,53 @@ div#detail {
   div.slide-pane {
     border: 1px solid $key-green-color;
     border-radius: 5px;
+    background-color: white;
     margin-top: 20px;
     margin-bottom: 20px;
+    div.slick-list {
+      height: 100%;
+      div.slick-track {
+        height: 100%;
+      }
+    }
     div.slides {
-      visibility: hidden;
-      div {
-        margin: 10px;
-        height: 40vw;
-        :focus {
-          outline: none;
+      div, span.token.interpolation, h1, h2, h3, h4, h5 {
+        color: black;
+      }
+
+      a {
+        color: #4678ff;
+      }
+
+      div.slide {
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        overflow-y: hidden;
+        outline: none;
+        code {
+          border: none;
+          padding: 0;
+          pre {
+            span.token {
+              font-size: inherit;
+              &.operator {
+                background: none;
+              }
+            }
+          }
+        }
+        div {
+          height: 100%;
+        }
+
+        &.slick-current {
+          visibility: visible;
         }
       }
     }
+
     div.controller {
       border-radius: 0 0 4px 4px;
       background-color: $key-green-color;
@@ -37,7 +72,15 @@ div#detail {
     }
   }
 
-  div.buttons-right {
-    text-align: right;
+  div.buttons {
+    a.view {
+
+    }
+    a.share {
+
+    }
+    div.buttons-right {
+      text-align: right;
+    }
   }
 }

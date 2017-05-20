@@ -1,4 +1,4 @@
-/* global $, marked */
+/* global $, marked, window, resizeSlides */
 
 $(() => {
   const $slides = $('.slides');
@@ -14,12 +14,15 @@ $(() => {
     arrows: false,
   });
 
-  $slides.css('visibility', 'visible');
-
   $('#prev-btn').click(() => {
     $slides.slick('slickPrev');
   });
   $('#next-btn').click(() => {
     $slides.slick('slickNext');
+  });
+
+  resizeSlides(true);
+  $(window).resize(() => {
+    resizeSlides(true);
   });
 });
