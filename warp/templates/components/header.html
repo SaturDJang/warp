@@ -9,7 +9,8 @@
     </div>
     <div class="feature">
       {% if user.is_authenticated %}
-        <span class="name-warpper">Hi,<span class="user-name">{{ request.user.username }}</span></span>
+        <span class="name-warpper">Hi,<a href="{% url 'users:detail' request.user.username %}"><span
+          class="user-name">{{ request.user.username }}</span></a></span>
         <div class="vertical-divider"></div>
         <a class="create-button" href="{% url 'presentation:create' %}">Create</a>
         <form method="post" action="{% url 'account_logout' %}">

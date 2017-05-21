@@ -16,33 +16,51 @@ div.large-centered {
     }
   }
   div.presentation {
-    margin-bottom: 1em;
     div.row {
       div.medium-6 {
-        div.presentation-main {
+        float: left;
+        div.preview {
           margin: 0;
           border-top: 1px solid rgba(10, 10, 10, 0.25);
           border-left: 1px solid rgba(10, 10, 10, 0.25);
           border-right: 1px solid rgba(10, 10, 10, 0.25);
-          position: relative;
           color: #0a0a0a;
           background-color: white;
           border-radius: 5px 5px 0 0;
-          padding-bottom: 75%;
-          div.warp-list-subject {
-            position: absolute;
-            top: 40%;
-            width: 100%;
-            h1 {
-              text-align: center;
-              color: black;
-              font-size: 25px;
-              margin-bottom: 0;
+          width: 100%;
+          height: 100%;
+          overflow-y: scroll;
+          div, span.token.interpolation, h1, h2, h3, h4, h5 {
+            color: black;
+          }
+
+          a {
+            color: #4678ff;
+          }
+
+          div.slide {
+            height: 17.5rem;
+            visibility: hidden;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            overflow-y: hidden;
+            outline: none;
+            code {
+              border: none;
+              pre {
+                span.token {
+                  font-size: inherit;
+                  &.operator {
+                    background: none;
+                  }
+                }
+              }
             }
           }
         }
         div.presentation-footer {
-          margin: 0 0 1rem 0;
+          margin: 0 0 0.3rem 0;
           background-color: #1e4675;
           height: 34px;
           text-align: right;
@@ -51,6 +69,25 @@ div.large-centered {
             line-height: 34px;
             margin-right: 8px;
             display: inline-block;
+          }
+        }
+        div.presentation-info {
+          margin: 0 0 60px 0;
+          div.presentation-title {
+            display: inline-block;
+            font-size: 1.5rem;
+          }
+          div.presentation-author {
+            display: inline-block;
+            float: right;
+            font-size: 1rem;
+            a {
+              color: gray;
+              line-height: 2.7;
+            }
+            a.author {
+              color: $key-green-color;
+            }
           }
         }
       }

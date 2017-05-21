@@ -18,12 +18,13 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         username = self.kwargs['username']
-        if username is self.request.user.username:
-            context['presentations'] = Presentation.objects.authored_by(username)[:9]
+        if username == self.request.user.username:
+            context['presentations'] = Presentation.objects.authored_by(username).order_by('-pk')[:9]
         else:
             context['presentations'] = Presentation.objects.authored_by(username).public()[:9]
 
         context['presentations'] = context['presentations'].select_related('author')
+
         # TODO implement like presentation
         # context['like_presentation_list'] =
 
