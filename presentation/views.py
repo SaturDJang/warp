@@ -1,9 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
-
-from django.contrib.auth.mixins import LoginRequiredMixin
 from pure_pagination import PaginationMixin
 
 from warp.users.models import User
@@ -18,17 +17,12 @@ class PresentationList(PaginationMixin, ListView):
     ordering = ['-pk']
 
     def get_queryset(self):
-        qs = super().get_queryset()
-        return qs.select_related('author')
+        return super(PresentationList, self).get_queryset().public()
 
 
 class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'
-
-    def get_queryset(self):
-        qs = super().get_queryset()
-        return qs.select_related('author')
 
 
 class PresentationCreate(LoginRequiredMixin, CreateView):
