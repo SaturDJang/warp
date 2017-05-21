@@ -17,5 +17,10 @@ urlpatterns = [
         regex=r'^detail/(?P<pk>\d+)$',
         view=views.PresentationDetail.as_view(),
         name='detail'
+    ),
+    url(
+        regex=r'^like/(?P<pk>\d+)$',
+        view=views.like_presentation,
+        name='like'
     )
 ]

@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponse
+from django.http import HttpResponseNotAllowed
 from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
-
-from django.contrib.auth.mixins import LoginRequiredMixin
 from pure_pagination import PaginationMixin
 
 from warp.users.models import User
@@ -33,3 +34,12 @@ class PresentationCreate(LoginRequiredMixin, CreateView):
         form.user = self.request.user
         form.cleaned_data['author'] = User.objects.get(username=form.user.username)
         return super(PresentationCreate, self).form_valid(form)
+
+
+def like_presentation(request, pk):
+    if request.method == 'PUT':
+        presentation = Presentation.objects.get(pk=pk)
+        is_like = presentation.like_toggle(request.user)
+        return HttpResponse(status=200, content=is_like)
+
+    return HttpResponseNotAllowed()
