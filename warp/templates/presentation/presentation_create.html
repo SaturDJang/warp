@@ -32,7 +32,7 @@
     }
 
   </style>
-  <form id="create_html" action="{% url 'presentation:create' %}" method="post">
+  <form id="create_html" action="{{ action_url }}" method="post">
     <script id="usage-content-template" type="text/template">
       <p>Usage</p>
       <div id="usage-content">
@@ -97,7 +97,7 @@
         <div class="small-6 medium-6 large-6 columns option2">
           <div class="option-wrapper">
             <a class="button small usage-toggle-btn">Show Usage</a>
-            <input class="medium button" type="submit" value="Create">
+            <input class="medium button" type="submit" value="{{ submit_button_text }}">
           </div>
         </div>
       </div>
@@ -114,6 +114,9 @@
         </div>
       </div>
     </div>
+    {% if object.pk %}
+      <input type="text" value="{{ object.pk }}" id="{{ form.pk.auto_id }}">
+    {% endif %}
   </form>
 {% endblock %}
 

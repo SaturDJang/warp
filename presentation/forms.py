@@ -5,8 +5,7 @@ from django import forms
 from .models import Presentation, Slide
 
 
-class PresentationCreateForm(forms.ModelForm):
-
+class PresentationBaseForm(forms.ModelForm):
     subject = forms.CharField(
         max_length=50, widget=forms.TextInput(attrs={'class': 'input-group-field', }))
 
@@ -14,15 +13,7 @@ class PresentationCreateForm(forms.ModelForm):
     is_public = forms.BooleanField(initial=True, required=False)
 
     def save(self, commit=True):
-        presentation = Presentation.objects.create(
-            subject=self.cleaned_data.get('subject'),
-            author=self.user,
-            is_public=self.cleaned_data.get('is_public')
-        )
-
-        self.add_slide_list(presentation)
-
-        return self.instance
+        pass
 
     def add_slide_list(self, presentation):
         markdown = self.cleaned_data.get('markdown')
@@ -40,3 +31,28 @@ class PresentationCreateForm(forms.ModelForm):
     class Meta:
         model = Presentation
         fields = ['subject', 'markdown', 'is_public']
+
+
+class PresentationCreateForm(PresentationBaseForm):
+    def save(self, commit=True):
+        presentation = Presentation.objects.create(
+            subject=self.cleaned_data.get('subject'),
+            author=self.user,
+            is_public=self.cleaned_data.get('is_public')
+        )
+
+        self.add_slide_list(presentation)
+
+        return self.instance
+
+
+class PresentationUpdateForm(PresentationBaseForm):
+    def save(self, commit=True):
+        self.instance.subject = self.cleaned_data.get('subject')
+        self.instance.is_public = self.cleaned_data.get('is_public')
+        self.instance.save()
+
+        self.add_slide_list(self.instance)
+
+        return self.instance
+
