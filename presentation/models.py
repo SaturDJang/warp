@@ -26,12 +26,20 @@ class PresentationManager(Manager):
         return self.get_queryset().authored_by(author)
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=16, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Presentation(TimeStampedModel):
     subject = models.CharField(max_length=50)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     is_public = models.BooleanField(default=True)
+    tags = models.ManyToManyField(Tag)
 
     like_users = models.ManyToManyField(User, related_name='like_users')
 
