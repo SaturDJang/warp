@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Manager
 from django.db.models import QuerySet
@@ -55,6 +56,8 @@ class Presentation(TimeStampedModel):
     def __str__(self):
         return self.subject
 
+    def get_absolute_url(self, *args, **kwargs):
+        return reverse('presentation:detail', kwargs={'pk': self.pk})
 
 class Slide(TimeStampedModel):
     presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)
