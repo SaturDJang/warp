@@ -67,6 +67,7 @@ class Presentation(TimeStampedModel):
     def get_absolute_url(self, *args, **kwargs):
         return reverse('presentation:detail', kwargs={'pk': self.pk})
 
+
 class Slide(TimeStampedModel):
     presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)
     slide_order = models.PositiveSmallIntegerField()
