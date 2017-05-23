@@ -17,7 +17,7 @@ class PresentationQuerySet(QuerySet):
 
 class PresentationManager(Manager):
     def get_queryset(self):
-        return PresentationQuerySet(self.model, using=self._db)
+        return PresentationQuerySet(self.model, using=self._db).select_related('author')
 
     def public(self):
         return self.get_queryset().public()

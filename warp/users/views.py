@@ -22,6 +22,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
             context['presentations'] = Presentation.objects.authored_by(username).order_by('-pk')[:9]
         else:
             context['presentations'] = Presentation.objects.authored_by(username).public().order_by('-pk')[:9]
+
         # TODO implement like presentation
         # context['like_presentation_list'] =
 

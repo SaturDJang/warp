@@ -5,10 +5,10 @@ from django.http import HttpResponseNotAllowed
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
+from django.views.generic import UpdateView
 from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import ListView
-from django.views.generic import UpdateView
 
 from pure_pagination import PaginationMixin
 
@@ -22,6 +22,9 @@ class PresentationList(PaginationMixin, ListView):
     paginate_by = 9
     context_object_name = 'presentations'
     ordering = ['-pk']
+
+    def get_queryset(self):
+        return super(PresentationList, self).get_queryset().public()
 
 
 class PresentationDetail(DetailView):
