@@ -22,3 +22,11 @@ $(() => {
     resizeSlides(true);
   });
 });
+
+
+const likePresentation = (pk) => {
+    $.ajax({
+        method: "PUT",
+        url: "/like/" + pk
+    })
+};

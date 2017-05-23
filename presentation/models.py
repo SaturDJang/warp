@@ -27,9 +27,24 @@ class PresentationManager(Manager):
 
 class Presentation(TimeStampedModel):
     subject = models.CharField(max_length=50)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
     is_public = models.BooleanField(default=True)
+
+    like_users = models.ManyToManyField(User, related_name='like_users')
+
+    def like_toggle(self, user):
+        is_like = False
+        try:
+            self.like_users.get(id=user.id)
+            self.like_users.remove(user)
+        except User.DoesNotExist:
+            self.like_users.add(user)
+            is_like = True
+        self.likes = self.like_users.count()
+        self.save()
+        return is_like
 
     objects = PresentationManager()
 

@@ -30,6 +30,9 @@
             <i class="fa fa-eye" aria-hidden="true"></i>
             {{ presentation.views }}
           </div>
+          <div>
+            <button class="button primary" onclick="likePresentation({{ presentation.pk }})">Like</button>
+          </div>
         </div>
         By <div class="presentation-author">
           <a>{{ presentation.author }}</a>
