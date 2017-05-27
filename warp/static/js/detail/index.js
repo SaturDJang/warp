@@ -28,6 +28,7 @@ $(() => {
   mdElemsToHtmlElems(slidesSelector);
 
   $slides.css('display', 'none');
+  $slides.css('visibility', 'visible');
   $currentSlide = $slides.eq(currentSlideIndex);
   $currentSlide.css('display', 'flex');
 
@@ -73,6 +74,8 @@ $(() => {
         $slides.css('width', '');
       }
     });
+  } else {
+    $('#full-screen-btn').hide();
   }
   $('#full-screen-btn').click(() => {
     if (screenfull.enabled) {
