@@ -17,8 +17,8 @@ $(() => {
     $slides.slick('slickNext');
   });
 
-  resizeSlides(true);
+  resizeSlides(true, $('div#normal-view'));
   $(window).resize(() => {
-    resizeSlides(true);
+    resizeSlides(true, $('div#normal-view'));
   });
 });
