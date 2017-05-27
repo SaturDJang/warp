@@ -81,7 +81,12 @@ $(() => {
   });
 
   resizeSlides(true, $('div#normal-view'));
+  let prevWindowWidth = $(window).width();
   $(window).resize(() => {
+    if ($(window).width() === prevWindowWidth) {
+      return;
+    }
+    prevWindowWidth = $(window).width();
     resizeSlides(true, $('div#normal-view'));
   });
 });
