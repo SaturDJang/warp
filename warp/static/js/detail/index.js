@@ -2,7 +2,7 @@
 
 $(() => {
   const slidesSelector = '.slides';
-  const $slides = $(slidesSelector).children();
+  const $slides = $('.slide');
 
   let currentSlideIndex = 0;
   let $currentSlide;
@@ -35,6 +35,12 @@ $(() => {
     goToPrevSlide();
   });
   $('#next-btn').click(() => {
+    goToNextSlide();
+  });
+  $('#prev-touch').click(() => {
+    goToPrevSlide();
+  });
+  $('#next-touch').click(() => {
     goToNextSlide();
   });
 
