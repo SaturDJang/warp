@@ -1,4 +1,4 @@
-/* global window, $ */
+/* global window, $, screenfull */
 
 window.resizeSlides = (isSlick, $parent) => {
   const ZOOMING_RATIO = {
@@ -29,7 +29,11 @@ window.resizeSlides = (isSlick, $parent) => {
   // slide selector, wrapper selector, margin
   if (isSlick) {
     // new (detail page)
-    $previewWidth = $slidePane.outerWidth();
+    if (screenfull.isFullscreen) {
+      $previewWidth = window.screen.height * 1.333333;
+    } else {
+      $previewWidth = $slidePane.outerWidth();
+    }
     previewWidthRatioApply = $previewWidth * ZOOMING_RATIO.slide;
     $slide.outerHeight(previewWidthRatioApply);
     $slide.css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
