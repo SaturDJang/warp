@@ -4,8 +4,8 @@ $(() => {
   mdElemsToHtmlElems('.preview');
   $('.slide').css('visibility', 'visible');
 
-  resizeSlides(false);
+  resizeSlides(false, $('.preview'));
   $(window).resize(() => {
-    resizeSlides(false);
+    resizeSlides(false, $('.preview'));
   });
 });
