@@ -17,6 +17,7 @@ div#detail {
       }
     }
     div.slides {
+      position: relative;
       border: 1px solid rgba(10, 10, 10, 0.247);
       border-bottom: none;
       div, span.token.interpolation, h1, h2, h3, h4, h5 {
@@ -25,6 +26,21 @@ div#detail {
 
       a {
         color: #4678ff;
+      }
+
+      a#prev-touch {
+        height: 100%;
+        width: 50%;
+        top: 0;
+        position: absolute;
+        left: 0;
+      }
+      a#next-touch {
+        height: 100%;
+        width: 50%;
+        top: 0;
+        position: absolute;
+        right: 0;
       }
 
       div.slide {

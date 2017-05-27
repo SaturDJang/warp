@@ -13,6 +13,8 @@
             {% for slide in presentation.slide_set.all %}
             <div class="slide">{{ slide.markdown }}</div>
             {% endfor %}
+            <a id="prev-touch"></a>
+            <a id="next-touch"></a>
           </div>
           <div class="controller">
             <div class="arrows">
