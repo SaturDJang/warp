@@ -2,19 +2,32 @@
 
 $(() => {
   const slidesSelector = '.slides';
-  const $slides = $(slidesSelector);
+  const $slides = $(slidesSelector).children();
+
+  let currentSlideIndex = 0;
+  let $currentSlide;
+
+  function slideMover(idx) {
+    $slides.css('display', 'none');
+    $currentSlide = $slides.eq(idx);
+    $currentSlide.css('display', 'flex');
+  }
 
   mdElemsToHtmlElems(slidesSelector);
 
-  $slides.slick({
-    arrows: false,
-  });
+  $slides.css('display', 'none');
+  $currentSlide = $slides.eq(currentSlideIndex);
+  $currentSlide.css('display', 'flex');
 
   $('#prev-btn').click(() => {
-    $slides.slick('slickPrev');
+    currentSlideIndex -= 1;
+    if (currentSlideIndex < 0) currentSlideIndex = 0;
+    slideMover(currentSlideIndex);
   });
   $('#next-btn').click(() => {
-    $slides.slick('slickNext');
+    currentSlideIndex += 1;
+    if (currentSlideIndex > $slides.length - 1) currentSlideIndex = $slides.length - 1;
+    slideMover(currentSlideIndex);
   });
 
   resizeSlides(true, $('div#normal-view'));
