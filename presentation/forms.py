@@ -1,7 +1,7 @@
 import re
 
-from django.core.exceptions import ValidationError
 from django import forms
+from django.core.exceptions import ValidationError
 
 from .models import Presentation, Slide, Tag
 
@@ -90,7 +90,7 @@ class PresentationCreateForm(PresentationBaseForm):
 
         self.add_slide_list(presentation)
         self.add_tags(presentation)
-        return self.instance
+        return presentation
 
 
 class PresentationUpdateForm(PresentationBaseForm):
