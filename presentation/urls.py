@@ -19,14 +19,13 @@ urlpatterns = [
         name='detail'
     ),
     url(
-<<<<<<< HEAD
-        regex=r'^like/(?P<pk>\d+)$',
-        view=views.like_presentation,
-        name='like'
-=======
         regex=r'^update/(?P<pk>\d+)$',
         view=views.PresentationUpdate.as_view(),
         name='update'
->>>>>>> 7e8d864d76cf608c0ca87e6657d8ffe5bc83e354
-    )
+    ),
+    url(
+        regex=r'^like/(?P<pk>\d+)$',
+        view=views.like_presentation,
+        name='like'
+    ),
 ]
