@@ -2,6 +2,7 @@ import re
 
 from django import forms
 from django.core.exceptions import ValidationError
+from django.forms import RadioSelect
 
 from .models import Presentation, Slide, Tag
 
@@ -11,7 +12,10 @@ class PresentationBaseForm(forms.ModelForm):
         max_length=50, widget=forms.TextInput(attrs={'class': 'input-group-field', }))
 
     markdown = forms.CharField(widget=forms.HiddenInput(), required=True)
-    is_public = forms.BooleanField(initial=True, required=False)
+    is_public = forms.BooleanField(initial=True,
+                                   required=False,
+                                   widget=RadioSelect(choices=[
+                                       (True, 'public'), (False, 'private')]))
     tags = forms.CharField()
 
     def clean_tags(self):
@@ -26,17 +30,6 @@ class PresentationBaseForm(forms.ModelForm):
 
     def save(self, commit=True):
         pass
-
-        presentation = Presentation.objects.create(
-            subject=self.cleaned_data.get('subject'),
-            author=self.user,
-            is_public=self.cleaned_data.get('is_public')
-        )
-
-        self.add_slide_list(presentation)
-        self.add_tags(presentation)
-
-        return self.instance
 
     def add_slide_list(self, presentation):
         markdown = self.cleaned_data.get('markdown')
@@ -85,7 +78,7 @@ class PresentationCreateForm(PresentationBaseForm):
         presentation = Presentation.objects.create(
             subject=self.cleaned_data.get('subject'),
             author=self.user,
-            is_public=self.cleaned_data.get('is_public')
+            is_public=self.cleaned_data.get('is_public') == 'public'
         )
 
         self.add_slide_list(presentation)

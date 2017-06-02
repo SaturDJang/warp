@@ -99,8 +99,10 @@
       <div class="row contents-option">
         <div class="small-6 medium-6 large-6 columns option">
           <div class="switch-wrapper">
-            <input type="radio" name="toggle" id="left-switch" checked /><label for="left-switch">Public</label>
-            <input type="radio" name="toggle" id="right-switch" /><label for="right-switch">Private</label>
+            <input type="radio" value="True" class="left-switch" name="is_public" id="{{ form.is_public.auto_id }}"
+                   checked/><label for="{{ form.is_public.auto_id }}">Public</label>
+            <input type="radio" value="False" class="right-switch" name="is_public" id="right-switch"/><label
+            for="right-switch">Private</label>
           </div>
         </div>
         <div class="small-6 medium-6 large-6 columns option2">

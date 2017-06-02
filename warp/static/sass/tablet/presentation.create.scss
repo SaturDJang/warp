@@ -78,13 +78,13 @@ form#create_html {
               line-height: 2.3rem;
             }
 
-            &#left-switch {
+            &.left-switch {
               + label {
                 float: left;
                 border-right: none;
               }
             }
-            &#right-switch {
+            &.right-switch {
               + label {
                 float: right;
                 border-left: none;
