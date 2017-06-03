@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load staticfiles crispy_forms_tags %}
 {% block title %}{% block head_title %}Presentation Create - warp{% endblock head_title %}{% endblock title %}
 
 {% block content %}
@@ -82,25 +82,18 @@
       <div class="row contents-header">
         <div class="small-6 medium-6 large-6 columns">
           <div class="input-group">
-            <label for="{{ form.subject.auto_id }}" class="input-group-label">{{ form.subject.label }}</label>
-            {{ form.subject }}
+            {{ form.subject | as_crispy_field }}
           </div>
-        </div>
-      </div>
-      <div class="row contents-header">
-        <div class="small-6 medium-6 large-6 columns">
           <div class="input-group">
-            <label for="{{ form.tags.auto_id }}" class="input-group-label">{{ form.tags.label }}</label>
-            {{ form.tags }}
+            {{ form.tags | as_crispy_field }}
           </div>
-          {{ form.tags.errors }}
         </div>
       </div>
       <div class="row contents-option">
         <div class="small-6 medium-6 large-6 columns option">
           <div class="switch-wrapper">
-            <input type="radio" value="True" class="left-switch" name="is_public" id="{{ form.is_public.auto_id }}"
-                   checked/><label for="{{ form.is_public.auto_id }}">Public</label>
+            <input type="radio" value="True" class="left-switch" name="is_public" id="{{ form.is_public.auto_id }}" checked/>
+            <label for="{{ form.is_public.auto_id }}">Public</label>
             <input type="radio" value="False" class="right-switch" name="is_public" id="right-switch"/><label
             for="right-switch">Private</label>
           </div>
