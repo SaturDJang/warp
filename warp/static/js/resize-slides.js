@@ -26,6 +26,9 @@ window.resizeSlides = (isSlick, $parent) => {
   let $previewWidth;
   let previewWidthRatioApply;
 
+  const $activeSlide = $('div.active');
+  let fontRatio = $activeSlide.outerWidth() * ZOOMING_RATIO.slide;
+
   // slide selector, wrapper selector, margin
   if (isSlick) {
     // new (detail page)
@@ -45,9 +48,9 @@ window.resizeSlides = (isSlick, $parent) => {
     $previewWidth = $('.slide').outerWidth();
     $slide.css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
     $slide.outerHeight($previewWidth * ZOOMING_RATIO.slide);
+    fontRatio = $slide.outerWidth() * ZOOMING_RATIO.slide;
   }
 
-  const fontRatio = $slide.outerWidth() * ZOOMING_RATIO.slide;
 
   const resizeImg = (that, naturalWidth, previewWidth) => {
     let imageSize;
