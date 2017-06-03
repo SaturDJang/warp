@@ -29,9 +29,14 @@
           <div class="warp-list-views">
             <i class="fa fa-eye" aria-hidden="true"></i>
             {{ presentation.views }}
+            Likes: {{ presentation.likes }}
           </div>
+
           <div>
             <button class="button primary" onclick="likePresentation({{ presentation.pk }})">Like</button>
+            {% if presentation.author == request.user %}
+              <a class="button primary" href="{% url "presentation:update" presentation.pk %}">Update</a>
+            {% endif %}
           </div>
         </div>
         By <div class="presentation-author">
