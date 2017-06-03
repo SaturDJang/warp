@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z $COMPOSE_FILE ]
+then
+    export COMPOSE_FILE=docker-compose-dev.yml
+    echo "INFO: Environment variable COMPOSE_FILE is exported as $COMPOSE_FILE"
+fi
+
+docker-compose -f docker-compose-dev.yml run django python manage.py $1 $2 $3 $4 $5 $6

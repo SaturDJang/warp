@@ -92,3 +92,11 @@ $(() => {
     resizeSlides(true, $('div#normal-view'));
   });
 });
+
+
+const likePresentation = (pk) => {
+    $.ajax({
+        method: "PUT",
+        url: "/like/" + pk
+    })
+};
