@@ -64,12 +64,8 @@ $(() => {
       if (screenfull.isFullscreen) {
         $slides.height(window.screen.height);
         $slides.width(window.screen.height * 1.333333);
-        // $slides.css('height', '100%');
-        // $slides.css('width', '100%');
         resizeSlides(true, $('div#normal-view'));
       } else {
-        // $(slidesSelector).css('height', '');
-        // $(slidesSelector).css('width', '');
         $slides.css('height', '');
         $slides.css('width', '');
       }
