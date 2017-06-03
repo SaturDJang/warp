@@ -1,6 +1,6 @@
-/* global window, $ */
+/* global window, $, screenfull */
 
-window.resizeSlides = (isSlick) => {
+window.resizeSlides = (isDetail, $parent) => {
   const ZOOMING_RATIO = {
     elems: {
       h1: 0.18,
@@ -21,17 +21,25 @@ window.resizeSlides = (isSlick) => {
     margin: 0.01,
   };
 
-  const $slide = $('.slide');
+  const $slide = $parent.find('.slide');
+  const $slidePane = $parent.find('.slide-pane');
   let $previewWidth;
   let previewWidthRatioApply;
 
+  const $activeSlide = $('div.active');
+  let fontRatio = $activeSlide.outerWidth() * ZOOMING_RATIO.slide;
+
   // slide selector, wrapper selector, margin
-  if (isSlick) {
+  if (isDetail) {
     // new (detail page)
-    $previewWidth = $('.slide-pane').outerWidth();
+    if (screenfull.isFullscreen) {
+      $previewWidth = window.screen.height * 1.333333;
+    } else {
+      $previewWidth = $slidePane.outerWidth();
+    }
     previewWidthRatioApply = $previewWidth * ZOOMING_RATIO.slide;
     $slide.outerHeight(previewWidthRatioApply);
-    $('.slide').css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
+    $slide.css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
   } else {
     // original (create page)
     $previewWidth = $('.preview').outerWidth();
@@ -40,16 +48,11 @@ window.resizeSlides = (isSlick) => {
     $previewWidth = $('.slide').outerWidth();
     $slide.css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
     $slide.outerHeight($previewWidth * ZOOMING_RATIO.slide);
+    fontRatio = $slide.outerWidth() * ZOOMING_RATIO.slide;
   }
 
-  const fontRatio = $slide.outerWidth() * ZOOMING_RATIO.slide;
 
   const resizeImg = (that, naturalWidth, previewWidth) => {
-    // if (naturalWidth > previewWidth) {
-    //   $(that).css('width', '100%');
-    // } else {
-    //   $(that).css('width', `${previewWidth * 0.3}px`);
-    // }
     let imageSize;
     if (naturalWidth > 700) {
       imageSize = 1;
@@ -63,7 +66,7 @@ window.resizeSlides = (isSlick) => {
     $(that).css('width', `${imageSize * previewWidth}px`);
   };
 
-  const $img = $('.slide p img');
+  const $img = $slide.find('p img');
   $img.each(function (index, element) {
     $(element).get(0).onload = function () {
       resizeImg(this, this.naturalWidth, $previewWidth);
@@ -72,7 +75,7 @@ window.resizeSlides = (isSlick) => {
   });
 
   Object.keys(ZOOMING_RATIO.elems).forEach((elem) => {
-    const $font = $(`.slide ${elem}`);
+    const $font = $slide.find(elem);
     $font.css('font-size', `${fontRatio * ZOOMING_RATIO.elems[elem]}px`);
     $font.css('margin-bottom', `${previewWidthRatioApply * ZOOMING_RATIO.margin}px`);
     $('.slide pre').css('padding', `${previewWidthRatioApply * 0.02}px`);

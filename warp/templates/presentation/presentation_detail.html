@@ -6,20 +6,24 @@
 {% block content %}
   <div class="row" id="detail">
     <div class="small-12 medium-8 large-8 small-centered medium-centered large-centered columns">
-      <div class="slide-pane">
-        <div class="pane-header"></div>
-        <div class="slides">
-          {% for slide in presentation.slide_set.all %}
-          <div class="slide">{{ slide.markdown }}</div>
-          {% endfor %}
-        </div>
-        <div class="controller">
-          <div class="arrows">
-            <a id="prev-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-            <a id="next-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+      <div id="normal-view">
+        <div class="slide-pane">
+          <div class="pane-header"></div>
+          <div class="slides">
+            {% for slide in presentation.slide_set.all %}
+            <div class="slide">{{ slide.markdown }}</div>
+            {% endfor %}
+            <a id="prev-touch"></a>
+            <a id="next-touch"></a>
           </div>
-          <div class="extra-commands">
-            <a id="full-screen-btn"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a>
+          <div class="controller">
+            <div class="arrows">
+              <a id="prev-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+              <a id="next-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="extra-commands">
+              <a id="full-screen-btn"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -51,14 +55,10 @@
   </div>
 {% endblock %}
 
-{% block extra_css %}
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-{% endblock %}
-
 {% block extra_javascript %}
   <script src="{% static 'vendor/marked/marked.js' %}"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
   <script type="text/javascript" src="{% static 'dist/js/resize-slides.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'dist/js/mdElemsToHtmlElems.min.js' %}"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.2.0/screenfull.min.js"></script>
   <script type="text/javascript" src="{% static 'dist/js/detail/index.min.js' %}"></script>
 {% endblock %}

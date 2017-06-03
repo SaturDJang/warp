@@ -19,7 +19,7 @@ $(() => {
       appendSlide(v, i);
     });
     Prism.highlightAll(); // highlights code blocks
-    resizeSlides();
+    resizeSlides(false, $preview);
 
     document.getElementById('id_markdown').value = editor.getValue();
   };
@@ -39,9 +39,9 @@ $(() => {
     langPrefix: 'language-',
   });
 
-  resizeSlides(false);
+  resizeSlides(false, $('.preview'));
   $(window).resize(() => {
-    resizeSlides(false);
+    resizeSlides(false, $('.preview'));
 
     // When the screen is resized, the scroll position of preview is also changed,
     // so that user might be disappointed.

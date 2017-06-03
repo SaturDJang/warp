@@ -145,6 +145,7 @@ form#create_html {
 
       div.preview-side {
         height: 80%;
+        overflow: hidden;
 
         div, span.token.interpolation, h1, h2, h3, h4, h5 {
           color: black;
@@ -158,12 +159,15 @@ form#create_html {
           height: 100%;
           overflow-y: scroll;
           background-color: #8a8a8a;
+          &::-webkit-scrollbar {
+            display: none;
+          }
 
           div.slide {
             display: flex;
             justify-content: center;
             flex-direction: column;
-            overflow-y: hidden;
+            overflow: hidden;
             background-color: #ffffff;
             border: none;
             box-shadow: 0 3px 15px #3a3a3a;
