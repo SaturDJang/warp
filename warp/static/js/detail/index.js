@@ -9,8 +9,10 @@ $(() => {
 
   function slideMover(idx) {
     $slides.css('display', 'none');
+    $slides.removeClass('active');
     $currentSlide = $slides.eq(idx);
     $currentSlide.css('display', 'flex');
+    $currentSlide.addClass('active');
   }
 
   function goToPrevSlide() {
@@ -26,6 +28,7 @@ $(() => {
   }
 
   mdElemsToHtmlElems(slidesSelector);
+  $slides.eq(0).addClass('active');
 
   $slides.css('display', 'none');
   $slides.css('visibility', 'visible');
