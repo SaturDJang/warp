@@ -34,8 +34,6 @@ DJANGO_APPS = (
     # Admin
     'django.contrib.admin',
 
-    # Our apps
-    'presentation'
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
@@ -52,6 +50,7 @@ LOCAL_APPS = (
     # custom users app
     'warp.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'presentation.apps.PresentationConfig',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
