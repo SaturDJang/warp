@@ -108,6 +108,9 @@
         <div class="small-6 medium-6 large-6 columns option2">
           <div class="option-wrapper">
             <a class="button small usage-toggle-btn">Show Usage</a>
+            {% if object.pk %}
+              <a class="button medium" href="{% url 'presentation:delete' object.pk %}">Delete!!!</a>
+            {% endif %}
             <input class="medium button" type="submit" value="{{ submit_button_text }}">
           </div>
         </div>

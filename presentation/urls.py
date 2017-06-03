@@ -24,6 +24,11 @@ urlpatterns = [
         name='update'
     ),
     url(
+        regex=r'^delete/(?P<pk>\d+)$',
+        view=views.PresentationDelete.as_view(),
+        name='delete'
+    ),
+    url(
         regex=r'^like/(?P<pk>\d+)$',
         view=views.like_presentation,
         name='like'
