@@ -78,7 +78,7 @@ class PresentationCreateForm(PresentationBaseForm):
         presentation = Presentation.objects.create(
             subject=self.cleaned_data.get('subject'),
             author=self.user,
-            is_public=self.cleaned_data.get('is_public') == 'public'
+            is_public=self.cleaned_data.get('is_public')
         )
 
         self.add_slide_list(presentation)
