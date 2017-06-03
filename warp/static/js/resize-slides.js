@@ -1,6 +1,6 @@
 /* global window, $, screenfull */
 
-window.resizeSlides = (isSlick, $parent) => {
+window.resizeSlides = (isDetail, $parent) => {
   const ZOOMING_RATIO = {
     elems: {
       h1: 0.18,
@@ -30,7 +30,7 @@ window.resizeSlides = (isSlick, $parent) => {
   let fontRatio = $activeSlide.outerWidth() * ZOOMING_RATIO.slide;
 
   // slide selector, wrapper selector, margin
-  if (isSlick) {
+  if (isDetail) {
     // new (detail page)
     if (screenfull.isFullscreen) {
       $previewWidth = window.screen.height * 1.333333;
