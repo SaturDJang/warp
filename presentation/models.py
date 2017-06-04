@@ -44,15 +44,24 @@ class Presentation(TimeStampedModel):
     like_users = models.ManyToManyField(User, related_name='like_users')
 
     def like_toggle(self, user):
+        is_like = self.is_user_like_presentation(user)
+        if is_like:
+            self.like_users.remove(user)
+        else:
+            self.like_users.add(user)
+
+        result_like = not is_like
+        self.likes = self.like_users.count()
+        self.save()
+        return result_like
+
+    def is_user_like_presentation(self, user):
         is_like = False
         try:
             self.like_users.get(id=user.id)
-            self.like_users.remove(user)
-        except User.DoesNotExist:
-            self.like_users.add(user)
             is_like = True
-        self.likes = self.like_users.count()
-        self.save()
+        except User.DoesNotExist:
+            pass
         return is_like
 
     objects = PresentationManager()
