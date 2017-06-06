@@ -28,7 +28,8 @@ before_script:
   - export DATABASE_URL='postgres://postgres@localhost/warp'
   - export DJANGO_SETTINGS_MODULE=config.settings.test
   - psql -c 'create database warp;' -U postgres
-  - python manage.py makemigrations && python manage.py migrate
+  - python manage.py makemigrations presentation --noinput
+  - python manage.py migrate --noinput
 
 script:
   - py.test
