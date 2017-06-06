@@ -27,6 +27,7 @@ install:
 before_script:
   - export DATABASE_URL='postgres://postgres@localhost/warp'
   - psql -c 'create database warp;' -U postgres
+  - python manage.py makemigrations && python manage.py migrate
 
 script:
   - py.test
