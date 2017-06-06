@@ -104,12 +104,10 @@ const likePresentation = (pk) => {
         if(data === 'True') {
             $('#likeCount').text(likeCount + 1);
             likeBtn.text('Unlike');
-            console.log(likeCount + 1);
         }
         else {
             $('#likeCount').text(likeCount - 1);
             likeBtn.text('Like');
-            console.log(likeCount - 1);
         }
     }).fail(function () {
 
