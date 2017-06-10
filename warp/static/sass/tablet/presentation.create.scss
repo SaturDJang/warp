@@ -46,17 +46,25 @@ form#create_html {
         div.input-group {
           label {
             background-color: $key-background-color;
+            font-size: 1rem;
             color: $key-green-color;
+            width: 6rem;
             border: none;
+            padding-top: 15px;
           }
           input {
             background-color: $key-background-color;
             color: white;
+            padding-bottom: 0;
+            padding-top: 1rem;
             border: none;
-            border-bottom: 1px solid $key-green-color;
+            border-bottom: 1px solid rgba($key-green-color, 0.5);
             &:focus {
               box-shadow: none;
               outline: none;
+            }
+            &:hover, &:focus {
+              border-bottom: 1px solid $key-green-color
             }
           }
         }
