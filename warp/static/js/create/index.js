@@ -3,6 +3,7 @@
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
+  editor.setValue(document.getElementById('id_markdown').value);
 
   const appendSlide = (content, index) => {
     const $preview = $('.preview');
@@ -48,4 +49,8 @@ $(() => {
     // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   });
+});
+
+$(document).ready(function() {
+
 });

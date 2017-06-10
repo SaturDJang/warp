@@ -19,7 +19,7 @@ class PresentationBaseForm(forms.ModelForm):
     tags = forms.CharField()
 
     def clean_tags(self):
-        tags_text = self.cleaned_data['tags']
+        tags_text = self.cleaned_data["tags"]
         tag_names = self.split_tags(tags_text)
         for tag_name in tag_names:
             tag_name.strip()
@@ -45,7 +45,7 @@ class PresentationBaseForm(forms.ModelForm):
             )
 
     def add_tags(self, presentation):
-        tags_text = self.cleaned_data['tags']
+        tags_text = self.cleaned_data["tags"]
         tag_names = self.split_tags(tags_text)
         for tag_name in tag_names:
             tag_name.strip()
@@ -70,7 +70,7 @@ class PresentationBaseForm(forms.ModelForm):
 
     class Meta:
         model = Presentation
-        fields = ['subject', 'markdown', 'is_public', 'tags']
+        fields = ['subject', 'markdown', 'is_public', "tags"]
 
 
 class PresentationCreateForm(PresentationBaseForm):
@@ -90,6 +90,7 @@ class PresentationUpdateForm(PresentationBaseForm):
     def save(self, commit=True):
         self.instance.subject = self.cleaned_data.get('subject')
         self.instance.is_public = self.cleaned_data.get('is_public')
+
         self.instance.save()
 
         self.add_slide_list(self.instance)
