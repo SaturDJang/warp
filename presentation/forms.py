@@ -8,15 +8,13 @@ from .models import Presentation, Slide, Tag
 
 
 class PresentationBaseForm(forms.ModelForm):
-    subject = forms.CharField(
-        max_length=50, widget=forms.TextInput(attrs={'class': 'input-group-field', }))
-
+    subject = forms.CharField(max_length=50)
+    tags = forms.CharField()
     markdown = forms.CharField(widget=forms.HiddenInput(), required=True)
     is_public = forms.BooleanField(initial=True,
                                    required=False,
                                    widget=RadioSelect(choices=[
                                        (True, 'public'), (False, 'private')]))
-    tags = forms.CharField()
 
     def clean_tags(self):
         tags_text = self.cleaned_data["tags"]

@@ -82,10 +82,12 @@
       <div class="row contents-header">
         <div class="small-6 medium-6 large-6 columns">
           <div class="input-group">
-            {{ form.subject | as_crispy_field }}
+            <label for="id_subject" class="input-group-label">Subject</label>
+            <input type="text" class="input-group-field" maxlength="50" id="id_subject" name="subject">
           </div>
           <div class="input-group">
-            {{ form.tags | as_crispy_field }}
+            <label for="id_tags" class="input-group-label">Tags</label>
+            <input type="text" class="input-group-field" name="tags" id="id_tags">
           </div>
         </div>
       </div>
