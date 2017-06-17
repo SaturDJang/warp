@@ -1,4 +1,4 @@
-/* global window, $, marked, vex, ace, UsageButton, preview, document, location, Prism, resizeSlides */
+/* global window, $, marked, ace, preview, document, location, Prism, resizeSlides */
 
 $(() => {
   const editor = ace.edit('markdown_editor');
@@ -32,9 +32,6 @@ $(() => {
 
     document.getElementById('id_markdown').value = editor.getValue();
   };
-
-  const usageButton = new UsageButton();
-  usageButton.init();
 
   editor.setTheme('ace/theme/tomorrow_night_bright');
   aceSession.setMode('ace/mode/markdown_warp');
