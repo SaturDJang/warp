@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'pure_pagination',  # pagination
+    'taggit', # tag
 )
 
 # Apps specific for this project go here.
@@ -243,3 +244,6 @@ PAGINATION_SETTINGS = {
 
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
+
+TAGGIT_TAGS_FROM_STRING = 'presentation.utils.tag_splitter'
+TAGGIT_STRING_FROM_TAGS = 'presentation.utils.comma_joiner'
