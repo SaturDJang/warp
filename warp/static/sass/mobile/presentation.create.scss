@@ -90,6 +90,10 @@ form#create_html {
           right: 15px;
           margin: 3px 6px;
           z-index: 1;
+
+          &:hover {
+            color: $key-green-color;
+          }
         }
       }
 
