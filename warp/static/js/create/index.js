@@ -3,7 +3,15 @@
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-  editor.setValue(document.getElementById('id_markdown').value);
+  const id_markdown_value = document.getElementById('id_markdown').value;
+  const exist_markdown_value = document.getElementById('exist_markdown').value;
+  if(exist_markdown_value){
+      editor.setValue(exist_markdown_value);
+  }
+
+  if(id_markdown_value) {
+      editor.setValue(id_markdown_value)
+  }
 
   const appendSlide = (content, index) => {
     const $preview = $('.preview');
@@ -31,6 +39,7 @@ $(() => {
   editor.setTheme('ace/theme/tomorrow_night_bright');
   aceSession.setMode('ace/mode/markdown_warp');
   editor.renderer.setShowGutter(false);
+  md2html();
   editor.on('change', md2html);
   editor.on('changeSelection', () => {
     preview.syncWithEditorCaret(editor);
