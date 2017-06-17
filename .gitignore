@@ -76,3 +76,4 @@ History.md
 warp/static/dist/
 tags
 .tags
+.cache

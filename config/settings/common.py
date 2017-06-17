@@ -43,7 +43,8 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'pure_pagination',  # pagination
-    'taggit', # tag
+    'taggit',  # tag
+
 )
 
 # Apps specific for this project go here.
