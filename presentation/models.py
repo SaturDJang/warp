@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import Manager
 from django.db.models import QuerySet
 from model_utils.models import TimeStampedModel
+from taggit.managers import TaggableManager
 
 from warp.users.models import User
 
@@ -39,7 +40,7 @@ class Presentation(TimeStampedModel):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     is_public = models.BooleanField(default=True)
-    tags = models.ManyToManyField(Tag)
+    tags = TaggableManager()
 
     like_users = models.ManyToManyField(User, related_name='like_users')
 

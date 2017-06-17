@@ -44,3 +44,6 @@ redis>=2.10.0
 
 # Pagination
 django-pure-pagination==0.3.0
+
+# Tag
+django-taggit==0.22.1

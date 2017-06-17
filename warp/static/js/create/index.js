@@ -3,6 +3,15 @@
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
+  const id_markdown_value = document.getElementById('id_markdown').value;
+  const exist_markdown_value = document.getElementById('exist_markdown').value;
+  if(exist_markdown_value){
+      editor.setValue(exist_markdown_value);
+  }
+
+  if(id_markdown_value) {
+      editor.setValue(id_markdown_value)
+  }
 
   const appendSlide = (content, index) => {
     const $preview = $('.preview');
@@ -27,6 +36,7 @@ $(() => {
   editor.setTheme('ace/theme/tomorrow_night_bright');
   aceSession.setMode('ace/mode/markdown_warp');
   editor.renderer.setShowGutter(false);
+  md2html();
   editor.on('change', md2html);
   editor.on('changeSelection', () => {
     preview.syncWithEditorCaret(editor);
@@ -45,4 +55,8 @@ $(() => {
     // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   });
+});
+
+$(document).ready(function() {
+
 });

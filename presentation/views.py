@@ -15,7 +15,7 @@ from pure_pagination import PaginationMixin
 from warp.users.models import User
 
 from .forms import PresentationCreateForm, PresentationUpdateForm
-from .models import Presentation
+from .models import Presentation, Slide
 from .behaviors import AuthorRequiredMixin
 
 
@@ -50,8 +50,10 @@ class PresentationCreate(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        form.user = self.request.user
-        form.cleaned_data['author'] = User.objects.get(username=form.user.username)
+        form.author = self.request.user
+        form.cleaned_data['author'] = User.objects.get(username=form.author.username)
+        form.save()
+        form.save_m2m()
         return super(PresentationCreate, self).form_valid(form)
 
 
@@ -63,10 +65,18 @@ class PresentationUpdate(AuthorRequiredMixin, LoginRequiredMixin, UpdateView):
         context = super(PresentationUpdate, self).get_context_data()
         context['action_url'] = reverse('presentation:update', kwargs={'pk': self.object.pk})
         context['submit_button_text'] = 'Update'
+        slides = Slide.objects.filter(presentation=self.object.pk)
+        markdowns = []
+        for slide in slides:
+            markdowns.append(slide.markdown)
+        markdown = '====='.join(markdowns)
+        context['markdown'] = markdown
         return context
 
     def form_valid(self, form):
-        form.user = self.request.user
+        form.author = self.request.user
+        form.save()
+        form.save_m2m()
         return super(PresentationUpdate, self).form_valid(form)
 
 

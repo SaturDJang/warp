@@ -50,15 +50,17 @@ form#create_html {
             color: $key-green-color;
             width: 6rem;
             border: none;
-            padding-top: 15px;
+            padding-top: 8px;
+            max-height: 40px;
           }
-          input {
+          input[type='text'] {
             background-color: $key-background-color;
             color: white;
             padding-bottom: 0;
             padding-top: 1rem;
             border: none;
             border-bottom: 1px solid rgba($key-green-color, 0.5);
+            margin: 0px;
             &:focus {
               box-shadow: none;
               outline: none;
