@@ -56,16 +56,13 @@ form#create_html {
 
       div.editor-side {
         height: 100%;
+        position: relative;
         $header-height: 1.813rem;
         $header-margin-bottom: 0.5rem;
 
         div.header {
           height: $header-height;
           margin-bottom: $header-margin-bottom;
-        }
-        a.usage-toggle-btn {
-          margin: 0;
-          width: 7.9rem;
         }
         div.ace-chrome {
           div.ace_line {
@@ -86,6 +83,13 @@ form#create_html {
           h1, h2, h3, h4, h5, a, button, div, label {
             color: black;
           }
+        }
+        a.usage-toggle-btn {
+          position: absolute;
+          top: 0px;
+          right: 15px;
+          margin: 3px 6px;
+          z-index: 1;
         }
       }
 

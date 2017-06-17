@@ -7,67 +7,8 @@
     body {
       overflow-y: hidden;
     }
-
-    /* vex popover */
-    div.vex.vex-theme-bottom-left-corner div.vex-content {
-      width: 51rem;
-    }
-
-    div.vex.vex-theme-bottom-left-corner div.vex-content div.callout-small-font {
-      font-size: 1rem;
-    }
-
-    div.vex.vex-theme-bottom-left-corner div.vex-content div.callout {
-      display: inline-block;
-      height: 21.875rem;
-    }
-
-    div.vex.vex-theme-bottom-left-corner div.vex-content div#usage-content {
-      font-family: monospace, monospace;
-      font-size: 0.85em;
-    }
-
-    div.vex.vex-theme-bottom-left-corner div.vex-content div#usage-content span.text {
-      color: #828388;
-    }
-
   </style>
   <form id="create_html" action="{{ action_url }}" method="post">
-    <script id="usage-content-template" type="text/template">
-      <p>Usage</p>
-      <div id="usage-content">
-        <div class="row">
-          <div id="usage-content-headers" class="columns small-4 medium-4 large-4 callout callout-small-font">
-            # <span class="text">Primary Header</span><br />
-            ## <span class="text">Secondary Header</span><br />
-            ### <span class="text">Third Header</span><br />
-            #### <span class="text">Fourth Header</span><br />
-            ##### <span class="text">Fifth Header</span><br />
-            ###### <span class="text">Sixth Header</span><br />
-          </div>
-          <div id="usage-content-styles" class="columns small-3 medium-3 large-3 callout callout-small-font">
-            **<span class="text">Bold</span>**<br />
-            __<span class="text">Bold</span>__<br />
-            *<span class="text">Italic</span>*<br />
-            _<span class="text">Italic</span>_<br />
-            * <span class="text">Unordered</span><br />
-            &nbsp;&nbsp;* <span class="text">Unordered</span><br />
-            - <span class="text">Unordered</span><br />
-            &nbsp;&nbsp;- <span class="text">Unordered</span><br />
-            1. <span class="text">Ordered</span><br />
-            &nbsp;&nbsp;1. <span class="text">Ordered</span><br />
-          </div>
-          <div id="usage-content-etc" class="columns small-5 medium-5 large-5 callout callout-small-font">
-            ![<span class="text">Alternative Text</span>](<span class="text">Image URL</span>)<br />
-            <img src="{% static 'images/usage-example.jpeg' %}" width="160px" alt="usage-example"><br />
-            http://warp.com<span class="text"> - automatic!</span><br />
-            [<span class="text">Warp Home</span>](http://warp.com)<br />
-            ```<span class="text">block code</span>```<br />
-            '<span class="text">inline code</span>'<br />
-          </div>
-        </div>
-      </div>
-    </script>
     <div id="small-contents" class="show-for-small-only">
       <div class="callout callout-full text-center">
         <div>
@@ -102,7 +43,6 @@
         </div>
         <div class="small-6 medium-6 large-6 columns option2">
           <div class="option-wrapper">
-            <a class="button small usage-toggle-btn">Show Usage</a>
             {% if object.pk %}
               <a class="button medium" href="{% url 'presentation:delete' object.pk %}">Delete!!!</a>
             {% endif %}
@@ -115,6 +55,7 @@
           {% csrf_token %}
           {{ form.markdown }}
           <div id="markdown_editor"></div>
+          <a class="usage-toggle-btn"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
         </div>
         <div class="preview-side small-6 medium-6 large-6 columns">
           <div class="preview">
@@ -129,14 +70,7 @@
   </form>
 {% endblock %}
 
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'vendor/vex-3.0.0/css/vex.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'vendor/vex-3.0.0/css/vex-theme-bottom-left-corner.css' %}" type="text/css">
-{% endblock %}
-
 {% block extra_javascript %}
-  <script src="{% static 'vendor/vex-3.0.0/js/vex.combined.min.js' %}"></script>
-  <script>vex.defaultOptions.className = 'vex-theme-bottom-left-corner';</script>
   <script src="{% static 'vendor/marked/marked.js' %}"></script>
   <script type="text/javascript" src="{% static 'dist/js/create/usage_button.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'dist/js/create/preview.min.js' %}"></script>
