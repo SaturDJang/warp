@@ -75,53 +75,55 @@ form#create_html {
     div.contents-option {
       margin-bottom: 0.5rem;
       height: $contents-header-height;
-      div.option {
-        div.switch-wrapper {
-          input[type=radio] {
-            display: none;
-            + label {
-              margin: 0;
-              border: 1px solid $key-green-color;
-              width: 50%;
-              height: 2.3rem;
-              text-align: center;
-              line-height: 2.3rem;
-            }
+      div.switch-wrapper {
+        input[type=radio] {
+          display: none;
+          + label {
+            margin: 0;
+            border: 1px solid $key-green-color;
+            width: 50%;
+            height: 2.3rem;
+            text-align: center;
+            line-height: 2.3rem;
+          }
 
-            &.left-switch {
-              + label {
-                float: left;
-                border-right: none;
-              }
+          &.left-switch {
+            + label {
+              float: left;
+              border-right: none;
             }
-            &.right-switch {
-              + label {
-                float: right;
-                border-left: none;
-              }
+          }
+          &.right-switch {
+            + label {
+              float: right;
+              border-left: none;
             }
-            &:checked {
-              + label {
-                border: none;
-                background-color: $key-green-color;
-              }
+          }
+          &:checked {
+            + label {
+              border: none;
+              background-color: $key-green-color;
             }
           }
         }
       }
-      div.option2 {
-        div.option-wrapper {
-          float: right;
-          a, input {
-            height: 2.3rem;
-            background-color: $key-green-color;
-            font-size: 1rem;
-            line-height: 0;
-          }
-          a {
-            background-color: $key-orange-color;
-            margin-right: 15px;
-          }
+      div.option-wrapper {
+        float: right;
+        padding: 0;
+        text-align: right;
+        .columns {
+          padding: 0;
+        }
+        a, button {
+          height: 2.3rem;
+          background-color: $key-green-color;
+          font-size: 1rem;
+          line-height: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        a {
+          background-color: inherit;
         }
       }
     }
@@ -136,10 +138,6 @@ form#create_html {
         div.header {
           height: $header-height;
           margin-bottom: $header-margin-bottom;
-        }
-        a.usage-toggle-btn {
-          margin: 0;
-          width: 7.9rem;
         }
         div#markdown_editor {
           height: 100%;

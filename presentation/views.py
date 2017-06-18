@@ -35,6 +35,7 @@ class PresentationDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PresentationDetail, self).get_context_data()
+        context['is_user_liked'] = self.get_object().is_user_like_presentation(self.request.user)
         self.object.view()
         return context
 

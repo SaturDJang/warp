@@ -33,11 +33,13 @@
           <div class="warp-list-views">
             <i class="fa fa-eye" aria-hidden="true"></i>
             {{ presentation.views }}
-            Likes: {{ presentation.likes }}
+            Likes: <span id="likeCount">{{ presentation.likes }}</span>
           </div>
 
           <div>
-            <button class="button primary" onclick="likePresentation({{ presentation.pk }})">Like</button>
+                <button id="likeBtn" class="button primary" onclick="likePresentation({{ presentation.pk }})">
+                    {% if is_user_liked %}Unlike{% else %}Like{% endif %}
+                </button>
             {% if presentation.author == request.user %}
               <a class="button primary" href="{% url "presentation:update" presentation.pk %}">Update</a>
             {% endif %}
