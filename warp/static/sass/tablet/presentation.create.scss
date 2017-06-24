@@ -66,6 +66,9 @@ div.create-header {
           p {
             font-size: 0.8rem;
             margin-bottom: 0;
+            span.emphasis {
+              color: $key-orange-color;
+            }
           }
 
           div.columns {
