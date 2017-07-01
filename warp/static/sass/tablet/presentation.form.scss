@@ -1,4 +1,195 @@
-form#form_html {
+$contents-header-height: 3.5rem;
+div.create-header {
+  background-color: #040B14;
+  height: $desktop-header-height;
+  max-width: none;
+  border-bottom: 1px solid $key-green-color;
+
+  div.large-centered {
+    height: 100%;
+    div.title {
+      float: left;
+      margin-bottom: 0;
+      height: $desktop-header-height;
+
+      a {
+        font-size: 24px;
+        line-height: 64px;
+        color: $key-green-color;
+        margin-right: 32px;
+      }
+
+      input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: white;
+      }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: white;
+        opacity:  1;
+      }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: white;
+        opacity:  1;
+      }
+      input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: white;
+      }
+
+      i {
+        margin-right: 3px;
+        color: white;
+      }
+    }
+
+    div.feature {
+      height: $desktop-header-height;
+
+      button.publised-button {
+        position: absolute;
+        color: $key-orange-color;
+        line-height: $desktop-header-height;
+      }
+      div.dropdown-pane {
+        background-color: #040b14;
+        top: 63px !important;
+        left: 0 !important;
+        margin-left: 70%;
+        border: 1px solid $key-green-color;
+        box-shadow: 0 3px 15px #3a3a3a;
+        div.contents-header {
+          margin-bottom: 0.5rem;
+          height: 64px;
+
+          span.custom-label {
+            color: $key-green-color;
+            display: block;
+          }
+          p {
+            font-size: 0.8rem;
+            margin-bottom: 0;
+            span.emphasis {
+              color: $key-orange-color;
+            }
+          }
+
+          div.columns {
+            padding-left: 0;
+            padding-right: 0;
+            div.input-group {
+              label {
+                background-color: #040B14;
+                font-size: 0.8em;
+                color: $key-green-color;
+                width: 3rem;
+                border: none;
+                padding-top: 8px;
+                padding-left: 0;
+                max-height: 40px;
+                text-align: left;
+              }
+              input[type='text'], input[type='textarea'] {
+                background-color: #040B14;
+                color: white;
+                padding-bottom: 0;
+                padding-top: 1rem;
+                border: none;
+                border-bottom: 1px solid rgba($key-green-color, 0.5);
+                margin: 0px;
+                &:focus {
+                  box-shadow: none;
+                  outline: none;
+                }
+                &:hover, &:focus {
+                  border-bottom: 1px solid $key-green-color
+                }
+              }
+            }
+          }
+        }
+        div.contents-option {
+          height: $contents-header-height;
+          span.custom-label {
+            color: $key-green-color;
+            margin-bottom: 10px;
+            display: block;
+          }
+
+          div.switch-wrapper {
+            padding-left: 0;
+            padding-right: 0;
+            margin-bottom: 20px;
+            input[type=radio] {
+              display: none;
+              + label {
+                margin: 0;
+                border: 1px solid $key-green-color;
+                width: 50%;
+                height: 2.3rem;
+                text-align: center;
+                line-height: 2.3rem;
+              }
+
+              &.left-switch {
+                + label {
+                  float: left;
+                  border-right: none;
+                }
+              }
+              &.right-switch {
+                + label {
+                  float: right;
+                  border-left: none;
+                }
+              }
+              &:checked {
+                + label {
+                  border: none;
+                  background-color: $key-green-color;
+                }
+              }
+            }
+          }
+        }
+        div.option-wrapper {
+          float: right;
+          padding: 0;
+          text-align: right;
+          .columns {
+            padding: 0;
+          }
+          button {
+            height: 2.3rem;
+            border: 1px solid $key-orange-color;
+            background-color: #040B14;
+            color: $key-orange-color;
+            border-radius: 15px;
+            font-size: 1rem;
+            line-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 20px;
+            margin-bottom: 0;
+          }
+          a {
+            background-color: inherit;
+          }
+        }
+      }
+      @media screen and (max-width: 1024px) and (min-width: 750px) {
+        div.dropdown-pane {
+          margin-left: 60%;
+        }
+      }
+      @media screen and (max-width: 749px) and (min-width: 640px) {
+        div.dropdown-pane {
+          margin-left: 50%;
+        }
+      }
+    }
+  }
+}
+
+
+form#create_html {
   margin-top: 2rem;
   h1 {
     color: black;
@@ -34,104 +225,14 @@ form#form_html {
 
   div#large-medium-contents {
     $margin-bottom: 1.5rem;
-    height: calc(100% - #{$margin-bottom});
+    height: 100%;
     margin-bottom: $margin-bottom;
 
-    $contents-header-height: 3.5rem;
-
-    div.contents-header {
-      margin-bottom: 0.5rem;
-      height: $contents-header-height;
-      div.columns {
-        div.input-group {
-          label {
-            background-color: $key-background-color;
-            font-size: 1rem;
-            color: $key-green-color;
-            width: 6rem;
-            border: none;
-            padding-top: 8px;
-            max-height: 40px;
-          }
-          input[type='text'] {
-            background-color: $key-background-color;
-            color: white;
-            padding-bottom: 0;
-            padding-top: 1rem;
-            border: none;
-            border-bottom: 1px solid rgba($key-green-color, 0.5);
-            margin: 0px;
-            &:focus {
-              box-shadow: none;
-              outline: none;
-            }
-            &:hover, &:focus {
-              border-bottom: 1px solid $key-green-color
-            }
-          }
-        }
-      }
-    }
-    div.contents-option {
-      margin-bottom: 0.5rem;
-      height: $contents-header-height;
-      div.switch-wrapper {
-        input[type=radio] {
-          display: none;
-          + label {
-            margin: 0;
-            border: 1px solid $key-green-color;
-            width: 50%;
-            height: 2.3rem;
-            text-align: center;
-            line-height: 2.3rem;
-          }
-
-          &.left-switch {
-            + label {
-              float: left;
-              border-right: none;
-            }
-          }
-          &.right-switch {
-            + label {
-              float: right;
-              border-left: none;
-            }
-          }
-          &:checked {
-            + label {
-              border: none;
-              background-color: $key-green-color;
-            }
-          }
-        }
-      }
-      div.option-wrapper {
-        float: right;
-        padding: 0;
-        text-align: right;
-        .columns {
-          padding: 0;
-        }
-        a, button {
-          height: 2.3rem;
-          background-color: $key-green-color;
-          font-size: 1rem;
-          line-height: 0;
-          padding-top: 0;
-          padding-bottom: 0;
-        }
-        a {
-          background-color: inherit;
-        }
-      }
-    }
     div.contents-body {
-      height: calc(100% - #{$contents-header-height});
+      height: calc(100% - 1.5rem);
 
       div.editor-side {
-        height: 80%;
+        height: 100%;
         $header-height: 1.813rem;
         $header-margin-bottom: 0.5rem;
 
@@ -152,7 +253,7 @@ form#form_html {
       }
 
       div.preview-side {
-        height: 80%;
+        height: 100%;
         overflow: hidden;
 
         div, span.token.interpolation, h1, h2, h3, h4, h5 {

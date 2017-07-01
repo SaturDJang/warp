@@ -2,6 +2,60 @@
 {% load staticfiles crispy_forms_tags %}
 {% block title %}{% block head_title %}Create Presentation - warp{% endblock head_title %}{% endblock title %}
 
+{% block header %}
+  <div class="create-header">
+    <div class="small-11 small-centered medium-10 medium-centered large-10 large-centered columns">
+      <div class="title">
+        <a href="/">Warp</a>
+      </div>
+      <div class="feature small-offset-10 medium-offset-10 large-offset-11">
+        <button class="publised-button" type="button" data-toggle="example-dropdown">Published <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+        <div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
+          <div class="row contents-option">
+            <span class="custom-label">Publishing scope</span>
+            <div class="medium-12 columns switch-wrapper">
+              <input type="radio" value="True" class="left-switch" name="is_public" id="{{ form.is_public.auto_id }}" checked/>
+              <label for="{{ form.is_public.auto_id }}">Public</label>
+              <input type="radio" value="False" class="right-switch" name="is_public" id="right-switch"/><label
+                    for="right-switch">Private</label>
+            </div>
+          </div>
+          <div class="row contents-header">
+            <div class="small-12 medium-12 large-12 columns">
+              <span class="custom-label">Subject*</span>
+              <div class="input-group">
+                <input type="text" class="input-group-field" maxlength="50" id="id_subject" name="subject" {% if form.subject.value %}value="{{ form.subject.value }}"{% endif %}>
+                {% if form.subject.errors %}
+                  <span class="form-error" data-form-error-for="id_subject" style="display: inline;">
+                    {% for error in form.subject.errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+              </div>
+              <span class="custom-label">Add tags</span>
+              <p>Add tags your presentation reaches more people (These are separated by <span class="emphasis">commas</span> or <span class="emphasis">spaces</span>.)</p>
+              <div class="input-group">
+                {{ form.tags }}
+                {% if form.tags.errors %}
+                  <span class="form-error" data-form-error-for="id_tags" style="display: inline;">
+                      {% for error in form.tags.errors %}
+                        {{ error }}
+                      {% endfor %}
+                    </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="medium-6 columns option option-wrapper">
+            <button class="button">published</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
 {% block content %}
   <style type="text/css">
     body {
@@ -19,44 +73,8 @@
         </div>
       </div>
     </div>
-    <div id="large-medium-contents" class="hide-for-small-only medium-12 medium-centered large-12 large-centered">
-      <div class="row contents-header">
-        <div class="small-6 medium-6 large-6 columns">
-          <div class="input-group">
-            <label for="id_subject" class="input-group-label">Subject</label>
-            <input type="text" class="input-group-field" maxlength="50" id="id_subject" name="subject" {% if form.subject.value %}value="{{ form.subject.value }}"{% endif %}>
-            {% if form.subject.errors %}
-              <span class="form-error" data-form-error-for="id_subject" style="display: inline;">
-              {% for error in form.subject.errors %}
-                {{ error }}
-              {% endfor %}
-            </span>
-            {% endif %}
-          </div>
-          <div class="input-group">
-            <label for="id_tags" class="input-group-label">Tags</label>
-            {{ form.tags }}
-            {% if form.tags.errors %}
-              <span class="form-error" data-form-error-for="id_tags" style="display: inline;">
-                {% for error in form.tags.errors %}
-                  {{ error }}
-                {% endfor %}
-              </span>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="row contents-option">
-        <div class="medium-5 columns switch-wrapper">
-          <input type="radio" value="True" class="left-switch" name="is_public" id="{{ form.is_public.auto_id }}" checked/>
-          <label for="{{ form.is_public.auto_id }}">Public</label>
-          <input type="radio" value="False" class="right-switch" name="is_public" id="right-switch"/><label
-          for="right-switch">Private</label>
-        </div>
-        <div class="medium-1 columns option option-wrapper">
-          <button class="button medium"><i class="fa fa-upload" aria-hidden="true"></i></button>
-        </div>
-      </div>
+    <div id="large-medium-contents" class="hide-for-small-only medium-10 medium-centered large-10 large-centered">
+
       <div class="row contents-body">
         <div class="editor-side small-6 medium-6 large-6 columns">
           {% csrf_token %}

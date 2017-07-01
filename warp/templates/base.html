@@ -27,7 +27,9 @@
   </head>
 
   <body>
-    {% include "components/header.html" %}
+    {% block header %}
+      {% include "components/header.html" %}
+    {% endblock %}
     <div class="large-centered">
       {% block content %}
       {% endblock %}
