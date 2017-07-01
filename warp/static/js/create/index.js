@@ -1,16 +1,16 @@
-/* global window, $, marked, ace, preview, document, location, Prism, resizeSlides */
+/* global window, $, marked, ace, preview, document, Prism, resizeSlides */
 
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-  const id_markdown_value = document.getElementById('id_markdown').value;
-  const exist_markdown_value = document.getElementById('exist_markdown').value;
-  if(exist_markdown_value){
-      editor.setValue(exist_markdown_value);
+  const idMarkdownValue = document.getElementById('id_markdown').value;
+  const existMarkdownValue = document.getElementById('exist_markdown').value;
+  if (existMarkdownValue) {
+    editor.setValue(existMarkdownValue);
   }
 
-  if(id_markdown_value) {
-      editor.setValue(id_markdown_value)
+  if (idMarkdownValue) {
+    editor.setValue(idMarkdownValue);
   }
 
   const appendSlide = (content, index) => {
@@ -55,8 +55,4 @@ $(() => {
     // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   });
-});
-
-$(document).ready(function() {
-
 });
