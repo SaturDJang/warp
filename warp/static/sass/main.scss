@@ -9,7 +9,7 @@
 @import "mobile/header";
 @import "mobile/footer";
 @import "mobile/login";
-@import "mobile/presentation.create";
+@import "mobile/presentation.form";
 @import "mobile/presentation.list";
 @import "mobile/presentation.detail";
 @import "mobile/user.detail";
@@ -18,7 +18,7 @@
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
   @import "tablet/header";
   @import "tablet/presentation.list";
-  @import "tablet/presentation.create";
+  @import "tablet/presentation.form";
   @import "tablet/user.detail";
   @import "tablet/footer";
 }
@@ -27,7 +27,7 @@
 @media screen and (min-width: $cross-desktop-max-width) {
   @import "desktop/header";
   @import "desktop/presentation.list";
-  @import "tablet/presentation.create";
+  @import "tablet/presentation.form";
   @import "tablet/user.detail";
   @import "tablet/footer";
 }

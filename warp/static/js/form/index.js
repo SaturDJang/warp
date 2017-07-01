@@ -1,16 +1,58 @@
 /* global window, $, marked, ace, preview, document, location, Prism, resizeSlides */
+const isCreate = () => {
+  return location.href.indexOf("create") > 0;
+};
+
+const unsavedCreateIsExist = () => {
+    if(localStorage.getItem("unsavedCreate")) {
+        let unsavedCreate = {};
+      try {
+        unsavedCreate = JSON.parse(localStorage.getItem("unsavedCreate"));
+      } catch (SyntaxError) {
+        return false;
+      }
+      if(unsavedCreate.subject
+         || unsavedCreate.tags
+         || unsavedCreate.markdown) {
+        return true;
+      }
+    }
+    return false;
+};
+
+const loadUnsavedCreate = () => {
+  if(unsavedCreateIsExist()) {
+      if (confirm("There were unsaved data. Do you want load?")) {
+          const unsavedCreate = JSON.parse(localStorage.getItem("unsavedCreate"));
+          document.getElementById('id_subject').setAttribute("value", unsavedCreate.subject);
+          document.getElementById('id_tags').setAttribute("value", unsavedCreate.tags);
+          document.getElementById('id_markdown').setAttribute("value", unsavedCreate.markdown);
+      }
+  }
+  return false;
+};
 
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-  const id_markdown_value = document.getElementById('id_markdown').value;
   const exist_markdown_value = document.getElementById('exist_markdown').value;
+
+  const unsavedCreate = {
+      subject: "",
+      tags: "",
+      markdown:""
+  };
+
   if(exist_markdown_value){
       editor.setValue(exist_markdown_value);
+  } else if (isCreate()) {
+      loadUnsavedCreate();
   }
 
+  const id_markdown_value = document.getElementById('id_markdown').value;
+
   if(id_markdown_value) {
-      editor.setValue(id_markdown_value)
+      editor.setValue(id_markdown_value);
   }
 
   const appendSlide = (content, index) => {
@@ -31,6 +73,11 @@ $(() => {
     resizeSlides(false, $preview);
 
     document.getElementById('id_markdown').value = editor.getValue();
+    unsavedCreate.subject = document.getElementById("id_subject").value;
+    unsavedCreate.tags = document.getElementById("id_tags").value;
+    unsavedCreate.markdown = document.getElementById("id_markdown").value;
+
+    localStorage.setItem("unsavedCreate", JSON.stringify(unsavedCreate));
   };
 
   editor.setTheme('ace/theme/tomorrow_night_bright');
@@ -55,8 +102,4 @@ $(() => {
     // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   });
-});
-
-$(document).ready(function() {
-
 });
