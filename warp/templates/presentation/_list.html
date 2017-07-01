@@ -1,0 +1,53 @@
+<div class="presentation">
+  <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
+    {% for presentation in presentations %}
+      <a href="{% url 'presentation:detail' pk=presentation.pk %}">
+        <div class="medium-6 large-4 columns">
+          <div class="preview">
+            <div class="slide">{{ presentation.slide_set.first.markdown }}</div>
+          </div>
+          <div class="presentation-footer">
+            <div class="warp-list-like">
+              <i class="fa fa-heart" aria-hidden="true"></i>
+              {{ presentation.likes }}
+            </div>
+            <div class="warp-list-views">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+              {{ presentation.views }}
+            </div>
+          </div>
+          <div class="presentation-info">
+            <div class="presentation-title">{{ presentation.subject | truncatechars:23 }}</div>
+            <div class="presentation-author">
+              By <a class="author">{{ presentation.author }}</a>
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+    {% if page_obj.has_previous %}
+      <li class="pagination-previous">
+        <a href="?{{ page_obj.previous_page_number.querystring }}">Previous</a>
+      </li>
+    {% else %}
+    {% endif %}
+    {% for page in page_obj.pages %}
+      {% if page %}
+        {% ifequal page page_obj.number %}
+          <li class="current">{{ page }}</li>
+        {% else %}
+          <li><a href="?{{ page.querystring }}" aria-label="Page {{ page }}">{{ page }}</a></li>
+        {% endifequal %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li class="pagination-next"><a href="?{{ page_obj.next_page_number.querystring }}" aria-label="Next page">Next</a></li>
+    {% else %}
+    {% endif %}
+  </ul>
+</div>
