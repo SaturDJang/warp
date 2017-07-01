@@ -93,23 +93,3 @@ $(() => {
   });
 });
 
-
-const likePresentation = (pk) => {
-    $.ajax({
-        method: "PUT",
-        url: "/like/" + pk
-    }).done(function (data) {
-        const likeCount = Number($('#likeCount').text());
-        const likeBtn = $('#likeBtn');
-        if(data === 'True') {
-            $('#likeCount').text(likeCount + 1);
-            likeBtn.text('Unlike');
-        }
-        else {
-            $('#likeCount').text(likeCount - 1);
-            likeBtn.text('Like');
-        }
-    }).fail(function () {
-
-    })
-};
