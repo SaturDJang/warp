@@ -86,7 +86,7 @@
     };
   {% else %}
     const showPopup = () => {
-      if(confirm('Like 는 로그인 해야 가능합니다. 로그인 페이지로 이동하시겠습니까?')) {
+      if(confirm('Like must be logged in. Go to sign-in page?')) {
         location.replace('{% url 'account_login' %}?next=/detail/{{ presentation.id }}');
       }
     };
