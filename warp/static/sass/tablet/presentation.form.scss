@@ -1,5 +1,5 @@
 $contents-header-height: 3.5rem;
-div.create-header {
+div.form-header {
   background-color: #040B14;
   height: $desktop-header-height;
   max-width: none;
@@ -189,7 +189,7 @@ div.create-header {
 }
 
 
-form#create_html {
+form#form_html {
   margin-top: 2rem;
   h1 {
     color: black;

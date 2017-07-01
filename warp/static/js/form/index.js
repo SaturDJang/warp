@@ -35,7 +35,7 @@ const loadUnsavedCreate = () => {
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-  const exist_markdown_value = document.getElementById('exist_markdown').value;
+  const exist_markdown_value = document.getElementById('id_markdown').value;
 
   const unsavedCreate = {
       subject: "",
@@ -103,3 +103,22 @@ $(() => {
     preview.syncWithEditorCaret(editor);
   });
 });
+
+const addHidden = function (form, key, value) {
+  // Create a hidden input element, and append it to the form:
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = key; // 'the key/name of the attribute/field that is sent to the server
+  input.value = value;
+  form.appendChild(input);
+};
+
+const publish = () => {
+  const form = document.getElementById('form_html');
+
+  addHidden(form, 'subject', $("#id_subject").val());
+  addHidden(form, 'tags', $("#id_tags").val());
+
+  form.submit();
+
+};
