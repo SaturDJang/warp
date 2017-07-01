@@ -55,4 +55,15 @@ $(() => {
     // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   });
+  $('#id_tags').selectize({
+    plugins: ['remove_button'],
+    delimiter: ',',
+    persist: false,
+    create(input) {
+      return {
+        value: input,
+        text: input,
+      };
+    },
+  });
 });
