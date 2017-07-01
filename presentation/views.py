@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.http import HttpResponse
@@ -86,6 +87,7 @@ class PresentationDelete(AuthorRequiredMixin, LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("presentation:list")
 
 
+@login_required
 def like_presentation(request, pk):
     if request.method == 'PUT':
         presentation = Presentation.objects.get(pk=pk)
