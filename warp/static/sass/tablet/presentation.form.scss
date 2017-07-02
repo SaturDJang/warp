@@ -168,6 +168,10 @@ div.form-header {
             padding-bottom: 0;
             margin-top: 20px;
             margin-bottom: 0;
+            &:hover {
+            background-color: $key-orange-color;
+            color: white;
+          }
           }
           a {
             background-color: inherit;

@@ -1,21 +1,30 @@
-/* global window, $, marked, ace, preview, document, location, Prism, resizeSlides */
+/* global window, $, marked, ace, preview, document, location, Prism, resizeSlides,Selectize */
+Selectize.define('input_maxlength', function(options) {
+  const self = this;
+  this.setup = (function() {
+    const original = self.setup;
+    return function() {
+      original.apply(this, arguments);
+      this.$control_input.attr('maxlength', this.settings.input_maxlength);
+    };
+  })();
+});
+
 const isCreate = () => {
   return location.href.indexOf("create") > 0;
 };
 
 const unsavedCreateIsExist = () => {
     if(localStorage.getItem("unsavedCreate")) {
-        let unsavedCreate = {};
+      let unsavedCreate = {};
       try {
         unsavedCreate = JSON.parse(localStorage.getItem("unsavedCreate"));
-      } catch (SyntaxError) {
-        return false;
-      }
-      if(unsavedCreate.subject
-         || unsavedCreate.tags
-         || unsavedCreate.markdown) {
-        return true;
-      }
+        if (unsavedCreate.subject
+          || unsavedCreate.tags
+          || unsavedCreate.markdown) {
+          return true;
+        }
+      } catch (e) {}
     }
     return false;
 };
@@ -35,7 +44,7 @@ const loadUnsavedCreate = () => {
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-  const exist_markdown_value = document.getElementById('id_markdown').value;
+  const exist_markdown_value = document.getElementById('exist_markdown').value;
 
   const unsavedCreate = {
       subject: "",
@@ -43,7 +52,7 @@ $(() => {
       markdown:""
   };
 
-  if(exist_markdown_value){
+  if(exist_markdown_value) {
       editor.setValue(exist_markdown_value);
   } else if (isCreate()) {
       loadUnsavedCreate();
@@ -102,7 +111,27 @@ $(() => {
     // Because of the above case, we should sync preview with editor cursor on every resizing.
     preview.syncWithEditorCaret(editor);
   });
+
+  $('#id_tags').selectize({
+    plugins: ['remove_button','input_maxlength'],
+    delimiter: ',',
+    persist: false,
+    input_maxlength: 15,
+    createFilter: function(input) {
+      const min_length = 2;
+      return input.length >= min_length;
+    },
+    create(input) {
+      return {
+        value: input.replace(/\s/gi, '_').replace(/,/gi, ''),
+        text: input.replace(/\s/gi, '_').replace(/,/gi, ''),
+      };
+    },
+  });
+
 });
+
+
 
 const addHidden = function (form, key, value) {
   // Create a hidden input element, and append it to the form:
@@ -119,6 +148,7 @@ const publish = () => {
   addHidden(form, 'subject', $("#id_subject").val());
   addHidden(form, 'tags', $("#id_tags").val());
 
+  localStorage.setItem('unsavedCreate', '');
   form.submit();
 
 };
