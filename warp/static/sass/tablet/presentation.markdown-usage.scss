@@ -1,0 +1,25 @@
+div#markdown-usage {
+  padding-top: 15px;
+  a {
+    color: $key-green-color;
+    &:hover {
+      color: $key-orange-color;
+    }
+  }
+  code {
+    border: none;
+    padding: 0;
+  }
+  .highlight.language-markdown {
+    border: 1px solid $key-green-color;
+    background-color: #000000;
+    span.token.title.important {
+      color: #fff;
+    }
+  }
+  .syntax-block {
+    border-bottom: 1px solid rgba(254, 254, 254, 0.32);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+  }
+}
