@@ -80,7 +80,7 @@
           {{ form.markdown }}
           <input type="hidden" id="exist_markdown" name="exist_markdown" {% if markdown %} value="{{ markdown }}"{% endif %} >
           <div id="markdown_editor"></div>
-          <a class="usage-toggle-btn"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+          <a class="usage-toggle-btn" href="{% url 'presentation:markdown-usage' %}" target="_blank"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
         </div>
         <div class="preview-side small-6 medium-6 large-6 columns">
           <div class="preview">
@@ -97,8 +97,7 @@
 
 {% block extra_javascript %}
   <script src="{% static 'vendor/marked/marked.js' %}"></script>
-  <script type="text/javascript" src="{% static 'dist/js/form/usage_button.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'dist/js/form/preview.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'dist/js/create/preview.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'dist/js/resize-slides.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'dist/js/form/index.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'vendor/ace/ace.js' %}"></script>

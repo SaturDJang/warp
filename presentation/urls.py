@@ -14,6 +14,11 @@ urlpatterns = [
         name='create'
     ),
     url(
+        regex=r'^markdown-usage$',
+        view=views.presentation_markdown_usage,
+        name='markdown-usage'
+    ),
+    url(
         regex=r'^detail/(?P<pk>\d+)$',
         view=views.PresentationDetail.as_view(),
         name='detail'

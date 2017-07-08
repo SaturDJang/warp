@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{% block head_title %}Markdown Usage - warp{% endblock head_title %}{% endblock title %}
+
+{% block content %}
+<div id="markdown-usage" class="row">
+  <div class="markdown-pane columns medium-12">
+    <h2>Table of Contents</h3>
+    <ul class="table-of-contents">
+      <li><a href="#">Text</a></li>
+      <li><a href="#">Lists</a></li>
+      <li><a href="#">Images</a></li>
+      <li><a href="#">Headers &amp; Quotes</a></li>
+      <li><a href="#">Code</a></li>
+      <li><a href="#">Extras</a></li>
+    </ul>
+
+    <div class="syntax-block">
+      <h3>Headers</h3>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown"># This is an &lt;h1&gt; tag
+## This is an &lt;h2&gt; tag
+###### This is an &lt;h6&gt; tag</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <h1>This is an &lt;h1&gt; tag</h1>
+          <h2>This is an &lt;h2&gt; tag</h2>
+          <h6>This is and &lt;h6&gt; tag</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="syntax-block">
+      <h3>Emphasis</h3>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <i>This text will be italic</i><br>
+          <i>This will also be italic</i><br>
+          <b>This text will be bold</b><br>
+          <b>This will also be bold</b><br>
+          <em>You <strong>can</strong> combine them</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="syntax-block">
+      <h3>Lists</h3>
+
+      <h4>Unordered</h4>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <ul>
+              <li>Item 2a</li>
+              <li>Item 2b</li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="syntax-block">
+      <h4>Ordered</h4>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">1. Item 1
+1. Item 2
+1. Item 3
+  1. Item 3a
+  1. Item 3b</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <ol>
+              <li>Item 3a</li>
+              <li>Item 3b</li>
+            </ol>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="syntax-block">
+      <h3>Images</h3>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">![Present](/images/usage-example.jpeg)
+Format: ![Alt Text](url)</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <img src="{% static 'images/usage-example.jpeg'%}" alt="Usage image">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="syntax-block">
+      <h3>Links</h3>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">https://google.com - automatic!
+[Google](https://google.com)</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <a href="https://google.com">Google</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="syntax-block">
+      <h3>Blockquotes</h3>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">As Kanye West said:
+&gt; We're living the future so
+&gt; the present is our past.</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <p>As Kanye West said:</p>
+          <blockquote>
+<p>We're living the future so
+the present is our past.</p>
+</blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="syntax-block">
+      <h3>Inline code</h3>
+
+      <div class="row">
+        <div class="markdown-side columns medium-6">
+          <pre class="highlight"><code class="language-markdown">I think you should use an
+`&lt;addr&gt;` element here instead.</code></pre>
+        </div>
+        <div class="preview-side columns medium-6">
+          <p>I think you should use an
+            <code class="language-markdown">&lt;addr&gt;</code> element here instead.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block prism_css %}
+  <link rel="stylesheet" href="{% static 'vendor/prism/okaidia.css' %}">
+{% endblock %}
