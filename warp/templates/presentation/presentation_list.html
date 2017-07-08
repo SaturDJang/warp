@@ -4,16 +4,22 @@
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-  <br>
-{# presentation #}
-{#<div class="best-week">#}
-{#  <div class="best-wrapper small-6 medium-6 large-4 large-offset-2">#}
-    {#    <div class="best-presentation small-8">#}
-    {#    </div>#}
-    {#    <h3>This presentation is best of week.</h3>#}
-{#  </div>#}
-{#</div>#}
-{% include 'presentation/_list.html' %}
+  {# presentation #}
+  <div class="best-week">
+    <div class="best-wrapper small-12 medium-12 large-12 row large-centered">
+      <div class="alert-wrapper medium-8 medium-centered large-10 large-centered">
+        <div class="alert-image small-10 small-centered medium-4 large-4 large-offset-1 columns">
+          <img class="small-centered" src="../../static/images/warning.svg" />
+        </div>
+        <div class="alert-text small-12 medium-12 large-6 small-centered large-pull-1 columns">
+          <h4>It is now an <span>alpha version</span>.</h4>
+          <h4>All stored data may be deleted</h4>
+          <h1>without notice.</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'presentation/_list.html' %}
 {% endblock %}
 
 {% block extra_javascript %}

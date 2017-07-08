@@ -7,7 +7,23 @@ div.best-week {
 div.large-centered {
   div.best-week {
     margin: 0 0 2rem 0;
+
     div.best-wrapper {
+      div.alert-text {
+        text-align: center;
+        span {
+          color: $key-green-color;
+        }
+      }
+      div.alert-image {
+        img {
+          margin: 0 auto;
+          margin-top: 8%;
+          margin-bottom: 10px;
+          width: 100%;
+          height: 90px;
+        }
+      }
       div.best-presentation {
         width: 100%;
         padding-bottom: 75%;

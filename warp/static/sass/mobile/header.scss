@@ -49,6 +49,9 @@ div#header {
 
     div.feature {
       float: right;
+      @media screen and (device-aspect-ratio: 40/71) {
+        float: none;
+      }
       height: 64px;
       div.vertical-divider {
         display: initial;
