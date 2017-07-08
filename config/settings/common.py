@@ -34,6 +34,9 @@ DJANGO_APPS = (
     # Admin
     'django.contrib.admin',
 
+    # Django postgres
+    'django.contrib.postgres'
+
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts

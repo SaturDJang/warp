@@ -2,11 +2,13 @@
 
 <div id="header" class="row">
   <div class="small-11 small-centered large-10 large-centered columns">
-    <div class="title">
-      <a href="/">Warp</a>
-      <i class="fa fa-search" aria-hidden="true"></i>
-      <input class="search" placeholder="search.."/>
-    </div>
+    <form action="{% url 'presentation:search' %}" method="get">
+      <div class="title">
+        <a href="/">Warp</a>
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input class="search" placeholder="search.." name="query" id="query" />
+      </div>
+    </form>
     <div class="feature">
       {% if user.is_authenticated %}
         <span class="name-warpper">Hi,<a href="{% url 'users:detail' request.user.username %}"><span

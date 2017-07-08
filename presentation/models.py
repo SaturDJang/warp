@@ -15,6 +15,11 @@ class PresentationQuerySet(QuerySet):
     def authored_by(self, author):
         return self.filter(author__username=author)
 
+    def search(self, query):
+        return self.annotate(
+            SearchVector('subject', 'author', 'tags', 'slide__markdown')
+        ).filter(search=query)
+
 
 class PresentationManager(Manager):
     def get_queryset(self):
@@ -25,6 +30,9 @@ class PresentationManager(Manager):
 
     def authored_by(self, author):
         return self.get_queryset().authored_by(author)
+
+    def search(self, query):
+        return self.get_queryset().search(query)
 
 
 class Tag(models.Model):
