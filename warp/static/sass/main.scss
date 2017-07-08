@@ -18,12 +18,8 @@
 @media screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
   @import "tablet/header";
   @import "tablet/presentation.list";
-<<<<<<< HEAD
   @import "tablet/presentation.form";
-=======
-  @import "tablet/presentation.create";
   @import "tablet/presentation.markdown-usage";
->>>>>>> 138-new_usage_page
   @import "tablet/user.detail";
   @import "tablet/footer";
 }
@@ -32,12 +28,8 @@
 @media screen and (min-width: $cross-desktop-max-width) {
   @import "desktop/header";
   @import "desktop/presentation.list";
-<<<<<<< HEAD
   @import "tablet/presentation.form";
-=======
-  @import "tablet/presentation.create";
   @import "tablet/presentation.markdown-usage";
->>>>>>> 138-new_usage_page
   @import "tablet/user.detail";
   @import "tablet/footer";
 }
