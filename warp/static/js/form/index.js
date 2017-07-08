@@ -1,13 +1,13 @@
 /* global window, $, marked, ace, preview, document, location, Prism, resizeSlides,Selectize */
-Selectize.define('input_maxlength', () => {
+Selectize.define('input_maxlength', function (options) {
   const self = this;
-  this.setup = (() => {
+  this.setup = (function () {
     const original = self.setup;
-    return () => {
+    return function () {
       original.apply(this, arguments);
       this.$control_input.attr('maxlength', this.settings.input_maxlength);
     };
-  })();
+  }());
 });
 
 const isCreate = () => location.href.indexOf('create') > 0;
