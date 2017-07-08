@@ -22,7 +22,6 @@ python:
 install:
   - pip install -r requirements/local.txt
   - pip install -r requirements/test.txt
-  - pip install flake8
 
 before_script:
   - export DATABASE_URL='postgres://postgres@localhost/warp'
