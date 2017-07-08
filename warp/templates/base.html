@@ -20,7 +20,9 @@
       {% block extra_css %}{% endblock  %}
       <link rel="stylesheet" href="{% static 'vendor/font-awesome-4.7.0/css/font-awesome.min.css' %}">
       <link rel="stylesheet" href="{% static 'vendor/foundation/css/foundation.css' %}">
-      <link rel="stylesheet" href="{% static 'vendor/prism/prism.css' %}">
+      {% block prism_css %}
+        <link rel="stylesheet" href="{% static 'vendor/prism/prism.css' %}">
+      {% endblock %}
       <link rel="stylesheet" href="{% static 'dist/css/main.min.css' %}">
     {% endblock %}
 

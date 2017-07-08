@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseNotAllowed
 
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.shortcuts import render
 from django.views.generic import DeleteView
 from django.views.generic import UpdateView
 from django.views.generic import CreateView
@@ -93,3 +94,7 @@ def like_presentation(request, pk):
         return HttpResponse(status=200, content=is_like)
 
     return HttpResponseNotAllowed(["PUT"])
+
+
+def presentation_markdown_usage(request):
+    return render(request, 'presentation/markdown_usage.html')

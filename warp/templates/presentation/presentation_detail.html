@@ -37,9 +37,9 @@
           </div>
 
           <div>
-                <button id="likeBtn" class="button primary" onclick="likePresentation({{ presentation.pk }})">
-                    {% if is_user_liked %}Unlike{% else %}Like{% endif %}
-                </button>
+            <button id="likeBtn" class="button primary" onclick="likePresentation({{ presentation.pk }})">
+                {% if is_user_liked %}Unlike{% else %}Like{% endif %}
+            </button>
             {% if presentation.author == request.user %}
               <a class="button primary" href="{% url "presentation:update" presentation.pk %}">Update</a>
             {% endif %}
