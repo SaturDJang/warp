@@ -79,10 +79,9 @@ form#form_html {
         div#markdown_editor {
           height: calc(100% - #{$header-height + $header-margin-bottom});
           border: 1px solid #cacaca;
-
-          h1, h2, h3, h4, h5, a, button, div, label {
-            color: black;
-          }
+        }
+        div {
+          color: $key-green-color;
         }
         a.usage-toggle-btn {
           position: absolute;
