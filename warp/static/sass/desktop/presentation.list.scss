@@ -1,10 +1,35 @@
 div.best-week {
   height: 45%;
 }
+
+@media only screen
+and (min-device-width: 1024px)
+and (max-device-width: 1366px)
+and (-webkit-min-device-pixel-ratio: 1.5) {
+  div.best-week {
+    height: 25%;
+  }
+}
 div.large-centered {
   div.best-week {
     margin: 0 0 2rem 0;
     div.best-wrapper {
+      div.alert-wrapper {
+        margin-top: 5%;
+        div.alert-image {
+          float: left;
+          img {
+            margin-top: 10px;
+            float: right;
+            width: 128px;
+            height: 128px;
+          }
+        }
+        div.alert-text {
+          text-align: left;
+        }
+      }
+
       div.best-presentation {
         width: 100%;
         padding-bottom: 75%;

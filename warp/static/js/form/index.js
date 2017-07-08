@@ -1,42 +1,38 @@
 /* global window, $, marked, ace, preview, document, location, Prism, resizeSlides,Selectize */
-Selectize.define('input_maxlength', function(options) {
+Selectize.define('input_maxlength', function (options) {
   const self = this;
-  this.setup = (function() {
+  this.setup = (function () {
     const original = self.setup;
-    return function() {
+    return function () {
       original.apply(this, arguments);
       this.$control_input.attr('maxlength', this.settings.input_maxlength);
     };
-  })();
+  }());
 });
 
-const isCreate = () => {
-  return location.href.indexOf("create") > 0;
-};
+const isCreate = () => location.href.indexOf('create') > 0;
 
 const unsavedCreateIsExist = () => {
-    if(localStorage.getItem("unsavedCreate")) {
-      let unsavedCreate = {};
-      try {
-        unsavedCreate = JSON.parse(localStorage.getItem("unsavedCreate"));
-        if (unsavedCreate.subject
+  if (localStorage.getItem('unsavedCreate')) {
+    let unsavedCreate = {};
+    try {
+      unsavedCreate = JSON.parse(localStorage.getItem('unsavedCreate'));
+      if (unsavedCreate.subject
           || unsavedCreate.tags
           || unsavedCreate.markdown) {
-          return true;
-        }
-      } catch (e) {}
-    }
-    return false;
+        return true;
+      }
+    } catch (e) {}
+  }
+  return false;
 };
 
 const loadUnsavedCreate = () => {
-  if(unsavedCreateIsExist()) {
-      if (confirm("There were unsaved data. Do you want load?")) {
-          const unsavedCreate = JSON.parse(localStorage.getItem("unsavedCreate"));
-          document.getElementById('id_subject').setAttribute("value", unsavedCreate.subject);
-          document.getElementById('id_tags').setAttribute("value", unsavedCreate.tags);
-          document.getElementById('id_markdown').setAttribute("value", unsavedCreate.markdown);
-      }
+  if (unsavedCreateIsExist() && confirm('There were unsaved data. Do you want load?')) {
+    const unsavedCreate = JSON.parse(localStorage.getItem('unsavedCreate'));
+    document.getElementById('id_subject').setAttribute('value', unsavedCreate.subject);
+    document.getElementById('id_tags').setAttribute('value', unsavedCreate.tags);
+    document.getElementById('id_markdown').setAttribute('value', unsavedCreate.markdown);
   }
   return false;
 };
@@ -44,24 +40,24 @@ const loadUnsavedCreate = () => {
 $(() => {
   const editor = ace.edit('markdown_editor');
   const aceSession = editor.getSession();
-  const exist_markdown_value = document.getElementById('exist_markdown').value;
+  const existMarkdownValue = document.getElementById('exist_markdown').value;
 
   const unsavedCreate = {
-      subject: "",
-      tags: "",
-      markdown:""
+    subject: '',
+    tags: '',
+    markdown: '',
   };
 
-  if(exist_markdown_value) {
-      editor.setValue(exist_markdown_value);
+  if (existMarkdownValue) {
+    editor.setValue(existMarkdownValue);
   } else if (isCreate()) {
-      loadUnsavedCreate();
+    loadUnsavedCreate();
   }
 
-  const id_markdown_value = document.getElementById('id_markdown').value;
+  const idMarkdownValue = document.getElementById('id_markdown').value;
 
-  if(id_markdown_value) {
-      editor.setValue(id_markdown_value);
+  if (idMarkdownValue) {
+    editor.setValue(idMarkdownValue);
   }
 
   const appendSlide = (content, index) => {
@@ -82,11 +78,11 @@ $(() => {
     resizeSlides(false, $preview);
 
     document.getElementById('id_markdown').value = editor.getValue();
-    unsavedCreate.subject = document.getElementById("id_subject").value;
-    unsavedCreate.tags = document.getElementById("id_tags").value;
-    unsavedCreate.markdown = document.getElementById("id_markdown").value;
+    unsavedCreate.subject = document.getElementById('id_subject').value;
+    unsavedCreate.tags = document.getElementById('id_tags').value;
+    unsavedCreate.markdown = document.getElementById('id_markdown').value;
 
-    localStorage.setItem("unsavedCreate", JSON.stringify(unsavedCreate));
+    localStorage.setItem('unsavedCreate', JSON.stringify(unsavedCreate));
   };
 
   editor.setTheme('ace/theme/tomorrow_night_bright');
@@ -113,13 +109,13 @@ $(() => {
   });
 
   $('#id_tags').selectize({
-    plugins: ['remove_button','input_maxlength'],
+    plugins: ['remove_button', 'input_maxlength'],
     delimiter: ',',
     persist: false,
     input_maxlength: 15,
-    createFilter: function(input) {
-      const min_length = 2;
-      return input.length >= min_length;
+    createFilter(input) {
+      const minLength = 2;
+      return input.length >= minLength;
     },
     create(input) {
       return {
@@ -128,12 +124,10 @@ $(() => {
       };
     },
   });
-
 });
 
 
-
-const addHidden = function (form, key, value) {
+const addHidden = (form, key, value) => {
   // Create a hidden input element, and append it to the form:
   const input = document.createElement('input');
   input.type = 'hidden';
@@ -145,10 +139,9 @@ const addHidden = function (form, key, value) {
 const publish = () => {
   const form = document.getElementById('form_html');
 
-  addHidden(form, 'subject', $("#id_subject").val());
-  addHidden(form, 'tags', $("#id_tags").val());
+  addHidden(form, 'subject', $('#id_subject').val());
+  addHidden(form, 'tags', $('#id_tags').val());
 
   localStorage.setItem('unsavedCreate', '');
   form.submit();
-
 };

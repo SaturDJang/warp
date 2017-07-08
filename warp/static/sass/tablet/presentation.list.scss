@@ -5,6 +5,18 @@ div.large-centered {
   div.best-week {
     margin: 0 0 2rem 0;
     div.best-wrapper {
+      div.alert-image {
+        img {
+          margin-top: 25%;
+          height: 128px;
+          width: 128px;
+        }
+      }
+      div.alert-text {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
       div.best-presentation {
         width: 100%;
         padding-bottom: 75%;
