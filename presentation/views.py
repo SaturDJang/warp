@@ -36,9 +36,8 @@ class PresentationSearchList(PaginationMixin, ListView):
     context_object_name = 'presentations'
 
     def get_queryset(self):
-        print(self.kwargs)
-        query = self.kwargs['query']
-        return super(PresentationList, self).get_queryset().search(query)
+        query = self.request.GET['query']
+        return super(PresentationSearchList, self).get_queryset().search(query)
 
 
 class PresentationDetail(DetailView):

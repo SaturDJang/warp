@@ -1,3 +1,4 @@
+from django.contrib.postgres.search import SearchVector, SearchQuery
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Manager
@@ -17,8 +18,11 @@ class PresentationQuerySet(QuerySet):
 
     def search(self, query):
         return self.annotate(
-            SearchVector('subject', 'author', 'tags', 'slide__markdown')
-        ).filter(search=query)
+            search=SearchVector('subject', 'tags__name', 'author__username', 'slide__markdown'))\
+            .filter(search=SearchQuery(query))\
+            .filter(is_public=True)\
+            .distinct('id')\
+            .select_related('author')
 
 
 class PresentationManager(Manager):
@@ -33,13 +37,6 @@ class PresentationManager(Manager):
 
     def search(self, query):
         return self.get_queryset().search(query)
-
-
-class Tag(models.Model):
-    name = models.CharField(max_length=16, unique=True)
-
-    def __str__(self):
-        return self.name
 
 
 class Presentation(TimeStampedModel):
