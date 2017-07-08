@@ -41,7 +41,7 @@ window.resizeSlides = (isDetail, $parent) => {
     $slide.outerHeight(previewWidthRatioApply);
     $slide.css('padding', `${$previewWidth * ZOOMING_RATIO.padding}px`);
   } else {
-    // original (create page)
+    // original (form page)
     $previewWidth = $('.preview').outerWidth();
     previewWidthRatioApply = $previewWidth * ZOOMING_RATIO.slide;
     $slide.css('margin', `${previewWidthRatioApply * 0.03}px`);

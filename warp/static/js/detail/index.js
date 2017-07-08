@@ -1,4 +1,4 @@
-/* global $, marked, window, resizeSlides, mdElemsToHtmlElems, screenfull */
+/* global $, window, resizeSlides, mdElemsToHtmlElems, screenfull */
 
 $(() => {
   const slidesSelector = '.slides';
@@ -93,3 +93,22 @@ $(() => {
   });
 });
 
+
+const likePresentation = (pk) => {
+  $.ajax({
+    method: 'PUT',
+    url: `/like/${pk}`,
+  }).done((data) => {
+    const likeCount = Number($('#likeCount').text());
+    const likeBtn = $('#likeBtn');
+    if (data === 'True') {
+      $('#likeCount').text(likeCount + 1);
+      likeBtn.text('Unlike');
+    } else {
+      $('#likeCount').text(likeCount - 1);
+      likeBtn.text('Like');
+    }
+  }).fail(() => {
+
+  });
+};
