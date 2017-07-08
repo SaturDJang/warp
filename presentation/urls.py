@@ -9,6 +9,11 @@ urlpatterns = [
         name='list'
     ),
     url(
+        regex=r'^search$',
+        view=views.PresentationSearchList.as_view(),
+        name='search'
+    ),
+    url(
         regex=r'^create$',
         view=views.PresentationCreate.as_view(),
         name='create'

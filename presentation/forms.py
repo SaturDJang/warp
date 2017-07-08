@@ -4,7 +4,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import RadioSelect
 
-from .models import Presentation, Slide, Tag
+from .models import Presentation, Slide
 
 
 class PresentationBaseForm(forms.ModelForm):

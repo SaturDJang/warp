@@ -31,6 +31,16 @@ class PresentationList(PaginationMixin, ListView):
         return super(PresentationList, self).get_queryset().public()
 
 
+class PresentationSearchList(PaginationMixin, ListView):
+    model = Presentation
+    paginate_by = 9
+    context_object_name = 'presentations'
+
+    def get_queryset(self):
+        query = self.request.GET['query']
+        return super(PresentationSearchList, self).get_queryset().search(query)
+
+
 class PresentationDetail(DetailView):
     model = Presentation
     context_object_name = 'presentation'
