@@ -90,24 +90,3 @@ $(() => {
     resizeSlides(true, $('div#normal-view'));
   });
 });
-
-
-const likePresentation = (pk) => {
-  $.ajax({
-    method: 'PUT',
-    url: `/like/${pk}`,
-  }).done((data) => {
-    const $likeCount = $('#likeCount');
-    const likeCountNumber = Number($likeCount.text());
-    const $likeBtn = $('#likeBtn');
-    if (data === 'True') {
-      $likeCount.text(likeCountNumber + 1);
-      $likeBtn.text('Unlike');
-    } else {
-      $likeCount.text(likeCountNumber - 1);
-      $likeBtn.text('Like');
-    }
-  }).fail(() => {
-
-  });
-};
