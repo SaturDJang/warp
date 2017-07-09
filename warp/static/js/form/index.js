@@ -18,8 +18,8 @@ const unsavedCreateIsExist = () => {
     try {
       unsavedCreate = JSON.parse(localStorage.getItem('unsavedCreate'));
       if (unsavedCreate.subject
-          || unsavedCreate.tags
-          || unsavedCreate.markdown) {
+        || unsavedCreate.tags
+        || unsavedCreate.markdown) {
         return true;
       }
     } catch (e) {}
