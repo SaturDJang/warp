@@ -51,9 +51,7 @@ $(() => {
   $(window).keyup((e) => {
     const keys = {
       left: 37,
-      up: 38,
       right: 39,
-      down: 40,
     };
     if (e.which === keys.left || e.which === keys.up) {
       goToPrevSlide();
