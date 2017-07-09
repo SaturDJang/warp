@@ -97,14 +97,15 @@ const likePresentation = (pk) => {
     method: 'PUT',
     url: `/like/${pk}`,
   }).done((data) => {
-    const likeCount = Number($('#likeCount').text());
-    const likeBtn = $('#likeBtn');
+    const $likeCount = $('#likeCount');
+    const likeCountNumber = Number($likeCount.text());
+    const $likeBtn = $('#likeBtn');
     if (data === 'True') {
-      $('#likeCount').text(likeCount + 1);
-      likeBtn.text('Unlike');
+      $likeCount.text(likeCountNumber + 1);
+      $likeBtn.text('Unlike');
     } else {
-      $('#likeCount').text(likeCount - 1);
-      likeBtn.text('Like');
+      $likeCount.text(likeCountNumber - 1);
+      $likeBtn.text('Like');
     }
   }).fail(() => {
 
