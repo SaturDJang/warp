@@ -6,9 +6,15 @@ div#detail {
     margin-top: 30px;
     margin-bottom: 20px;
     div.pane-header {
-      height: 28px;
       border-radius: 5px 5px 0 0;
       background-color: #1e4675;
+      a, button {
+        background-color: #1e4675;
+        margin-bottom: 0;
+        &:hover {
+          background-color: #235087;
+        }
+      }
     }
     div.slick-list {
       height: 100%;
