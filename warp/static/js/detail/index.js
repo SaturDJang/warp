@@ -65,11 +65,11 @@ $(() => {
       if (screenfull.isFullscreen) {
         $slides.height(window.screen.height);
         $slides.width(window.screen.height * 1.333333);
-        resizeSlides(true, $('div#normal-view'));
       } else {
         $slides.css('height', '');
         $slides.css('width', '');
       }
+      resizeSlides(true, $('div#normal-view'));
     });
   } else {
     $('#full-screen-btn').hide();
