@@ -51,9 +51,7 @@ $(() => {
   $(window).keyup((e) => {
     const keys = {
       left: 37,
-      up: 38,
       right: 39,
-      down: 40,
     };
     if (e.which === keys.left || e.which === keys.up) {
       goToPrevSlide();
@@ -67,11 +65,11 @@ $(() => {
       if (screenfull.isFullscreen) {
         $slides.height(window.screen.height);
         $slides.width(window.screen.height * 1.333333);
-        resizeSlides(true, $('div#normal-view'));
       } else {
         $slides.css('height', '');
         $slides.css('width', '');
       }
+      resizeSlides(true, $('div#normal-view'));
     });
   } else {
     $('#full-screen-btn').hide();
@@ -92,23 +90,3 @@ $(() => {
     resizeSlides(true, $('div#normal-view'));
   });
 });
-
-
-const likePresentation = (pk) => {
-  $.ajax({
-    method: 'PUT',
-    url: `/like/${pk}`,
-  }).done((data) => {
-    const likeCount = Number($('#likeCount').text());
-    const likeBtn = $('#likeBtn');
-    if (data === 'True') {
-      $('#likeCount').text(likeCount + 1);
-      likeBtn.text('Unlike');
-    } else {
-      $('#likeCount').text(likeCount - 1);
-      likeBtn.text('Like');
-    }
-  }).fail(() => {
-
-  });
-};

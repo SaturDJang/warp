@@ -8,10 +8,23 @@
     <div class="small-12 medium-8 large-8 small-centered medium-centered large-centered columns">
       <div id="normal-view">
         <div class="slide-pane">
-          <div class="pane-header"></div>
+          <div class="pane-header">
+            <div>
+              <button id="likeBtn" class="button btn-primary"
+                      onclick="{% if user.is_authenticated %}likePresentation({{ presentation.pk }}){% else %}showPopup(){% endif %}">
+                {% if is_user_liked %}<i class="fa fa-heart" aria-hidden="true"></i>{% else %}<i class="fa fa-heart-o" aria-hidden="true"></i>{% endif %}
+              </button>
+              {% if presentation.author == request.user %}
+                <a class="button btn-primary" href="{% url "presentation:update" presentation.pk %}">Update</a>
+              {% endif %}
+              {% if presentation.author == request.user %}
+                <a class="button" href="{% url "presentation:delete" presentation.pk %}">Delete</a>
+              {% endif %}
+            </div>
+          </div>
           <div class="slides">
             {% for slide in presentation.slide_set.all %}
-            <div class="slide">{{ slide.markdown }}</div>
+              <div class="slide">{{ slide.markdown }}</div>
             {% endfor %}
             <a id="prev-touch"></a>
             <a id="next-touch"></a>
@@ -19,8 +32,8 @@
           <div class="controller">
             <div class="arrows">
               {% spaceless %}
-              <a id="prev-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-              <a id="next-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <a id="prev-btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                <a id="next-btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
               {% endspaceless %}
             </div>
             <div class="extra-commands">
@@ -37,24 +50,14 @@
             {{ presentation.views }}
             Likes: <span id="likeCount">{{ presentation.likes }}</span>
           </div>
-
-          <div>
-            <button id="likeBtn" class="button primary"
-                    onclick="{% if user.is_authenticated %}likePresentation({{ presentation.pk }}){% else %}showPopup(){% endif %}">
-                {% if is_user_liked %}Unlike{% else %}Like{% endif %}
-            </button>
-            {% if presentation.author == request.user %}
-              <a class="button primary" href="{% url "presentation:update" presentation.pk %}">Update</a>
-            {% endif %}
-          </div>
         </div>
         By <div class="presentation-author">
-          <a>{{ presentation.author }}</a>
-        </div>
+        <a>{{ presentation.author }}</a>
+      </div>
         <br>
         Published <div class="presentation-published-date">
-          {{ presentation.created }}
-        </div>
+        {{ presentation.created }}
+      </div>
       </div>
     </div>
   </div>
@@ -67,31 +70,31 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.2.0/screenfull.min.js"></script>
   <script type="text/javascript" src="{% static 'dist/js/detail/index.min.js' %}"></script>
   <script>
-  {% if user.is_authenticated %}
-    const likePresentation = (pk) => {
-      $.ajax({
-        method: "PUT",
-        url: "/like/" + pk
-      }).done(function (data) {
-        const likeCount = Number($('#likeCount').text());
-        const likeBtn = $('#likeBtn');
-        if(data === 'True') {
-          $('#likeCount').text(likeCount + 1);
-          likeBtn.text('Unlike');
+    {% if user.is_authenticated %}
+      const likePresentation = (pk) => {
+        $.ajax({
+          method: "PUT",
+          url: "/like/" + pk
+        }).done(function (data) {
+          const likeCount = Number($('#likeCount').text());
+          const likeBtn = $('#likeBtn');
+          if(data === 'True') {
+            $('#likeCount').text(likeCount + 1);
+            $('.fa-heart-o').removeClass('fa-heart-o').addClass('fa-heart');
+          }
+          else {
+            $('#likeCount').text(likeCount - 1);
+            $('.fa-heart').removeClass('fa-heart').addClass('fa-heart-o');
+          }
+        }).fail(function () {
+        })
+      };
+    {% else %}
+      const showPopup = () => {
+        if(confirm('Like must be logged in. Go to sign-in page?')) {
+          location.replace('{% url 'account_login' %}?next=/detail/{{ presentation.id }}');
         }
-        else {
-          $('#likeCount').text(likeCount - 1);
-          likeBtn.text('Like');
-        }
-      }).fail(function () {
-      })
-    };
-  {% else %}
-    const showPopup = () => {
-      if(confirm('Like must be logged in. Go to sign-in page?')) {
-        location.replace('{% url 'account_login' %}?next=/detail/{{ presentation.id }}');
-      }
-    };
-  {% endif %}
+      };
+    {% endif %}
   </script>
 {% endblock %}

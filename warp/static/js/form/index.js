@@ -18,8 +18,8 @@ const unsavedCreateIsExist = () => {
     try {
       unsavedCreate = JSON.parse(localStorage.getItem('unsavedCreate'));
       if (unsavedCreate.subject
-          || unsavedCreate.tags
-          || unsavedCreate.markdown) {
+        || unsavedCreate.tags
+        || unsavedCreate.markdown) {
         return true;
       }
     } catch (e) {}
@@ -88,14 +88,14 @@ $(() => {
   editor.setTheme('ace/theme/tomorrow_night_bright');
   aceSession.setMode('ace/mode/markdown_warp');
   editor.renderer.setShowGutter(false);
+  marked.setOptions({
+    langPrefix: 'language-',
+    sanitize: true,
+  });
   md2html();
   editor.on('change', md2html);
   editor.on('changeSelection', () => {
     preview.syncWithEditorCaret(editor);
-  });
-
-  marked.setOptions({
-    langPrefix: 'language-',
   });
 
   resizeSlides(false, $('.preview'));

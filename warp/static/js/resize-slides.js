@@ -3,11 +3,12 @@
 window.resizeSlides = (isDetail, $parent) => {
   const ZOOMING_RATIO = {
     elems: {
-      h1: 0.18,
-      h2: 0.15,
-      h3: 0.12,
-      h4: 0.09,
-      h5: 0.06,
+      h1: 0.1,
+      h2: 0.08,
+      h3: 0.07,
+      h4: 0.06,
+      h5: 0.05,
+      h6: 0.045,
       p: 0.04,
       pre: 0.04,
       code: 0.04,
