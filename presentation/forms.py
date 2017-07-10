@@ -39,15 +39,6 @@ class PresentationBaseForm(forms.ModelForm):
             )
 
     @staticmethod
-    def create_and_get_tag(tag_name):
-        try:
-            tag = Tag.objects.get(name=tag_name)
-        except Tag.DoesNotExist:
-            Tag.objects.create(name=tag_name)
-            tag = Tag.objects.get(name=tag_name)
-        return tag
-
-    @staticmethod
     class Meta:
         model = Presentation
         fields = ['subject', 'markdown', 'is_public', "tags"]

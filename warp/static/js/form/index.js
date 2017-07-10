@@ -141,6 +141,7 @@ const publish = () => {
 
   addHidden(form, 'subject', $('#id_subject').val());
   addHidden(form, 'tags', $('#id_tags').val());
+  addHidden(form, 'is_public', $(':radio[name=is_public]:checked').val());
 
   localStorage.setItem('unsavedCreate', '');
   form.submit();
