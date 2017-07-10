@@ -20,7 +20,6 @@ class PresentationBaseForm(forms.ModelForm):
         if len(tags) > 20:
             raise ValidationError("Too much tags")
         for tag in tags:
-            print(tag)
             if len(tag) > 16:
                 raise ValidationError("Too long tag")
 
