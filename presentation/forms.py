@@ -20,7 +20,6 @@ class PresentationBaseForm(forms.ModelForm):
         if len(tags) > 20:
             raise ValidationError("Too much tags")
         for tag in tags:
-            print(tag)
             if len(tag) > 16:
                 raise ValidationError("Too long tag")
 
@@ -37,15 +36,6 @@ class PresentationBaseForm(forms.ModelForm):
                 slide_order=order_num,
                 markdown=slide
             )
-
-    @staticmethod
-    def create_and_get_tag(tag_name):
-        try:
-            tag = Tag.objects.get(name=tag_name)
-        except Tag.DoesNotExist:
-            Tag.objects.create(name=tag_name)
-            tag = Tag.objects.get(name=tag_name)
-        return tag
 
     @staticmethod
     class Meta:
