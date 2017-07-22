@@ -22,4 +22,19 @@ div#markdown-usage {
     padding-bottom: 20px;
     margin-bottom: 40px;
   }
+  .divide-slide-preview {
+    margin-top: 10px;
+    position: relative;
+    background-color: black;
+    border: 1px solid white;
+    min-width: 100px;
+    min-height: 100px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .divide-slide-preview > span {
+    position: absolute;
+    left: 5%;
+    top: 35%;
+  }
 }
